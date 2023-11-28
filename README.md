@@ -11,7 +11,7 @@
 - [X] Change Password
 - [X] Register
 - [X] Register (role select)
-- [ ] Worker Signup
+- [X] Worker Signup
 
 ## CUSTOMER VIEW:
 - [X] User Profile
@@ -21,8 +21,8 @@
 - [X] Services - Search
 - [X] Services - Details
 - [X] Bookings
-- [ ] Booking Details
-- [ ] Worker Profile
+- [X] Booking Details
+- [X] Worker Profile
 
 ## WORKER VIEW:
 - [ ] User Profile
