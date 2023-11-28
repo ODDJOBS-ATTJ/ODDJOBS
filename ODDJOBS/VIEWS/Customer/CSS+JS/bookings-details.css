@@ -1,0 +1,125 @@
+/* FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+  background-color: #acacac !important;
+}
+
+/* START OF HEADER SECTION*/
+.header{
+  width:100%;
+  height:100px;
+  display: block;
+  background-color: white;
+  position: sticky; top: 0;
+  z-index: 50;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.3);
+}
+
+.inner_header{
+  width: 1300px;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Logo */
+.logo_container {
+  height: 100%;
+  display: table;
+  float: left;
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center the content vertically */
+}
+
+.logo_box{
+  width: 170px;
+  background-color: #da4040;
+  height:50%;
+  display: table;
+  float: left;
+  border-radius: 10px;
+  text-align: center; /* This centers the content horizontally */
+}
+
+.logo_container h1{
+  color: white;
+  height:100%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.logo_container h1 span{
+  color: #780D0D;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Links and stuff */
+.nav{
+  float: right;
+  height: 100%;
+}
+
+.nav li{
+  height: 100%;
+  display: table;
+  float: left;
+  padding: 0px 10px;
+}
+
+.nav li:last-child{
+  padding-right: 0px;
+}
+
+.nav li a{
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  color: rgb(59, 59, 59);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav li a.active,
+.nav li:hover a {
+  color: rgb(233, 41, 41)!important;
+}
+
+/* Container */
+.container{
+    position: absolute;
+    top: 150px; /* Adjust this value based on your header's height */
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+a.back-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 40px;
+  position: relative;
+  margin: 20px 25px;
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+
