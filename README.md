@@ -27,7 +27,7 @@
 ## WORKER VIEW:
 - [ ] User Profile
 - [ ] Worker Profile
-- [ ] Billings
+- [X] Billings
 - [ ] Services - Home
 - [ ] Services - Categories
 - [ ] Services - Search
