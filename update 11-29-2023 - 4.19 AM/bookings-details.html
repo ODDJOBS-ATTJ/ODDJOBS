@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bookings-details.css">
+    <title>ODDJOBS | BOOKINGS</title>
+  </head>
+  <body>
+   <!-- HEADER SECTION -->
+   <div class="header">
+    <div class="inner_header"> 
+        <a class="logo_container" href="/home/home.html">
+            <div class="logo_box">
+                <h1>ODD<span>JOBS</span></h1>
+            </div>
+          </a>
+        <ul class="nav">
+            <li><a href="#" >SERVICES</a></li>
+            <li><a href="#" >BOOKINGS</a></li>
+            <li><a href="/Other/login.html" >SIGN IN</a></li>
+        </ul>
+    </div>
+</div>
+<!-- END OF HEADER SECTION -->
+    <div class="container">
+      <a href="#" onclick="history.back();" class="back-button"> &larr; Back</a>
+      <div class="booking-details-container">
+        <h1>COMPLETED</h1>
+        <div class="status-container">
+          <div class="status-icons-container">
+            <div class="imagebox"><img src="icons/bookingPlaced.png"></div>
+            <line></line>
+            <div class="imagebox"><img src="icons/paymentConfirmed.png"></div>
+            <line></line>
+            <div class="imagebox"><img src="icons/arriving.png"></div>
+            <line></line>
+            <div class="imagebox"><img src="icons/serviceFinished.png"></div>
+          </div>
+          <div class="status-name-container">
+            <h1 style="padding: 0px 0px 0px 220px;">Booking Placed</h1>
+            <h1 style="padding: 0px 0px 0px 45px;">Payment Confirmed</h1>
+            <h1 style="padding: 0px 0px 0px 72px;">Arriving</h1>
+            <h1 style="padding: 0px 0px 0px 105px;">Service Finished</h1>
+          </div>
+        </div>
+        <div class="services-container">
+          <img src="icons/samplePhoto.png">
+          <h1>Professional Line Standers</h1>
+        </div>
+        <div class="services-details-container">
+          <div class="services-details">
+            <div class="booking">
+              <h1>BOOKING ADDRESS</h1>
+              <h2>John Lennon</h2>
+              <h3>+63 918 939 6942</h3>
+              <h3>9W27+R8R, Sitio Nasipit, Brgy, Cebu City</h3>
+            </div>
+            <div class="workers">
+              <h1>WORKER NAMES</h1>
+              <div class="worker-name">
+                <h2>Xavier Neil Angel</h2>
+                <a href="#">VIEW PROFILE</a>
+              </div>
+              <div class="worker-rating-container">
+                <form class="worker-rating">
+                  <label>
+                    <input type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="3" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>   
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </form>
+                <button>RATE</button>
+              </div>
+            </div>
+          </div>
+          <div class="services-breakdown">
+            <table>
+              <tr>
+                <th>Payment Method</th>
+                <td>Cash-On-Delivery</td>
+              </tr>
+              <tr>
+                <th>Service Type</th>
+                <td>Duration</td>
+              </tr>
+              <tr>
+                <th>Base Price</th>
+                <td>₱250.00</td>
+              </tr>
+              <tr>
+                <th>Orders</th>
+                <td>2</td>
+              </tr>
+              <tr>
+                <th>Duration</th>
+                <td>2 hrs</td>
+              </tr>
+              <tr>
+                <th>Services</th>
+                <td>₱100.00</td>
+              </tr>
+              <tr>
+                <th>Calculation</th>
+                <td>
+                  <p>((Base Price x Orders) x Service Type) + Service Fee</p>
+                  <p>((250 x 2) x 2) + 100</p>
+                </td>
+              </tr>
+              <tr style="border:none;">
+                <th>Total</th>
+                <td>₱1100.00</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(':radio').change(function() {
+        console.log('New star rating: ' + this.value);
+      });
+    </script>
+</body>
+</html>
