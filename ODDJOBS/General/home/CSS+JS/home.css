@@ -273,10 +273,12 @@ p {
 /* END OF OUR PURPOSE SECTION */
 
 /* START OF OUR SERVICES SECTION */
+
+
 .card-container{
     background-color: white;
     height: 850px;
-    width: 2400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,13 +288,13 @@ p {
 }
 
 .card-container .innerbox{
-    width: 1350px;
+    width: 1050px;
     padding-left: 50px;
     padding-bottom: 25px;
 }
 
 .card .item{
-    height: 450px;
+    height: 400px;
     max-width: 350px;
     margin: 0 auto;
 }
@@ -303,6 +305,10 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+}
+
+.card-body{
+    height: 200px;
 }
 
 .card-img-top {
