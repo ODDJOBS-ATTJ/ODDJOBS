@@ -40,8 +40,8 @@
 - [X] Login
 - [X] Signup
 - [X] Admin Profile
-- [ ] Service Management
+- [X] Service Management
 - [ ] Service Creation
 - [ ] Service Edit
-- [ ] User Management
+- [X] User Management
 - [ ] Report List
