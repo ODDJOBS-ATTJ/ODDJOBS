@@ -45,3 +45,16 @@
 - [ ] Service Edit
 - [X] User Management
 - [ ] Report List
+
+## Additional shit:
+- [ ] Log out Popup
+- [ ] Switch Perspective or view popup
+- [ ] Create service popup
+- [ ] Confirm role-select popup
+- [ ] Report a problem bottom right of all pages + popup
+- [ ] Smooth Js for User and Admin Profile pages
+- [ ] if form is not fiilled out, submit is neutral color, else, full color
+- [ ] Better logo
+- [ ] Page title cleanup + Add logo
+- [ ] Add more color to all pages
+- [ ] Change Border sizing for all pages
