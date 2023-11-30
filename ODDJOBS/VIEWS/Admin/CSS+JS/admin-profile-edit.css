@@ -32,7 +32,7 @@ a.report-button {
     height: 670px;
     width: 500px;
     background-color: #FB6356;
-    border-radius: 180px 180px 110px 110px;
+    border-radius: 180px 180px 150px 150px;
 }
 
 .profile-pic {
@@ -41,48 +41,41 @@ a.report-button {
     display: flex;
     justify-content: center;
     align-items: end;
+    margin-bottom: 50px;
 }
 
 .profile-pic img {
     max-width: 170px;
+    height: 170px;
+    object-fit: cover;
     border-radius: 50%;
     border: 5px solid white;
+    position: relative;
 }
 
-.labels {
-    height: 15%;
-    width: 100%;
+.centerer{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    color: white;
 }
 
-.labels h2 {
-    font-weight: 600;
+.styled-input{
+    background-color: #FB6356;
+    color: #ffffff;
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 300;
+    max-width:170px;
+    padding: 10px;
+    transition: 0.5s ease-in-out;
+    position: absolute;
+    z-index: 1;
 }
 
-.labels h3 {
-    font-weight: 400;
-}
-
-.icons {
-    height: 15%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: white;
-}
-
-.icons a{
-    text-decoration: none;
-    color: white;
-}
-
-.fa-brands {
-    margin: 10px;
-    font-size: 30px;
+.styled-input:hover{
+    background-color: rgb(196, 61, 61)
 }
 
 .edit-button-box {
@@ -106,12 +99,12 @@ a.report-button {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.edit-button p{
+.edit-button p {
     font-weight: 600;
 }
 
 .user-info {
-    height: 39%;
+    height: 62%;
     width: 100%;
     background: rgb(255, 255, 255);
     display: flex;
@@ -129,14 +122,43 @@ a.report-button {
     align-items: center;
     flex-direction: column;
 }
-.user-info-box h3{
+
+.user-info-box h3 {
     font-weight: 400;
     color: gray;
+    margin-bottom: 10px;
 }
 
-.user-info-box li{
+.user-info-box li {
     list-style-type: disc;
     font-size: 14px;
     margin: 10px;
     font-weight: 400;
 }
+
+/* FORMS */
+.input-field {
+    margin: 5px;
+}
+
+.input-field input {
+    font-size: 16px;
+    display: block;
+    width: 313px;
+    padding: 5px 15px;
+    border: 0;
+    border-bottom: 2px solid #747474;
+    outline: none;
+    transition: all .2s;
+    font-size: 13px;
+    color: #757575
+}
+
+.input-field input:focus {
+    border-color: #222;
+}
+
+form {
+    all: unset;
+}
+

@@ -5,11 +5,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/VIEWS/Customer/CSS+JS/default.css">
-  <link rel="stylesheet" href="/VIEWS/Customer/CSS+JS/user-profile-edit.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">
+  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/admin-profile-edit.css">
   <title>ODDJOBS | PROFILE</title>
 </head>
 
@@ -24,16 +21,14 @@
       </a>
 
       <ul class="nav">
-        <li><a href="/VIEWS/Customer/services.html">SERVICES</a></li>
-        <li><a href="/VIEWS/Customer/bookings.html">BOOKINGS</a></li>
-        <li class="user-greeting"><a href="#">Hi, Juan</a></li>
+        <li><a href="/VIEWS/Admin/services-management.html">SERVICE MANAGEMENT</a></li>
+        <li><a href="/VIEWS/Admin/user-management.html">USER MANAGEMENT</a></li>
+        <li class="user-greeting"><a href="#">Hi, Beneditto</a></li>
         <li class="pfp" tabindex="0">
           <div class="dropdown">
-            <img src="/VIEWS/Customer/Images/juan.png" alt="User Profile" class="dropbtn" />
+            <img src="/General/home/Images/team/ditto.jpg" alt="User Profile" class="dropbtn">
             <div class="dropdown-content">
-              <a href="user-profile.html">User Profile</a>
-              <a href="#">Switch to worker view</a>
-              <a href="billings.html" class="billings">Billings</a>
+              <a href="admin-profile.html">User Profile</a>
               <div class="line"></div>
               <a href="/General/home/home.html" class="signout">Log Out</a>
             </div>
@@ -55,11 +50,11 @@
               Upload Photo
             </label>
             <input type="file" id="fileInput1" class="file-input" style="display: none;" />
-            <img src="/VIEWS/Customer/Images/juan.png"/>
+            <img src="/General/home/Images/team/ditto.jpg">
           </div>
         </div>
         <div class="edit-button-box">
-          <a href="user-profile.html" class="edit-button">
+          <a href="admin-profile.html" class="edit-button">
             <p>SAVE PROFILE</p>
           </a>
         </div>
@@ -89,6 +84,6 @@
       </div>
   </div>
   </form>
-  <script src="/VIEWS/Customer/CSS+JS/user-profile-edit.js"></script>
+  <script src="/VIEWS/Admin/CSS+JS/admin-profile-edit.js"></script>
 </body>
 </html>

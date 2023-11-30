@@ -1,0 +1,117 @@
+/* Container */
+.container{
+  position: absolute;
+  top: 100px; /* Adjust this value based on your header's height */
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* BACK BUTTON */
+a.back-button, a.create-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 40px;
+  position: relative;
+  margin: 20px 20px;
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+a.create-button{
+  margin-left: 0px;
+}
+
+.service-container{
+  width:1250px;
+  margin: 0 auto;
+  padding:5px;
+}
+
+.service-name-card{
+  display:block;
+  background-color: white;
+  margin-bottom:10px;
+  border-radius:5px;
+}
+
+.service-name-card input{
+  width:1200px;
+  outline:none;
+  padding:5px 0px 5px 20px;
+}
+
+.serviceName{
+  border:none;
+  font-size:30px;
+  font-weight:bold;
+  border-radius:5px;
+}
+
+hr{
+  border:solid 1px;
+}
+
+.shortDescription{
+  border:none;
+  border-radius:5px;
+}
+
+.service-details{
+  display:flex;
+}
+
+.service-details-container1{
+  width:620px;
+  margin-right:5px;
+}
+
+.service-details-container2{
+  width:620px;
+  margin-left:5px;
+}
+
+.service-details-container1 .specifics{
+  background-color: white;
+  padding:10px 20px 10px 20px;
+  height:550px;
+  border-radius:5px;
+}
+
+.specifics textarea{
+  border: solid grey;
+  border-radius: 5px;
+  width:555px;
+  outline:none;
+  padding:10px;
+  height:470px;
+  background-color: #f2f2f2;
+}
+
+.service-details-container2 .summary{
+  background-color: white;
+  padding:10px 20px 10px 20px;
+  margin-bottom: 10px;
+  height:260px;
+  border-radius:5px;
+}
+
+.service-details-container2 .overview{
+  background-color: white;
+  padding:10px 20px 10px 20px;
+  height:260px;
+  border-radius:5px;
+}
+
+.overview textarea{
+  border: solid grey;
+  border-radius: 5px;
+  width:555px;
+  outline:none;
+  padding:10px;
+  height:180px;
+  background-color: #f2f2f2;
+}
+

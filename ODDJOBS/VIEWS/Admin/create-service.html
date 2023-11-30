@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">
+  <link rel="stylesheet" href="CSS+JS/create-service.css">
+  <title>ODDJOBS | EDIT PROFILE</title>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="inner_header">
+      <a class="logo_container" href="/General/home/home.html">
+        <div class="logo_box">
+          <h1>ODD<span>JOBS</span></h1>
+        </div>
+      </a>
+
+      <ul class="nav">
+        <li><a href="/VIEWS/Admin/services-management.html">SERVICE MANAGEMENT</a></li>
+        <li><a href="/VIEWS/Admin/user-management.html">USER MANAGEMENT</a></li>
+        <li class="user-greeting"><a href="#">Hi, Beneditto</a></li>
+        <li class="pfp" tabindex="0">
+          <div class="dropdown">
+            <img src="/General/home/Images/team/ditto.jpg" alt="User Profile" class="dropbtn">
+            <div class="dropdown-content">
+              <a href="admin-profile.html">User Profile</a>
+              <div class="line"></div>
+              <a href="/General/home/home.html" class="signout">Log Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END OF HEADER SECTION -->
+  
+  <div class="container">
+    <a href="#" onclick="history.back();" class="back-button"> &larr; Back</a>
+    <a href="#" onclick="history.back();" class="create-button">CREATE SERVICE</a>
+    <div class="service-container">
+      <div class="service-name-card">
+        <input type="text" placeholder="SERVICE NAME" class="serviceName">
+        <hr>
+        <input type="text" placeholder="short description here" class="shortDescription">
+      </div>
+      <div class="service-details">
+        <div class="service-details-container1">
+          <div class="specifics">
+            <h1>SPECIFICS</h1>
+            <textarea>Long Description Here</textarea>
+          </div>
+        </div>
+        <div class="service-details-container2">
+          <div class="summary">
+            <h1>SUMMARY</h1>
+          </div>
+          <div class="overview">
+            <h1>OVERVIEW</h1>
+            <textarea>Short Description Here</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
