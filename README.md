@@ -58,6 +58,3 @@
 - [ ] Page title cleanup + Add logo
 - [ ] Add more color to all pages
 - [ ] Change Border sizing for all pages
-
-
-Test push
