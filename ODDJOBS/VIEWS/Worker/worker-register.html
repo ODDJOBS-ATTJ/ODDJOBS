@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/default.css" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/worker-register.css" />
+  <title>ODDJOBS | REGISTER</title>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="inner_header">
+      <a class="logo_container" href="/General/home/home.html">
+        <div class="logo_box">
+          <h1>ODD<span>JOBS</span></h1>
+        </div>
+      </a>
+
+      <ul class="nav">
+        <li><a href="/General/login.html">SIGN IN</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- END OF HEADER SECTION -->
+
+  <div class="container">
+    <a href="#" onclick="history.back();" class="back-button"> &larr; Back</a>
+    <!-- REGISTER FORM -->
+    <div class="card-form">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <h1>SUBMIT REQUIRED DOCUMENTS</h1>
+        <div class="content">
+          <div class="input-field">
+            <label for="fileInput1" class="styled-input" id="label1"
+              onclick="document.getElementById('fileInput1').click(); return false;">
+              Attach Government Issued ID/Identification Document 1
+            </label>
+            <input type="file" id="fileInput1" class="file-input" style="display: none" />
+          </div>
+          <div class="input-field">
+            <label for="fileInput2" class="styled-input" id="label2"
+              onclick="document.getElementById('fileInput2').click(); return false;">
+              Attach Government Issued ID/Identification Document 2
+            </label>
+            <input type="file" id="fileInput2" class="file-input" style="display: none" />
+          </div>
+          <div class="input-field">
+            <label for="fileInput3" class="styled-input" id="label3"
+              onclick="document.getElementById('fileInput3').click(); return false;">
+              Attach NBI Clearance
+            </label>
+            <input type="file" id="fileInput3" class="file-input" style="display: none" />
+          </div>
+          <div class="input-field">
+            <label for="fileInput4" class="styled-input" id="label4"
+              onclick="document.getElementById('fileInput4').click(); return false;">
+              Attach COVID-19 Vaccination Card
+            </label>
+            <input type="file" id="fileInput4" class="file-input" style="display: none" />
+          </div>
+          <!-- Add similar code for other file inputs -->
+          <button class="submit-button">CONTINUE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/VIEWS/Worker/CSS+JS/worker-register.js"></script>
+</body>
+
+</html>
