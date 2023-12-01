@@ -5,8 +5,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">
-  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/admin-profile-edit.css">
+  <link rel="stylesheet" href="../../VIEWS/Admin/CSS+JS/default.css">
+  <!--<link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">-->
+  <link rel="stylesheet" href="../../VIEWS/Admin/CSS+JS/admin-profile-edit.css">
+  <!--<link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/admin-profile-edit.css">-->
   <title>ODDJOBS | PROFILE</title>
 </head>
 
@@ -50,7 +52,8 @@
               Upload Photo
             </label>
             <input type="file" id="fileInput1" class="file-input" style="display: none;" />
-            <img src="/General/home/Images/team/ditto.jpg">
+            <img src="../../General/home/Images/team/ditto.jpg" alt="">
+            <!--<img src="/General/home/Images/team/ditto.jpg">-->
           </div>
         </div>
         <div class="edit-button-box">
@@ -62,28 +65,29 @@
           <div class="user-info-box">
             <h3>Learn more about Juan Dela Cruz</h3>
             <div class="input-field">
-              <input type="url" placeholder="Facebook Link" autocomplete="nope" />
+              <input type="url" placeholder="Facebook Link" autocomplete="nope" id="facebook-link" name="facebook-link" />
             </div>
             <div class="input-field">
-              <input type="url" placeholder="Instagram link" autocomplete="nope" />
+              <input type="url" placeholder="Instagram link" autocomplete="nope" id="instagram-link" name="instagram-link"/>
             </div>
             <div class="input-field">
-              <input type="email" placeholder="Email" autocomplete="nope" />
+              <input type="email" placeholder="Email" autocomplete="nope" id="email-input" name="email-input"/>
             </div>
             <div class="input-field">
-              <input type="tel" placeholder="Phone Number" autocomplete="nope" />
+              <input type="tel" placeholder="Phone Number" autocomplete="nope" id="phone-number" name="phone-number"/>
             </div>
             <div class="input-field">
-              <input type="date" autocomplete="nope" />
+              <input type="date" autocomplete="off" id="date-input" name="date-input" >
             </div>
             <div class="input-field">
-              <input type="text" placeholder="Current Address" autocomplete="nope" />
+              <input type="text" placeholder="Current Address" autocomplete="nope" id="address-input" name="address-input"/>
             </div>
           </div>
         </div>
       </div>
   </div>
   </form>
-  <script src="/VIEWS/Admin/CSS+JS/admin-profile-edit.js"></script>
+  <script src="../../VIEWS/Admin/CSS+JS/admin-profile-edit.js"></script>
+  <!--<script src="/VIEWS/Admin/CSS+JS/admin-profile-edit.js"></script>-->
 </body>
 </html>
