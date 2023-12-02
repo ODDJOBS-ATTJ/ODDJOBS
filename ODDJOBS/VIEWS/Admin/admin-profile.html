@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">
   <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/admin-profile.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>ODDJOBS | PROFILE</title>
 </head>
-
 <body>
-  <!-- HEADER SECTION -->
-  <div class="header">
-    <div class="inner_header">
-      <a class="logo_container" href="/General/home/home.html">
-        <div class="logo_box">
-          <h1>ODD<span>JOBS</span></h1>
-        </div>
-      </a>
-
-      <ul class="nav">
-        <li><a href="/VIEWS/Admin/services-management.html">SERVICE MANAGEMENT</a></li>
-        <li><a href="/VIEWS/Admin/user-management.html">USER MANAGEMENT</a></li>
-        <li class="user-greeting"><a href="#">Hi, Beneditto</a></li>
-        <li class="pfp" tabindex="0">
-          <div class="dropdown">
-            <img src="/General/home/Images/team/ditto.jpg" alt="User Profile" class="dropbtn">
-            <div class="dropdown-content">
-              <a href="admin-profile.html">User Profile</a>
-              <div class="line"></div>
-              <a href="/General/home/home.html" class="signout">Log Out</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <!-- HEADER SECTION -->
+    <div class="header">
+      <div class="inner_header">
+          <a class="logo_container" href="/General/home/home.html">
+              <div class="logo_box">
+                  <h1>ODD<span>JOBS</span></h1>
+              </div>
+          </a>
+          <ul class="nav">
+              <li><a href="/VIEWS/Admin/admin-log.html">ADMIN LOG</a></li>
+              <li><a href="/VIEWS/Admin/applications.html">APPLICATION</a></li>
+              <li><a href="/VIEWS/Admin/services-management.html">SERVICE MANAGEMENT</a></li>
+              <li><a href="/VIEWS/Admin/user-management.html">USER MANAGEMENT</a></li>
+              <li class="user-greeting"><a href="#">Hi, Beneditto</a></li>
+              <li class="pfp" tabindex="0">
+                  <div class="dropdown">
+                      <img src="/General/home/Images/team/ditto.jpg" alt="User Profile" class="dropbtn">
+                      <div class="dropdown-content">
+                          <a href="admin-profile.html">User Profile</a>
+                          <div class="line"></div>
+                          <a href="/General/home/home.html" class="signout">Log Out</a>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </div>
   </div>
   <!-- END OF HEADER SECTION -->
-
   <a href="user-profile-edit.html" onclick="" class="report-button">REPORT</a>
   <div class="container">
     <!-- USER CARD -->
     <div class="user-card">
-        <div class="profile-pic">
-            <img src="/General/home/Images/team/ditto.jpg">
+      <div class="profile-pic">
+        <img src="/General/home/Images/team/ditto.jpg">
+      </div>
+      <div class="labels">
+        <h2>Beneditto Alfonso A. Tiu</h2>
+        <h3>Customer from Lapu-Lapu City</h3>
+      </div>
+      <div class="icons">
+        <a href="https://www.facebook.com/ditto.tiu"><i class="fa-brands fa-square-facebook" id="facebook"></i></a>
+        <a href="https://www.instagram.com/tiuditto"><i class="fa-brands fa-square-instagram" id="instagram"></i></a>
+      </div>
+      <div class="spacer"></div>
+      <div class="edit-button-box">
+        <a href="admin-profile-edit.html" class="edit-button">
+          <p>EDIT PROFILE</p>
+        </a>
+      </div>
+      <div class="user-info">
+        <div class="user-info-box">
+          <h3> Learn more about Beneditto Tiu</h3>
+          <ul>
+            <li>22100327@usc.edu.ph</li>
+            <li>0939 910 4220</li>
+            </ui>
         </div>
-        <div class="labels">
-            <h2>Beneditto Alfonso A. Tiu</h2>
-            <h3>Customer from Lapu-Lapu City</h3>
-        </div>
-        <div class="icons">
-            <a href="https://www.facebook.com/ditto.tiu"><i class="fa-brands fa-square-facebook" id="facebook"></i></a>
-            <a href="https://www.instagram.com/tiuditto"><i class="fa-brands fa-square-instagram" id="instagram"></i></a>
-        </div>
-        <div class="spacer"></div>
-        <div class="edit-button-box">
-            <a href="admin-profile-edit.html" class="edit-button"><p>EDIT PROFILE</p></a>
-        </div>
-        <div class="user-info">
-            <div class="user-info-box">
-                <h3> Learn more about Juan Dela Cruz</h3>
-                <ul>
-                    <li>22100327@usc.edu.ph</li>
-                    <li>0939 910 4220</li>
-                </ui>
-            </div>
-        </div>
+      </div>
     </div>
   </div>
 </body>
-
 </html>

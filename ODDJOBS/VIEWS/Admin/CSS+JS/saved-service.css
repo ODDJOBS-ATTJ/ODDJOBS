@@ -140,6 +140,15 @@ hr{
   background-color: #f2f2f2;
 }
 
+.overview p{
+  margin-bottom: 5px;
+}
+
+.overview li{
+  list-style-type: disc;
+  line-height: 35px;
+}
+
 .summaryContent{
   display: flex;
   align-items: center;
