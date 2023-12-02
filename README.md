@@ -28,8 +28,8 @@
 ## WORKER VIEW:
 - [X] User Profile
 - [X] Worker Profile
-- [ ] Worker Profile edit
-- [ ] Other Worker's Profile
+- [X] Worker Profile edit
+- [X] Other Worker's Profile
 - [X] Billings
 - [X] Services - Home
 - [X] Services - Categories
@@ -47,6 +47,8 @@
 - [X] Service Edit
 - [X] User Management
 - [X] Report List
+- [X] Admin Log
+- [X] Applications
 
 ## Additional shit:
 - [X] Popup templates
