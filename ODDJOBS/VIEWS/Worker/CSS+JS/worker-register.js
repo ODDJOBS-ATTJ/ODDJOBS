@@ -15,5 +15,4 @@
     updateFileName("fileInput1", "label1");
     updateFileName("fileInput2", "label2");
     updateFileName("fileInput3", "label3");
-    updateFileName("fileInput4", "label4");
     // Add similar calls for other file inputs
