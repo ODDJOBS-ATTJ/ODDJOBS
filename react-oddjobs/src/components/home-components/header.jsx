@@ -1,6 +1,5 @@
 import React from "react"
 import { ReactDOM } from "react"
-import "../../../ODDJOBS/General/home/CSS+JS/home.css"
 
 function Header() {
     return(
