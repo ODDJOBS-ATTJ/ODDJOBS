@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes, Link } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
  {/* EDIT THIS TO YOUR OWN MODULE THAT U WORKIN ON */}
 import Login from './General/Login';
 import Register from './General/Register';
