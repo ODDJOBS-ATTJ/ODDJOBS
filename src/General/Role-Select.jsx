@@ -10,7 +10,7 @@ function RoleSelect() {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <>
             <SignedOutHeader />
             <div className="container">
 
@@ -39,7 +39,7 @@ function RoleSelect() {
                     </Link>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

@@ -5,6 +5,7 @@ import Home from './pages/home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
+import RoleSelect from './pages/RoleSelect'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/login' element={ <Login /> }/>
         <Route path='/register' element={ <Register /> }/>
         <Route path='/forgot' element={ <ForgotPassword /> }/>
+        <Route path='/role-select' element={ <RoleSelect /> }/>
       </Routes>
     </>
   )
