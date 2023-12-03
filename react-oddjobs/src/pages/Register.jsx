@@ -60,7 +60,7 @@ function Register() {
                         autoComplete="new-password"
                     />
                     </div>
-                    <button className="submit-button">CONTINUE</button>
+                    <Link to="/role-select"><button className="submit-button">CONTINUE</button></Link>
                 </div>
                 </form>
             </div>
