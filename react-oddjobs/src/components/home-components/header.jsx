@@ -1,5 +1,6 @@
 import React from "react"
 import { ReactDOM } from "react"
+import { Link } from "react-router-dom"
 
 function Header() {
     return(
@@ -30,7 +31,7 @@ function Header() {
                         <a href="#workforus">Work For Us</a>
                     </li>
                     <li>
-                        <a href="/General/login.html">SIGN IN</a>
+                        <Link to="/login">SIGN IN</Link>
                     </li>
                     </ul>
                 </div>
