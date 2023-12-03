@@ -1,5 +1,6 @@
 import React from "react"
 import { ReactDOM } from "react"
+import { Link } from "react-router-dom"
 
 import "../../../ODDJOBS/General/home/CSS+JS/default.css"
 import "../../../ODDJOBS/VIEWS/Customer/CSS+JS/styles.css"
@@ -26,13 +27,9 @@ function Login() {
                     <button className="submit-button">Sign in</button>
                     <div>
                         Don't have an account?{" "}
-                        <a href="../../../ODDJOBS/General/register.html" className="linkunderlined">
-                        Register here
-                        </a>{" "}
+                        <Link to="/register" className="linkunderlined">Register here</Link>
                     </div>
-                    <a href="../../../ODDJOBS/General/forgot-password.html" className="linkunderlined">
-                        Forgot Your Password?
-                    </a>
+                    <Link to="/forgot" className="linkunderlined">Forgot Your Password?</Link>
                     </div>
                 </form>
             </div>

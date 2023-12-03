@@ -1,5 +1,6 @@
 import React from "react"
 import { ReactDOM } from "react"
+import { Link } from "react-router-dom"
 import Header from "../components/home-components/header"
 
 function Register() {
@@ -7,10 +8,7 @@ function Register() {
         <>
             <Header />
             <div className="container">
-            <a href="#" onclick="history.back();" className="back-button">
-                {" "}
-                ← Back
-            </a>
+            <Link to="/login" className="back-button">← Back</Link>
             {/* REGISTER FORM */}
             <div className="card-form">
                 <form>
