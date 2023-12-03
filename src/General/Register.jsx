@@ -2,13 +2,15 @@ import React from 'react';
 import './CSS/styles.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const navigate = useNavigate();
     return (
         <div>
-            <SignedOutHeader/>
+            <SignedOutHeader />
             <div className="container">
-                <Link to="../" className="back-button">
+                <Link className="back-button" onClick={navigate(-1)}>
                     &larr; Back
                 </Link>
 
@@ -50,7 +52,7 @@ function Register() {
                                     placeholder="Confirm Password"
                                     autoComplete="new-password" />
                             </div>
-                            <button className="submit-button">CONTINUE</button>
+                            <Link to="/role-select"><button className="submit-button">CONTINUE</button></Link>
                         </div>
                     </form>
                 </div>
