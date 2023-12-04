@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Header from "../components/home-components/header"
-import customer from "../../../src/General/IMG/customer.png"
-import workers from "../../../src/General/IMG/workers.png"
+
+import customer from "../../../src/General/IMAGE/customer.png"
+import workers from "../../../src/General/IMAGE/workers.png"
 
 function RoleSelect() {
     return(

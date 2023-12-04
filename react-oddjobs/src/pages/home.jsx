@@ -1,5 +1,4 @@
 import Header from "../components/home-components/header";
-import "../../../ODDJOBS/General/home/CSS+JS/home.css"
 
 import HomeCarousel from "../components/home-components/home-carousel";
 import Purpose from "../components/home-components/purpose";
