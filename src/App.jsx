@@ -8,6 +8,7 @@ import ChangePassword from './General/Change-Password';
 import UserProfile from './Views/Customer/User-Profile';
 import UserProfileEdit from './Views/Customer/User-Profile-Edit';
 import Billings from './Views/Customer/Billings';
+import Services from './Views/Customer/Services';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/customer/user-profile" element={<UserProfile />} />
         <Route path="/customer/user-profile-edit" element={<UserProfileEdit />} />
         <Route path="/customer/billings" element={<Billings />} />
+        <Route path="/customer/services" element={<Services />} />
       </Routes>
   );
 }
