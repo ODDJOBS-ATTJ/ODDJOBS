@@ -24,36 +24,36 @@ function Services() {
                     </div>
                     <div className="services-container-row">
                         <div className="categories-card">
-                            <Link to="/Customer/services.html" className="categories">
+                            <Link to="/customer/services" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
                                 <h1>featured</h1>
                             </Link>
-                            <Link to="/Customer/services-categories.html" className="categories">
+                            <Link to="/customer/services-categories" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
                                 <h1>home</h1>
                             </Link>
-                            <Link to="/Customer/services-categories.html" className="categories">
+                            <Link to="/customer/services-categories" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
                                 <h1>event</h1>
-                            </Link><Link to="/Customer/services-categories.html" className="categories">
+                            </Link><Link to="/customer/services-categories" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
                                 <h1>health</h1>
                             </Link>
-                            <Link to="/Customer/services-categories.html" className="categories">
+                            <Link to="/customer/services-categories" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
                                 <h1>engineer</h1>
                             </Link>
-                            <Link to="/Customer/services-categories.html" className="categories">
+                            <Link to="/customer/services-categories" className="categories">
                                 <div className="category-img">
                                     <img src={samplePhoto} alt="Category" />
                                 </div>
@@ -67,7 +67,7 @@ function Services() {
                     </div>
                     <div className="services-container-row">
                         <div className="featured-services-row">
-                            <Link to="/Customer/services-details.html" className="featured-services-col">
+                            <Link to="/Customer/services-details" className="featured-services-col">
                                 <div className="featured-services-content">
                                     <div className="image">
                                         <img src={samplePhoto} />
@@ -81,7 +81,7 @@ function Services() {
                                 </div>
                             </Link>
                             <div className="featured-services-space"></div>
-                            <Link to="/Customer/services-details.html" className="featured-services-col">
+                            <Link to="/Customer/services-details" className="featured-services-col">
                                 <div className="featured-services-content">
                                     <div className="image">
                                         <img src={samplePhoto} />
@@ -98,7 +98,7 @@ function Services() {
                     </div>
                     <div className="services-container-row">
                         <div className="featured-services-row">
-                            <Link to="/Customer/services-details.html" className="featured-services-col">
+                            <Link to="/Customer/services-details" className="featured-services-col">
                                 <div className="featured-services-content">
                                     <div className="image">
                                         <img src={samplePhoto} />
@@ -113,7 +113,7 @@ function Services() {
                                 </div>
                             </Link>
                             <div className="featured-services-space"></div>
-                            <Link to="/Customer/services-details.html" className="featured-services-col">
+                            <Link to="/Customer/services-details" className="featured-services-col">
                                 <div className="featured-services-content">
                                     <div className="image">
                                         <img src={samplePhoto} />
@@ -127,9 +127,6 @@ function Services() {
                                 </div>
                             </Link>
                         </div>
-                    </div>
-                    <div className="services-container-row">
-                        <div className="endSpace"></div>
                     </div>
                 </div>
             </div>

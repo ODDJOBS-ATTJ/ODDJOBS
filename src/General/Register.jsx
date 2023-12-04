@@ -1,8 +1,8 @@
 import React from 'react';
-import generalStyles from './CSS/general-styles.module.css';
-import SignedOutHeader from '../General/Signed-Out-Header';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import generalStyles from './CSS/general-styles.module.css';
+import SignedOutHeader from '../General/Signed-Out-Header';
 
 function Register() {
     const navigate = useNavigate();

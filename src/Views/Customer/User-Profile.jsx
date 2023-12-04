@@ -1,7 +1,7 @@
 import React from 'react';
 import './CSS/styles.css';
 import './CSS/user-profile.css';
-// import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png'
@@ -21,8 +21,8 @@ function UserProfile() {
                         <h3>Customer from Cebu City</h3>
                     </div>
                     <div className="icons">
-                        {/* <Link to="https://www.facebook.com/juandelacruz"><i className="fa-brands fa-square-facebook" id="facebook" /></Link> */}
-                        {/* <Link to="https://www.instagram.com/juandelacruz"><i className="fa-brands fa-square-instagram" id="instagram" /></Link> */}
+                        <Link to="https://www.facebook.com/juandelacruz"><i className="fab fa-facebook-square" id="facebook" /></Link>
+                        <Link to="https://www.instagram.com/juandelacruz"><i className="fab fa-instagram-square" id="instagram" /></Link>
                     </div>
                     <div className="edit-button-box">
                         <Link to="/customer/user-profile-edit" className="edit-button"><p>EDIT PROFILE</p></Link>

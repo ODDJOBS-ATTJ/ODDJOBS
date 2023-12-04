@@ -1,4 +1,5 @@
-a.back-button {
+/* General Styles */
+.back-button-services {
   display: inline-block;
   padding: 15px 30px;
   background-color: #ffffff;
@@ -6,14 +7,15 @@ a.back-button {
   text-decoration: none;
   border-radius: 40px;
   position: absolute;
-  margin: 20px 25px;
-  z-index: 1;
-  /* Ensure it's above other elements */
+  top: 120px;
+  left: 25px;
+  z-index: 1; /* Ensure it's above other elements */
 }
 
+/* Services Container */
 .services-container {
   margin: 50px auto;
-  display: block;
+
   width: 1250px;
 }
 
@@ -27,11 +29,12 @@ a.back-button {
   margin: 0 auto;
 }
 
+/* Searchbar */
 .searchbar {
   display: flex;
   align-items: center;
   background-color: white;
-  width: 560px;
+  width: 725px;
   border-radius: 20px;
 }
 
@@ -41,13 +44,16 @@ a.back-button {
 }
 
 .searchbar input {
-  padding: 0px;
+  padding: 0;
   height: 30px;
-  width: 500px;
+  width: 635px;
   border: none;
   outline: none;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Categories */
 .categories-card {
   display: flex;
   align-items: center;
@@ -70,15 +76,13 @@ a.back-button {
   background-color: white;
 }
 
-.categories:hover h1{
+.categories:hover h1 {
   color: #FB6356;
 }
 
-.categories:hover img{
+.categories:hover img {
   opacity: 0.8;
 }
-
-
 
 .categories h1 {
   text-transform: uppercase;
@@ -97,7 +101,7 @@ a.back-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: black
+  background: black;
 }
 
 .category-img img {
@@ -105,12 +109,12 @@ a.back-button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 2px solid black;;
+  border: 2px solid black;
   opacity: 1;
   transition: .5s ease-in-out;
 }
 
-/*if featured-services-selected*/
+/* Featured Services */
 .featured-services-row {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -130,11 +134,15 @@ a.back-button {
   border-radius: 15px;
   border: none;
   cursor: pointer;
-  transition: 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .featured-services-col:hover {
   background-color: rgb(236, 236, 236);
+}
+
+.featured-services-col:hover .featured-services-content .image {
+  transition: opacity 0.5s ease-in-out;
 }
 
 .featured-services-content {
@@ -143,7 +151,8 @@ a.back-button {
   display: flex;
   align-items: center;
 }
-.featured-services-col:hover .featured-services-content .image{
+
+.featured-services-col:hover .featured-services-content .image {
   opacity: 0.5;
 }
 
@@ -155,7 +164,7 @@ a.back-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .featured-services-content .space {
@@ -187,8 +196,9 @@ a.back-button {
   color: black;
 }
 
-.featured-services-content .description p{
+.featured-services-content .description p {
   color: black;
+  font-size: 13.3333px;
 }
 
 .featured-services-space {
@@ -196,9 +206,7 @@ a.back-button {
   height: 250px;
 }
 
-/*if featured-services-selected*/
-
-/*if other categories-selected*/
+/* Other Categories */
 .other-categories-row {
   margin-top: 20px;
   background-color: white;
@@ -234,7 +242,7 @@ a.back-button {
 }
 
 .other-categories-content .image img {
-  border: solid 2px;
+  border: solid 2px black;
   border-radius: 23.75px;
   width: 130px;
   height: 130px;
@@ -257,17 +265,20 @@ a.back-button {
 .other-categories-content .description h1 {
   font-size: 20px;
   text-transform: uppercase;
+  color: black;
 }
 
-/*if other-categories-selected*/
+.other-categories-content .description p {
+  color: black;
+  font-size: 13.3333px;
+}
 
-/*service details*/
 
+/* Service Details */
 .service-details-container {
   display: block;
   margin: 0 auto;
   width: 1250px;
-
 }
 
 .service-details-container-row {
@@ -422,10 +433,8 @@ td {
   padding-left: 10px;
 }
 
-/*service details*/
-
+/* End Space */
 .endSpace {
   height: 50px;
   width: 100%;
 }
-
