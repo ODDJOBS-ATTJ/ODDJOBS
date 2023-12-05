@@ -64,7 +64,8 @@
 
 ## BACKEND MAIN SHIT (in order of priority):
 // ANG FIRST KAY LINK HOME TO LOGIN
-- [ ] All views - Creation of accounts; Login + Register + Role Select + Worker Signup
+- [ ] All views - Creation of accounts; Login + Register + Worker Signup
+- [X] All views - Role select (lock admin card button by password)
 - [ ] All views - Email confirmation + Forget password + Change Password
 - [ ] Admin - Applications (accepting or denying workers)
 - [ ] All views - Account details editing (user profile + worker profile + admin profile + edit)
