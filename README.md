@@ -1,6 +1,6 @@
 # ODDJOBS PROGRESS
 - [X] FRONT END HTML
-- [ ] DATABASE - ONE TABLE LACKING
+- [X] DATABASE - May need altering
 - [ ] **FRONT END REACT CONVERSION - CURRENT STEP**
 - [ ] BACKEND
 - [ ] CONNECTING MODULES
@@ -28,6 +28,7 @@
 
 ## WORKER VIEW:
 - [X] User Profile
+- [X] User Profile Edit
 - [X] Worker Profile
 - [X] Worker Profile edit
 - [X] Other Worker's Profile
