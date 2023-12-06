@@ -1,7 +1,9 @@
 // var cors = require('cors');
 // const express = require('express')
 // const bodyParser = require('body-parser');
-//had to use import instead
+
+//Import keyword is used since JS files are used as modules rather than CommonJS or .cjs files
+
 import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -15,8 +17,7 @@ app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
 
-app.get('/api', (req, res) => {
-    res.send('<h1>HELLO WORLD!</h1>');
+app.get('/', (req, res) => {
     console.log("Hello There!");
 });
 
