@@ -15,3 +15,4 @@ dbConn.connect((err) => {
 });
 
 module.exports = dbConn;
+// export default dbConn;

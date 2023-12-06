@@ -1,6 +1,6 @@
 'use strict';
-import Account from '../models/oddjobs.model';
-// const Account = require('../models/oddjobs.model');
+// import Account from '../models/oddjobs.model.js';
+const Account = require('../models/oddjobs.model');
 
 exports.findAll = (req, res) => {
     Account.findAll((err, account) => {

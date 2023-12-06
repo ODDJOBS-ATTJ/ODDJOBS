@@ -1,6 +1,6 @@
 'use strict';
-const dbConn = require('../db.config');
-// import dbConn from "../db.config";
+const dbConn = require('../config/db.config.js');
+// import dbConn from "../config/db.config.js";
 
 /** For the Accounts */
 
@@ -100,3 +100,4 @@ Account.delete = (id, result) => {
 }
 
 module.exports = Account;
+// export default Account;

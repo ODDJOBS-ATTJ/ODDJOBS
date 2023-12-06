@@ -2,7 +2,6 @@
   "name": "oddjobs-react-express",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "proxy": "http://localhost:3000",
   "scripts": {
     "dev": "concurrently \"npm:react\" \"npm:server\"",
