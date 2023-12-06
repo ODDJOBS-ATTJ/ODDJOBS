@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/default.css">
+  <link rel="stylesheet" href="/VIEWS/Admin/CSS+JS/create-service.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>ODDJOBS | EDIT PROFILE</title>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <div class="header">
+      <div class="inner_header">
+          <a class="logo_container" href="/General/home/home.html">
+              <div class="logo_box">
+                  <h1>ODD<span>JOBS</span></h1>
+              </div>
+          </a>
+          <ul class="nav">
+              <li><a href="/VIEWS/Admin/admin-log.html">ADMIN LOG</a></li>
+              <li><a href="/VIEWS/Admin/applications.html">APPLICATION</a></li>
+              <li><a href="/VIEWS/Admin/services-management.html">SERVICE MANAGEMENT</a></li>
+              <li><a href="/VIEWS/Admin/user-management.html">USER MANAGEMENT</a></li>
+              <li class="user-greeting"><a href="#">Hi, Beneditto</a></li>
+              <li class="pfp" tabindex="0">
+                  <div class="dropdown">
+                      <img src="/General/home/Images/team/ditto.jpg" alt="User Profile" class="dropbtn">
+                      <div class="dropdown-content">
+                          <a href="admin-profile.html">User Profile</a>
+                          <div class="line"></div>
+                          <a href="/General/home/home.html" class="signout">Log Out</a>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
+  <!-- END OF HEADER SECTION -->
+  <a href="#" onclick="history.back();" class="back-button"> &larr; Back</a>
+  <a href="saved-service.html" class="save-button">SAVE SERVICE</a>
+  <div class="container">
+    <div class="service-container">
+      <div class="service-name-card">
+        <h1 class="serviceName">MASSAGE THERAPY</h1>
+        <hr>
+        <input type="text"
+          placeholder="Indulge in blissful relaxation with our professional in-home massage service, tailored to your needs and delivered right to your doorstep."
+          class="shortDescription">
+      </div>
+      <div class="service-details">
+        <div class="service-details-container1">
+          <div class="specifics">
+            <h1>SPECIFICS</h1>
+            <textarea>Massage therapy involves manipulating the body's soft tissues to alleviate stress, tension, and discomfort, offering numerous benefits for both the body and the mind &#10;&#10;Our service offers tailored massage therapy options, providing a tranquil and rejuvenating experience through techniques like Swedish massage and deep tissue treatment.&#10;&#10;At our service, we prioritize our clients' well-being by offering a range of tailored massage therapy options. Our licensed therapists are dedicated to providing a tranquil and rejuvenating experience, whether through a soothing Swedish massage or a targeted deep tissue treatment. Each person's body is unique, and our therapists are adept at customizing their approach to address specific concerns, ensuring personalized care and attention. 
+              &#10;Regular massage therapy can reduce anxiety, improve sleep quality, and enhance overall mood, contributing to long-term health and wellness.</textarea>
+          </div>
+        </div>
+        <div class="service-details-container2">
+          <div class="summary">
+            <h1>SUMMARY</h1>
+            <div class="summaryContent">
+              <div class="summaryInputs">
+                <label for="base-price">Base Price:</label><br>
+                <input type="text" id="base-price" placeholder="₱1000.00">
+              </div>
+              <div class="summaryInputs">
+                <label for="service-type">Service Type:</label><br>
+                <select name="services" id="service-type">
+                  <option>Duration</option>
+                </select>
+              </div>
+              <div>
+                <div class="policies">
+                  <input type="file" id="policies">
+                  <h1>Policies:</h1>
+                  <label for="policies">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i> policies.pdf
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="summaryImages">
+              <h1>Upload Files:</h1>
+              <div class="upload-boxes">
+                <div class="upload-image">
+                  <input type="file" id="upload-image">
+                  <label for="upload-image">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Image<br>
+                    <a href="#">sample-img.jpg</a>
+                  </label>
+                </div>
+                <div class="upload-banner">
+                  <input type="file" id="upload-image">
+                  <label for="upload-image">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Banner<br>
+                    <a href="#">sample-img.jpg</a>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overview">
+            <h1>OVERVIEW</h1>
+            <textarea>What does this service provide?
+  Skilled therapists delivering therapeutic techniques
+  Convenient in-home massages tailored to you
+  Relaxation and stress reduction
+  Relief from muscle tension and pain</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
