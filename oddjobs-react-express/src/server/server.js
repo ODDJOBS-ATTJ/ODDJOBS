@@ -7,6 +7,7 @@
 import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
+import router from './routes/oddjobs.route';
 
 const app = express();
 app.use(cors());
@@ -17,9 +18,11 @@ app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    console.log("Hello There!");
-});
+
+// app.get('/server', (req, res) => {
+//     res.send('<h1>HELLO MYTHER</h1>');
+//     console.log("Hello There!");
+// });
 
 app.listen(port, () => {
     console.log(`Server port is ${port}`);

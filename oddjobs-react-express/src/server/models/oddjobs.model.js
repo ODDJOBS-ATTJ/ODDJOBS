@@ -1,9 +1,10 @@
 'use strict';
 const dbConn = require('../db.config');
+// import dbConn from "../db.config";
 
 /** For the Accounts */
 
-const Account = (account) => {
+function Account(account) {
     this.Email          = account.Email,
     this.Password       = account.Password,
     this.firstName      = account.firstName,
@@ -58,13 +59,44 @@ Account.findAll = (result) => {
 }
 
 Account.update = (id, employee, result) => {
-    dbConn.query("UPDATE employees ", (err, res) => {
+    dbConn.query("UPDATE accounts SET  Email = ?, Password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, idAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ? WHERE userID = ?", [
+        account.Email,
+        account.Password,
+        account.firstName,
+        account.lastName,
+        account.phoneNumber,
+        account.birthday,
+        account.region,
+        account.city,
+        account.barangay,
+        account.zipCode,
+        false,
+        false,
+        account.fbLink, 
+        account.instaLink,
+        account.pfp,
+        false
+    ],
+    (err, res) => {
         if (err) {
             console.log("error: ", err);
-            result(err, null);
+            result(null, err);
         } else {
             console.log('Employees: ', res);
             result(null, res);
         }
     });
 }
+
+Account.delete = (id, result) => {
+    dbConn.query("DELETE FROM accounts WHERE userID = ?", [id], (err, result) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+}
+
+module.exports = Account;

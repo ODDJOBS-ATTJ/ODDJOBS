@@ -1,5 +1,6 @@
 'use strict';
 const mysql = require('mysql');
+// import mysql from 'mysql';
 
 const dbConn = mysql.createConnection({
     host        : 'localhost',
