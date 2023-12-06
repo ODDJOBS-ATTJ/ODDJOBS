@@ -66,7 +66,7 @@
 // ANG FIRST KAY LINK HOME TO LOGIN
 - [ ] All views - Creation of accounts; Login + Register + Worker Signup
 - [X] All views - Role select (lock admin card button by password)
-- [ ] All views - Email confirmation + Forget password + Change Password
+- [X] All views - Email confirmation + Forget password + Change Password
 - [ ] Admin - Applications (accepting or denying workers)
 - [ ] All views - Account details editing (user profile + worker profile + admin profile + edit)
 - [ ] Admin - Service Management (create service, edit service, save service, display service)
