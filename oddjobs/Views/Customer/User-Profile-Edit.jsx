@@ -1,5 +1,4 @@
 import React from 'react';
-import './CSS/styles.css';
 import styles from './CSS/user-profile-edit.module.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
@@ -28,7 +27,7 @@ function UserProfileEdit() {
                     </div>
                     <div className={styles['user-info']}>
                         <div className={styles['user-info-box']}>
-                            <div className={styles['input-field']}>
+                            <div className={styles['input-field-edit']}>
                                 <h3>Edit your account details:</h3>
                                 <input type="url" placeholder="Facebook Link" autoComplete="nope" />
                                 <input type="url" placeholder="Instagram link" autoComplete="nope" />
