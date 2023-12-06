@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/default.css" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/billings.css" />
+  <title>ODDJOBS | EDIT PROFILE</title>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="inner_header">
+      <a class="logo_container" href="/General/home/home.html">
+        <div class="logo_box">
+          <h1>ODD<span>JOBS</span></h1>
+        </div>
+      </a>
+
+      <ul class="nav">
+        <li><a href="/VIEWS/Worker/services.html">SERVICES</a></li>
+        <li><a href="/VIEWS/Worker/bookings.html">BOOKINGS</a></li>
+        <li class="user-greeting"><a href="#">Hi, Johnny</a></li>
+        <li class="pfp" tabindex="0">
+          <div class="dropdown">
+            <img src="/VIEWS/Worker/Images/Johnny.jpg" alt="User Profile" class="dropbtn" />
+            <div class="dropdown-content">
+              <a href="user-profile.html">User Profile</a>
+              <a href="worker-profile.html">Worker Profile</a>
+              <a href="billings.html">Billings</a>
+              <a href="#">Switch to Customer view</a>
+              <div class="line"></div>
+              <a href="/General/home/home.html" class="signout">Log Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END OF HEADER SECTION -->
+
+  <div class="container">
+    <div class="payment-methods">
+      <h1>Payment Methods</h1>
+      <div class="payment-header">
+        <div class="payment-methods-card-child-col">
+          <img src="/VIEWS/Worker/Images/Icons/credit-card.png" width="45px" />
+          <h1>Credit Card(s)</h1>
+        </div>
+      </div>
+      <div class="allbox">
+        <!-- LEFT BOX -->
+        <div class="leftbox">
+          <div class="leftbox-section">
+            <h2>Manage your payment options below.</h2>
+          </div>
+          <div class="leftbox-section">
+            <button onclick="openMethodForm()">Add a new card</button>
+          </div>
+
+          <!-- FORM -->
+          <div class="form-popup" id="methods">
+            <form action="billings.html" class="form-container">
+              <div class="first-form">
+                <div class="form-header">
+                  <h2>Add payment method</h2>
+                  <div class="close-button" onclick="closeMethodForm()">
+                    <img src="/VIEWS/Worker/images/icons/xmark-solid.svg" width="20px" />
+                  </div>
+                </div>
+                <div class="radiobox">
+                  <div class="credit-card">
+                    <input type="radio" id="credit" name="cards" onclick="openCreditCardForm()" />
+                    <label for="credit">Credit / Debit Cards</label>
+                    <img class="fa-icon-top" src="/VIEWS/Worker/images/icons/cards.png" />
+                  </div>
+
+                  <!-- CREDIT CARD FORM -->
+                  <div class="credit-card-form" id="credit-card">
+                    <form action="billings.html" class="form-container">
+                      <div class="inputboxes">
+                        <div class="first-row">
+                          <div class="full-width">
+                            <style scoped>
+                              @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+                            </style>
+                            <label for="cardNumber">Card Number</label>
+                            <div class="input-container">
+                              <span class="fa-icon">&#xf09d;</span>
+                              <input type="text" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="columns">
+                          <div class="first-col">
+                            <div class="half-width">
+                              <label for="firstName">First Name</label>
+                              <input type="text" id="firstName" name="firstName" placeholder="&nbsp;" />
+                            </div>
+                            <div class="half-width">
+                              <label for="securityCode">Security Code</label>
+                              <input type="text" id="securityCode" name="securityCode" placeholder="&nbsp;" />
+                            </div>
+                          </div>
+                          <div class="spacer">&nbsp;</div>
+                          <div class="second-col">
+                            <div class="half-width">
+                              <label for="lastName">Last Name</label>
+                              <input type="text" id="lastName" name="lastName" placeholder="&nbsp;" />
+                            </div>
+                            <div class="half-width">
+                              <label for="expirationDate">Expiration Date</label>
+                              <input type="text" id="expirationDate" name="expirationDate" placeholder="MM / YY" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="savebutton">
+                          <input type="submit" value="Save" id="save" />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- CREDIT CARD FORM END -->
+                  <div class="PayPal">
+                    <input type="radio" id="PayPal" name="cards" onclick="openPayPalForm()" />
+                    <label for="PayPal">PayPal</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- FORM END -->
+        </div>
+        <!-- LEFT BOX END -->
+
+        <!-- RIGHT BOX -->
+        <div class="rightbox">
+          <div class="rightbox-section">
+            <div class="existing-payment-methods">
+              <div class="payment-methods-card-child-col">
+                <div class="card-with-icon">
+                  <img src="/VIEWS/Worker/Images/Icons/paypal.png" />
+                </div>
+              </div>
+              <div class="payment-methods-card-child-col">
+                <div class="card-description">
+                  <h1>Card ending in 3304</h1>
+                  <h2>Exp. date 03/31</h2>
+                </div>
+              </div>
+              <div class="payment-methods-card-child-col">
+                <div class="card-options">
+                  <div class="payment-methods-card-child-col">
+                    <button class="default-button">Make Default</button>
+                  </div>
+                  <div class="payment-methods-card-child-col">
+                    <button>
+                      <img src="/VIEWS/Worker/images/icons/trash-bin.png" height="25px" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- RIGHT BOX END -->
+      </div>
+    </div>
+  </div>
+  <script src="/VIEWS/Worker/CSS+JS/billings.js"></script>
+</body>
+
+</html>
+
+</html>

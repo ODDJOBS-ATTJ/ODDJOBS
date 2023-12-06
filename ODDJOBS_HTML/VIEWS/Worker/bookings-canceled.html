@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/default.css" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/bookings-details.css" />
+  <link rel="stylesheet" href="/VIEWS/Worker/CSS+JS/canceled.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <title>ODDJOBS | BOOKINGS</title>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="inner_header">
+      <a class="logo_container" href="/General/home/home.html">
+        <div class="logo_box">
+          <h1>ODD<span>JOBS</span></h1>
+        </div>
+      </a>
+
+      <ul class="nav">
+        <li><a href="/VIEWS/Worker/services.html">SERVICES</a></li>
+        <li><a href="/VIEWS/Worker/bookings.html">BOOKINGS</a></li>
+        <li class="user-greeting"><a href="#">Hi, Johnny</a></li>
+        <li class="pfp" tabindex="0">
+          <div class="dropdown">
+            <img src="/VIEWS/Worker/Images/Johnny.jpg" alt="User Profile" class="dropbtn" />
+            <div class="dropdown-content">
+              <a href="user-profile.html">User Profile</a>
+              <a href="worker-profile.html">Worker Profile</a>
+              <a href="billings.html">Billings</a>
+              <a href="#">Switch to Customer view</a>
+              <div class="line"></div>
+              <a href="/General/home/home.html" class="signout">Log Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END OF HEADER SECTION -->
+  <a href="#" onclick="history.back();" class="back-button"> &larr; Back</a>
+  <div class="container">
+    <div class="booking-details-container">
+      <h1 class="completed">CANCELED</h1>
+      <div class="status-container">
+        <div class="status-icons-container">
+          <div class="imagebox booking">
+            <img src="/VIEWS/Worker/Images/Icons/bookingPlaced.png" />
+          </div>
+          <line class="bookingline"></line>
+          <div class="imagebox payment">
+            <img src="/VIEWS/Worker/Images/icons/paymentConfirmed.png" />
+          </div>
+          <line></line>
+          <div class="imagebox arriving">
+            <img src="/VIEWS/Worker/Images/icons/arriving.png" />
+          </div>
+          <line></line>
+          <div class="imagebox finished">
+            <img src="/VIEWS/Worker/Images/icons/serviceFinished.png" />
+          </div>
+        </div>
+        <div class="status-name-container">
+          <h1 style="padding: 0px 0px 0px 220px">Booking Placed</h1>
+          <h1 style="padding: 0px 0px 0px 45px">Payment Confirmed</h1>
+          <h1 style="padding: 0px 0px 0px 72px">Arriving</h1>
+          <h1 style="padding: 0px 0px 0px 105px">Service Finished</h1>
+        </div>
+      </div>
+      <div class="services-container">
+        <img src="/General/home/Images/carousels/LineStanding.jpg" />
+        <h1>Professional Line Standing</h1>
+      </div>
+      <div class="services-details-container">
+        <div class="services-details">
+          <div class="booking">
+            <h1>BOOKING ADDRESS</h1>
+            <h2>John Lennon &nbsp; |<a href="#">VIEW PROFILE</a></h2>
+            
+            <h3>+63 918 939 6942</h3>
+            <h3>9W27+R8R, Sitio Nasipit, Brgy, Cebu City</h3>
+          </div>
+          <div class="workers">
+            <h1>WORKER NAMES</h1>
+            <div class="worker-name">
+              <h2>Johnny Del Mondo &nbsp; |</h2>
+              <a href="/VIEWS/Worker/worker-profile.html">VIEW YOUR PROFILE</a>
+            </div>
+            <div class="worker-name">
+              <h2>Beneditto Amistad Tiu &nbsp; |</h2>
+              <a href="/VIEWS/Worker/workers-profile.html">VIEW PROFILE</a>
+            </div>
+            <div class="worker-name">
+              <h2>Xavier Neil Angel &nbsp; |</h2>
+              <a href="#">VIEW PROFILE</a>
+            </div>
+          </div>
+        </div>
+        <div class="services-breakdown">
+          <table>
+            <tr class="normalth">
+              <th>Payment Method</th>
+              <td>Cash-On-Delivery</td>
+            </tr>
+            <tr class="normalth">
+              <th>Service Type</th>
+              <td>Duration</td>
+            </tr>
+            <tr class="row3">
+              <th>Base Price</th>
+              <td>₱250.00</td>
+            </tr>
+            <tr class="row3">
+              <th>Orders</th>
+              <td>3</td>
+            </tr>
+            <tr class="row3">
+              <th>Duration</th>
+              <td>2 hrs</td>
+            </tr>
+            <tr class="row3-end">
+              <th>Service Fees</th>
+              <td>₱100.00</td>
+            </tr>
+            <tr class="last-two-rows">
+              <th>Calculation</th>
+              <td>
+                <p>((Base Price x Orders) x Service Type) + Service Fee</p>
+                <p>((250 x 3) x 2) + 100</p>
+              </td>
+            </tr>
+            <tr style="border: none" class="last-two-rows">
+              <th>Total</th>
+              <td>₱1600.00</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+</html>
