@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 /* Container */
 .container {
     position: absolute;
@@ -53,21 +54,21 @@ a.report-button {
     position: relative;
 }
 
-.centerer{
+.centerer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.styled-input{
+.styled-input {
     background-color: #FB6356;
     color: #ffffff;
-    border: none; 
+    border: none;
     border-radius: 10px;
     cursor: pointer;
     display: inline-block;
     font-weight: 300;
-    max-width:170px;
+    max-width: 170px;
     padding: 10px;
     transition: 0.5s ease-in-out;
     position: absolute;
@@ -75,7 +76,7 @@ a.report-button {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.styled-input:hover{
+.styled-input:hover {
     background-color: rgb(196, 61, 61)
 }
 
@@ -137,7 +138,7 @@ a.report-button {
 }
 
 /* FORMS */
-.input-field {
+.input-field-edit {
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -145,22 +146,30 @@ a.report-button {
     align-items: center;
 }
 
-.input-field input,
-.input-field select {
+.input-field-edit input,
+.input-field-edit select {
     display: block;
-    width: 100%; /* Use a percentage width to adapt to the container */
+    width: 100%;
+    /* Use a percentage width to adapt to the container */
     border: 0;
     border-bottom: 2px solid #747474;
     outline: none;
     transition: all 0.2s;
-    color: #757575;
+    color: black;
     margin: 10px;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 500!important;
 }
 
-.input-field h4{
+.input-field-edit input::placeholder,
+.input-field-edit select::before{
+    color: #757575;
+}
+
+.input-field-edit h4 {
     display: block;
-    width: 100%; /* Use a percentage width to adapt to the container */
+    width: 100%;
+    /* Use a percentage width to adapt to the container */
     border: 0;
     outline: none;
     transition: all 0.2s;
@@ -170,15 +179,16 @@ a.report-button {
     font-weight: 600;
 }
 
-.input-field-select, .input-field-select-rowtwo{
+.input-field-select,
+.input-field-select-rowtwo {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.input-field input:focus,
-.input-field select:focus {
+.input-field-edit input:focus,
+.input-field-edit select:focus {
     border-color: #222;
 }
 
