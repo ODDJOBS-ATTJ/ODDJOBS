@@ -59,7 +59,7 @@ Account.findAll = (result) => {
 }
 
 Account.update = (id, account, result) => {
-    dbConn.query("UPDATE accounts SET  Email = ?, Password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ? WHERE userID = ?", [
+    dbConn.query("UPDATE accounts SET  email = ?, password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ? WHERE userID = ?", [
         account.email,
         account.password,
         account.firstName,

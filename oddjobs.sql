@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 03:15 PM
+-- Generation Time: Dec 07, 2023 at 05:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,29 +31,29 @@ CREATE TABLE `accounts` (
   `userID` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `firstName` varchar(50) DEFAULT NULL,
-  `lastName` varchar(50) DEFAULT NULL,
-  `phoneNumber` varchar(15) DEFAULT NULL,
+  `firstName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `phoneNumber` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `region` varchar(50) DEFAULT NULL,
-  `city` varchar(50) DEFAULT NULL,
-  `barangay` varchar(50) DEFAULT NULL,
-  `zipCode` varchar(10) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `barangay` varchar(255) DEFAULT NULL,
+  `zipCode` varchar(255) DEFAULT NULL,
+  `isVerified` tinyint(1) DEFAULT NULL,
   `isWorker` tinyint(1) DEFAULT NULL,
   `isAdmin` tinyint(1) DEFAULT NULL,
   `fbLink` varchar(255) DEFAULT NULL,
   `instaLink` varchar(255) DEFAULT NULL,
   `pfp` blob DEFAULT NULL,
-  `isDeleted` tinyint(1) DEFAULT NULL,
-  `isVerified` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `isDeleted` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`, `isVerified`) VALUES
-(0, NULL, NULL, 'Beneditto Alfonso', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, 0, 0);
+INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isVerified`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`) VALUES
+(4, '22100327@usc.edu.ph', '123', 'Beneditto Alfonso', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, 
 CREATE TABLE `action` (
   `actionID` int(11) NOT NULL,
   `actionType` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ CREATE TABLE `adminlog` (
   `userID` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `actionID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,9 +89,8 @@ CREATE TABLE `applications` (
   `applicationID` int(11) NOT NULL,
   `workerID` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `statusID` int(11) DEFAULT NULL,
-  `isAccepted` enum('yes','no') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `isAccepted` enum('Yes','No') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -105,7 +104,7 @@ CREATE TABLE `appliedjobs` (
   `serviceID` int(11) DEFAULT NULL,
   `isDeleted` tinyint(1) DEFAULT NULL,
   `isDefault` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -114,11 +113,10 @@ CREATE TABLE `appliedjobs` (
 --
 
 CREATE TABLE `billing` (
-  `billingID` int(11) NOT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `paypalAccount` varchar(255) DEFAULT NULL,
+  `userID` int(11) NOT NULL,
+  `cards` varchar(255) DEFAULT NULL,
   `transactionID` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -135,9 +133,9 @@ CREATE TABLE `bookings` (
   `orderID` int(11) DEFAULT NULL,
   `orderQuantity` int(11) DEFAULT NULL,
   `serviceTypeNum` int(11) DEFAULT NULL,
-  `serviceFee` decimal(10,2) DEFAULT NULL,
-  `totalPrice` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `serviceFee` decimal(10,0) DEFAULT NULL,
+  `totalPrice` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -147,10 +145,10 @@ CREATE TABLE `bookings` (
 
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
+  `bookingID` int(11) DEFAULT NULL,
   `workerID` int(11) DEFAULT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `billingID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `userID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -164,7 +162,7 @@ CREATE TABLE `ratings` (
   `workerID` int(11) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -177,7 +175,7 @@ CREATE TABLE `reports` (
   `userID` int(11) DEFAULT NULL,
   `workerID` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -188,7 +186,7 @@ CREATE TABLE `reports` (
 CREATE TABLE `service` (
   `serviceID` int(11) NOT NULL,
   `serviceName` varchar(255) DEFAULT NULL,
-  `basePrice` decimal(10,2) DEFAULT NULL,
+  `basePrice` decimal(10,0) DEFAULT NULL,
   `serviceTypeID` int(11) DEFAULT NULL,
   `policies` blob DEFAULT NULL,
   `cover` blob DEFAULT NULL,
@@ -199,7 +197,7 @@ CREATE TABLE `service` (
   `isFeatured` tinyint(1) DEFAULT NULL,
   `isVisible` tinyint(1) DEFAULT NULL,
   `isDeleted` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -210,7 +208,7 @@ CREATE TABLE `service` (
 CREATE TABLE `servicetypes` (
   `serviceTypeID` int(11) NOT NULL,
   `serviceTypeName` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -221,7 +219,7 @@ CREATE TABLE `servicetypes` (
 CREATE TABLE `status` (
   `statusID` int(11) NOT NULL,
   `statusType` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -237,7 +235,7 @@ CREATE TABLE `workers` (
   `document3` blob DEFAULT NULL,
   `avgRating` float DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -268,8 +266,7 @@ ALTER TABLE `adminlog`
 --
 ALTER TABLE `applications`
   ADD PRIMARY KEY (`applicationID`),
-  ADD KEY `workerID` (`workerID`),
-  ADD KEY `statusID` (`statusID`);
+  ADD KEY `workerID` (`workerID`);
 
 --
 -- Indexes for table `appliedjobs`
@@ -283,8 +280,7 @@ ALTER TABLE `appliedjobs`
 -- Indexes for table `billing`
 --
 ALTER TABLE `billing`
-  ADD PRIMARY KEY (`billingID`),
-  ADD KEY `userID` (`userID`);
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `bookings`
@@ -292,17 +288,16 @@ ALTER TABLE `billing`
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`bookingID`),
   ADD KEY `serviceID` (`serviceID`),
-  ADD KEY `statusID` (`statusID`),
-  ADD KEY `orderID` (`orderID`);
+  ADD KEY `statusID` (`statusID`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orderID`),
+  ADD KEY `bookingID` (`bookingID`),
   ADD KEY `workerID` (`workerID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `FK_orders_billing` (`billingID`);
+  ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `ratings`
@@ -347,6 +342,88 @@ ALTER TABLE `workers`
   ADD KEY `userID` (`userID`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `action`
+--
+ALTER TABLE `action`
+  MODIFY `actionID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `adminlog`
+--
+ALTER TABLE `adminlog`
+  MODIFY `adminLogID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `applications`
+--
+ALTER TABLE `applications`
+  MODIFY `applicationID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `appliedjobs`
+--
+ALTER TABLE `appliedjobs`
+  MODIFY `appliedJobsID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ratings`
+--
+ALTER TABLE `ratings`
+  MODIFY `ratingID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `reportID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `service`
+--
+ALTER TABLE `service`
+  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `servicetypes`
+--
+ALTER TABLE `servicetypes`
+  MODIFY `serviceTypeID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `workers`
+--
+ALTER TABLE `workers`
+  MODIFY `workerID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -361,8 +438,7 @@ ALTER TABLE `adminlog`
 -- Constraints for table `applications`
 --
 ALTER TABLE `applications`
-  ADD CONSTRAINT `applications_ibfk_1` FOREIGN KEY (`workerID`) REFERENCES `workers` (`workerID`),
-  ADD CONSTRAINT `applications_ibfk_2` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
+  ADD CONSTRAINT `applications_ibfk_1` FOREIGN KEY (`workerID`) REFERENCES `workers` (`workerID`);
 
 --
 -- Constraints for table `appliedjobs`
@@ -382,16 +458,15 @@ ALTER TABLE `billing`
 --
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`),
-  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`),
-  ADD CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`);
+  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `FK_orders_billing` FOREIGN KEY (`billingID`) REFERENCES `billing` (`billingID`),
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`workerID`) REFERENCES `workers` (`workerID`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `accounts` (`userID`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`workerID`) REFERENCES `workers` (`workerID`),
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`userID`) REFERENCES `accounts` (`userID`);
 
 --
 -- Constraints for table `ratings`

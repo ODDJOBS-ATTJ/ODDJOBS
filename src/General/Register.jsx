@@ -76,7 +76,7 @@ function Register() {
     const formData = new FormData(form.current);
 
     // Send a POST request to your server using Axios
-    axios.post('http:localhost/3000/account', formData)
+    axios.post('http://localhost:3000/', formData)
       .then((response) => {
         console.log(response.data);
         console.log('Request sent successfully');
