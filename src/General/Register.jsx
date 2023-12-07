@@ -75,8 +75,13 @@ function Register() {
     // Create a FormData object to send the form data
     const formData = new FormData(form.current);
 
+    let jsonObject = {};
+    for (const [key,value] of formData.entries()) {
+      jsonObject[key] = value;
+    }
+
     // Send a POST request to your server using Axios
-    axios.post('http://localhost:3000/', formData)
+    axios.post('http://localhost:3000/', jsonObject)
       .then((response) => {
         console.log(response.data);
         console.log('Request sent successfully');
