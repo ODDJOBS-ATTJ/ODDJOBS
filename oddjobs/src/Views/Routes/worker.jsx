@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import WorkerRegister from '../Worker/Worker-Register';
 import UserProfile from '../Worker/User-Profile';
 import UserProfileEdit from '../Worker/User-Profile-Edit';
+import WorkerProfile from '../Worker/Worker-Profile';
+import WorkerProfileEdit from '../Worker/Worker-Profile-Edit';
 import Billings from '../Worker/Billings';
 import Services from '../Worker/Services';
 import ServicesCategories from '../Worker/Services-Categories';
@@ -19,14 +21,16 @@ function WorkerRoutes() {
   console.log('WorkerRoutes rendered');
   return (
     <Routes>
-      <Route path="/worker-register" element={<WorkerRegister/>} />
-      <Route path="/user-profile" element={<UserProfile />} />
-      <Route path="/user-profile-edit" element={<UserProfileEdit />} />
+      <Route path="/register" element={<WorkerRegister/>} />
+      <Route path="/profile" element={<UserProfile />} />
+      <Route path="/profile/edit" element={<UserProfileEdit />} />
+      <Route path="/worker-profile" element={<WorkerProfile />} />
+      <Route path="/worker-profile/edit" element={<WorkerProfileEdit />} />
       <Route path="/billings" element={<Billings />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/services-categories" element={<ServicesCategories />} />
-      <Route path="/services-search" element={<ServicesSearch />} />
-      <Route path="/services-details" element={<ServicesDetails />} />
+      <Route path="/services/categories" element={<ServicesCategories />} />
+      <Route path="/services/search" element={<ServicesSearch />} />
+      <Route path="/services/details" element={<ServicesDetails />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/bookings/completed" element={<Completed />} />
       <Route path="/bookings/ongoing" element={<Ongoing />} />

@@ -14,15 +14,15 @@ function CustomerRoutes() {
   console.log('CustomerRoutes rendered');
   return (
     <Routes>
-      <Route path="/user-profile" element={<UserProfile />} />
-      <Route path="/user-profile-edit" element={<UserProfileEdit />} />
+      <Route path="/profile" element={<UserProfile />} />
+      <Route path="/profile/edit" element={<UserProfileEdit />} />
       <Route path="/billings" element={<Billings />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/services-categories" element={<ServicesCategories />} />
-      <Route path="/services-search" element={<ServicesSearch />} />
-      <Route path="/services-details" element={<ServicesDetails />} />
+      <Route path="/services/categories" element={<ServicesCategories />} />
+      <Route path="/services/search" element={<ServicesSearch />} />
+      <Route path="/services/details" element={<ServicesDetails />} />
       <Route path="/bookings" element={<Bookings />} />
-      <Route path="/bookings-details" element={<BookingsDetails />} />
+      <Route path="/bookings/details" element={<BookingsDetails />} />
     </Routes>
   );
 }

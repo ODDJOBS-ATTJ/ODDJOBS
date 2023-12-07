@@ -29,31 +29,31 @@ function ServicesCategories() {
                             </div>
                             <h1>featured</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>home</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>event</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>health</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>engineer</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
@@ -66,7 +66,7 @@ function ServicesCategories() {
                     <h1>HOME</h1>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -80,7 +80,7 @@ function ServicesCategories() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -94,7 +94,7 @@ function ServicesCategories() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -108,7 +108,7 @@ function ServicesCategories() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />

@@ -29,31 +29,31 @@ function Services() {
                             </div>
                             <h1>featured</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>home</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>event</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>health</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
                             <h1>engineer</h1>
                         </Link>
-                        <Link to="/customer/services-categories" className={styles['categories']}>
+                        <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
@@ -67,7 +67,7 @@ function Services() {
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['featured-services-row']}>
-                        <Link to="/Customer/services-details" className={styles['featured-services-col']}>
+                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
                             <div className={styles['featured-services-content']}>
                                 <div className={styles['image']}>
                                     <img src={samplePhoto} alt="Featured Service" />
@@ -81,7 +81,7 @@ function Services() {
                             </div>
                         </Link>
                         <div className={styles['featured-services-space']}></div>
-                        <Link to="/Customer/services-details" className={styles['featured-services-col']}>
+                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
                             <div className={styles['featured-services-content']}>
                                 <div className={styles['image']}>
                                     <img src={samplePhoto} alt="Featured Service" />
@@ -98,7 +98,7 @@ function Services() {
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['featured-services-row']}>
-                        <Link to="/Customer/services-details" className={styles['featured-services-col']}>
+                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
                             <div className={styles['featured-services-content']}>
                                 <div className={styles['image']}>
                                     <img src={samplePhoto} alt="Featured Service" />
@@ -113,7 +113,7 @@ function Services() {
                             </div>
                         </Link>
                         <div className={styles['featured-services-space']}></div>
-                        <Link to="/Customer/services-details" className={styles['featured-services-col']}>
+                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
                             <div className={styles['featured-services-content']}>
                                 <div className={styles['image']}>
                                     <img src={samplePhoto} alt="Featured Service" />

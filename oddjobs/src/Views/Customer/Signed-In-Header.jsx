@@ -1,30 +1,30 @@
 import React from 'react';
-import './CSS/default.css';
+import styles from './CSS/default.module.css';
 import { Link } from 'react-router-dom';
-import pfp from './IMAGE/juan.png'
+import pfp from './IMAGE/juan.png';
 
 function SignedInHeader() {
     return (
-        <div className="header">
-            <div className="inner_header">
-                <Link to="/customer/services" className="logo_container">
-                    <div className="logo_box">
+        <div className={styles.header}>
+            <div className={styles.inner_header}>
+                <Link to="/customer/services" className={styles.logo_container}>
+                    <div className={styles.logo_box}>
                         <h1>ODD<span>JOBS</span></h1>
                     </div>
                 </Link>
-                <ul className="nav">
+                <ul className={styles.nav}>
                     <li><Link to="/customer/services">SERVICES</Link></li>
                     <li><Link to="/customer/bookings">BOOKINGS</Link></li>
-                    <li className="user-greeting"><Link to="/customer/user-profile">Hi, Juan</Link></li>
-                    <li className="pfp" tabIndex={0}>
-                        <div className="dropdown">
-                            <img src={pfp} alt="User Profile" className="dropbtn" />
-                            <div className="dropdown-content">
-                                <Link to="/customer/user-profile">User Profile</Link>
+                    <li className={styles['user-greeting']}><Link to="/customer/profile">Hi, Juan</Link></li>
+                    <li className={styles.pfp} tabIndex={0}>
+                        <div className={styles.dropdown}>
+                            <img src={pfp} alt="User Profile" className={styles.dropbtn} />
+                            <div className={styles['dropdown-content']}>
+                                <Link to="/customer/profile">User Profile</Link>
                                 <Link to="../">Switch to worker view</Link>
-                                <Link to="/customer/billings" className="billings">Billings</Link>
-                                <div className="line" />
-                                <Link to="../../General/home" className="signout">Log Out</Link>
+                                <Link to="/customer/billings" className={styles.billings}>Billings</Link>
+                                <div className={styles.line} />
+                                <Link to="../../General/home" className={styles.signout}>Log Out</Link>
                                 {/* ../../General/home.html */}
                             </div>
                         </div>
@@ -34,4 +34,5 @@ function SignedInHeader() {
         </div>
     );
 }
+
 export default SignedInHeader;

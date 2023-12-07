@@ -27,7 +27,7 @@ function ServicesSearch() {
                     <h1>About 4 results</h1>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -41,7 +41,7 @@ function ServicesSearch() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -55,7 +55,7 @@ function ServicesSearch() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />
@@ -69,7 +69,7 @@ function ServicesSearch() {
                     </Link>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services-details" className={styles['other-categories-row']}>
+                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
                         <div className={styles['other-categories-content']}>
                             <div className={styles['image']}>
                                 <img src={samplePhoto} alt="Service" />

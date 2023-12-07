@@ -14,7 +14,7 @@ function Bookings() {
                     <label>CURRENT BOOKINGS</label>
                     <table>
                         <tbody>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={massageTherapy} alt="Massage Therapy" />
@@ -31,7 +31,7 @@ function Bookings() {
                                     </td>
                                 </tr>
                             </Link>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={samplePhoto} alt="Sample" />
@@ -48,7 +48,7 @@ function Bookings() {
                                     </td>
                                 </tr>
                             </Link>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={samplePhoto} alt="Sample" />
@@ -70,7 +70,7 @@ function Bookings() {
                     <label>PAST BOOKINGS</label>
                     <table>
                         <tbody>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={samplePhoto} alt="Sample" />
@@ -87,7 +87,7 @@ function Bookings() {
                                     </td>
                                 </tr>
                             </Link>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={samplePhoto} alt="Sample" />
@@ -104,7 +104,7 @@ function Bookings() {
                                     </td>
                                 </tr>
                             </Link>
-                            <Link to='/customer/bookings-details'>
+                            <Link to='/customer/bookings/details'>
                                 <tr>
                                     <td className={bookings['image']}>
                                         <img src={samplePhoto} alt="Sample" />

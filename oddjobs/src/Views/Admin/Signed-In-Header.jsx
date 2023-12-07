@@ -13,10 +13,10 @@ function SignedInHeader(){
         </div>
       </a>
       <ul className="nav">
-        <li><Link to="/admin/adminLog">ADMIN LOG</Link></li>
-        <li><Link to="/admin/application">APPLICATION</Link></li>
-        <li><Link to="/admin/serviceManagement">SERVICE MANAGEMENT</Link></li>
-        <li><Link to="/admin/userManagement">USER MANAGEMENT</Link></li>
+        <li><Link to="/admin/logs">ADMIN LOG</Link></li>
+        <li><Link to="/admin/applications">APPLICATION</Link></li>
+        <li><Link to="/admin/service-management">SERVICE MANAGEMENT</Link></li>
+        <li><Link to="/admin/user-management">USER MANAGEMENT</Link></li>
         <li className="user-greeting"><Link to="/admin/profile">Hi, Beneditto</Link></li>
         <li className="pfp" tabIndex={0}>
           <div className="dropdown">

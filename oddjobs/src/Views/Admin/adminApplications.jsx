@@ -2,36 +2,36 @@ import React from 'react';
 import styles from './CSS/services-management.module.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
-import SearchIcon from './icons/magnifying-glass.png';
+import Ditto from './icons/ditto.jpg';
+import Search from './icons/magnifying-glass.png';
+import Accept from './icons/accept.png';
+import Deny from './icons/traffic-signal.png';
 import Back from './icons/back.png';
 import Next from './icons/next.png';
-import Edit from './icons/pen.png';
-import Visible from './icons/view.png';
-import Delete from './icons/traffic-signal.png';
 
-function AdminServiceManagement() {
+function AdminApplications() {
   return (
     <div>
       <SignedInHeader />
-      <Link className={styles["back-button"]} to="/admin/service-management/create">CREATE SERVICE</Link>
       <div className={styles["container"]}>
         <div className={styles["services-container"]}>
           <div className={styles["services-header"]}>
-            <h1>SERVICES</h1>
+            <h1>APPLICATIONS</h1>
             <div className={styles["search"]}>
-              <img src={SearchIcon} alt="Search Icon" />
+              <img src={Search} alt="Search Icon" />
               <input type="text" placeholder="search services" />
             </div>
           </div>
-          <table className={styles["services-table"]}>
+          <table className={styles["services"]}>
             <tbody>
               <tr>
                 <th>No</th>
-                <th>Services</th>
+                <th>Applicants</th>
+                <th>Date</th>
                 <th>Manage</th>
-                <th>
+                <th style={{ textAlign: 'end' }}>
                   <select name="sort" id="sort">
-                    <option value="volvo">Sort By Name</option>
+                    <option value="volvo">Sort By Date</option>
                   </select>
                 </th>
               </tr>
@@ -39,20 +39,19 @@ function AdminServiceManagement() {
                 <td>1</td>
                 <td>
                   <div className={styles["service-name-icon"]}>
-                    <div className={styles["service-img"]} />
-                    Massage Therapist
+                    Applicant Name
                   </div>
                 </td>
-                <td><Link to="/admin/service-management/view">View Service</Link></td>
-                <td className={styles["button-td"]}>
+                <td><a>mm/dd/yy</a></td>
+                <td><Link to="/">View Application</Link></td>
+                <td style={{ textAlign: 'end' }}>
                   <div className={styles["button-container"]}>
-                    <Link to="/admin/service-management/edit"><button><img src={Edit} alt="Edit Icon" />edit</button></Link>
-                    <button><img src={Visible} alt="Visible Icon" />visible</button>
-                    <button><img src={Delete} alt="Delete Icon" />remove</button>
-                    <input type="radio" />
+                    <button><img src={Accept} alt="Accept Icon" />Accept</button>
+                    <button><img src={Deny} alt="Deny Icon" />Deny</button>
                   </div>
                 </td>
               </tr>
+              {/* Repeat similar structure for the other rows */}
             </tbody>
           </table>
           <div className={styles["navigation"]}>
@@ -65,8 +64,22 @@ function AdminServiceManagement() {
           </div>
         </div>
       </div>
+      {/* VIEW APPLICATIONS
+      <div className={styles["modal-box"]} id="modal">
+        <div className={styles["text"]}>
+          <p>Are you sure you want to download the applicant's documents?</p>
+        </div>
+        <div className={styles["modal-buttons"]}>
+          <div className={`${styles["modal-button"]} ${styles["cancel-button"]}`} onClick="">
+            Cancel
+          </div>
+          <div className={`${styles["modal-button"]} ${styles["proceed-button"]}`} onClick="">
+            Download
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }
 
-export default AdminServiceManagement;
+export default AdminApplications;
