@@ -1,16 +1,24 @@
 'use strict';
 const Account = require('../models/oddjobs.model');
 
-exports.findAll = (req, res) => {
+exports.checkLoggedIn = (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).json({ status: 401, message: 'Unauthorized' });
+    }
+    next();
+};
+
+// Route to find all accounts (protected)
+exports.findAll = [exports.checkLoggedIn, (req, res) => {
     Account.findAll((err, account) => {
-        console.log('controller')
         if (err) {
             res.send(err);
         }
-        console.log('res', account);
         res.send({ status: 200, data: account });
     });
-}
+}];
+
+  
 
 exports.findById = (req, res) => {
     Account.findById(req.params.id, (err, account) => {
@@ -66,7 +74,10 @@ exports.login = (req, res) => {
         }
 
         // Login successful
-            res.json({ status: 200, message: 'Login successful', data: account });
+        req.session.user = account;
+        
+        // Send the user ID (or any identifier you want) to the client
+        res.json({ status: 200, message: 'Login successful', userId: account.userID });
     });
 };
 
@@ -91,3 +102,4 @@ exports.delete = (req, res) => {
         res.json({ error:false, message: 'Employee deleted!', status: 200 });
     });
 }
+

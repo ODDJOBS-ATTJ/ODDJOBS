@@ -8,18 +8,32 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
     const handleLogin = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response = await axios.post('http://localhost:3000/accounts/login', {
                 email,
                 password,
             });
-
+            
             // Handle the response accordingly, e.g., set user authentication status
             console.log(response.data);
-            navigate('/customer/services');
+            
+            // Check if login was successful
+            if (response.data.status === 200) {
+                // Set user authentication status or token in local storage/cookies
+                // For now, let's assume that response.data.userId contains the user ID
+                // You may want to customize this based on your authentication mechanism
+                localStorage.setItem('userId', response.data.userId);
+    
+                // Redirect to the protected route
+                navigate('/customer/services');
+            } else {
+                // Handle login failure
+                console.error('Login failed:', response.data.message);
+            }
         } catch (error) {
             console.error('Login failed:', error.message);
             // Handle login failure
