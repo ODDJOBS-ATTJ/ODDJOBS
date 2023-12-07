@@ -41,8 +41,6 @@
 - [X] Booking Details
 
 ## ADMIN VIEW:
-- [X] Login
-- [X] Signup
 - [X] Admin Profile
 - [X] Admin Profile edit
 - [X] Service Management
