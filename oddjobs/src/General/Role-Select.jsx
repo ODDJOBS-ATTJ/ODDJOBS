@@ -18,7 +18,7 @@ function RoleSelect() {
 
     const handleAdminSubmit = () => {
         if (adminPassword === correctAdminPassword) {
-            navigate("/admin/user-profile");
+            navigate("/admin/profile");
         } else {
             alert("Incorrect admin password. Please try again."); // You can customize this alert message
         }
@@ -50,7 +50,7 @@ function RoleSelect() {
 
                     {/* CUSTOMER */}
                     <div>
-                        <button className={generalStyles['decision-button']} onClick={() => navigate("/customer/user-profile-edit")}>
+                        <button className={generalStyles['decision-button']} onClick={() => navigate("/customer/profile/edit")}>
                             <h1>CUSTOMER</h1>
                             <img src={customer} alt="Customer" />
                             <div className={generalStyles['description-decision-button']}>
@@ -59,7 +59,7 @@ function RoleSelect() {
                         </button>
 
                         {/* WORKER */}
-                        <button className={generalStyles['decision-button']} onClick={() => navigate("/worker/worker-register")}>
+                        <button className={generalStyles['decision-button']} onClick={() => navigate("/worker/register")}>
                             <h1>WORKERS</h1>
                             <img src={workers} alt="Workers" />
                             <div className={generalStyles['description-decision-button']}>

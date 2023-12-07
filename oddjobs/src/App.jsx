@@ -7,6 +7,7 @@ import ForgotPassword from './General/Forgot-Password';
 import ChangePassword from './General/Change-Password';
 import CustomerRoutes from './Views/Routes/customer';
 import WorkerRoutes from './Views/Routes/worker';
+import AdminRoutes from './Views/Routes/admin';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/change-password" element={<ChangePassword />} />
       <Route path="/customer/*" element={<CustomerRoutes />} />
       <Route path="/worker/*" element={<WorkerRoutes />} />
+      <Route path="/admin/*" element={<AdminRoutes />} />
     </Routes>
   );
 }
