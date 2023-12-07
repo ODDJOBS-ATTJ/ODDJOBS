@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended:true }));
 
 app.use(bodyParser.json());
 
-app.use('/account', accountRoutes)
+app.use('/', accountRoutes)
 
 // app.get('/', (req, res) => {
 //     res.send('<h1>HELLO MYTHER</h1>');
