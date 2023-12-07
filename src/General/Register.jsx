@@ -17,7 +17,7 @@ function Register() {
     const formFields = form.current.elements;
     let isValid = true;
 
-    for (let i = 0; i < formFields.length - 1; i++) {
+    for (let i = 0; i < formFields.length   - 1; i++) {
       if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
         isValid = false;
         console.log(`Error: ${formFields[i].name} is required.`);

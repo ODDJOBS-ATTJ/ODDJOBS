@@ -24,11 +24,11 @@ function AdminLog() {
           <table className={styles["services"]}>
             <tbody>
               <tr>
-                <th className={styles['number']}>No</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Date</th>
                 <th>Action</th>
-                <th styles={{ textAlign: 'end' }}>
+                <th className={styles["th-end"]}>
                   <select name="sort" id="sort">
                     <option value="volvo">Sort By Date</option>
                   </select>

@@ -7,8 +7,8 @@ function ServiceCreate(){
   return (
     <div>
       <SignedInHeader/>
-      <Link to='/admin/serviceManagement' className="back-button"> &larr; Back</Link>
-      <Link to='/admin/serviceManagement' className="create-button">CREATE SERVICE</Link>
+      <Link to='/admin/service-management' className="back-button"> &larr; Back</Link>
+      <Link to='/admin/service-management' className="create-button">CREATE SERVICE</Link>
       <div className="container">
       <div className="service-container">
         <div className="service-name-card">

@@ -7,8 +7,8 @@ function ServiceView(){
   return (
     <div>
       <SignedInHeader/>
-      <Link to='/admin/serviceManagement' className="back-button"> &larr; Back</Link>
-      <Link to='/admin/serviceManagement/edit' className="back-button">EDIT SERVICE</Link>
+      <Link to='/admin/service-management' className="back-button"> &larr; Back</Link>
+      <Link to='/admin/service-management/edit' className="back-button">EDIT SERVICE</Link>
       <div>
       <div className="container">
         <div className="service-container">

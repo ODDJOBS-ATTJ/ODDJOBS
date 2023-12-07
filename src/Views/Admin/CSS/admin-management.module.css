@@ -74,6 +74,7 @@ a.back-button {
 }
 
 .services{
+  overflow: scroll;
   width:100%;
   border-collapse: collapse;
 }
@@ -95,6 +96,7 @@ a.back-button {
 
 th select{
   background-color: #F2F2F2;
+  border:none;
   cursor:pointer;
   text-transform: uppercase;
   width:150px;
@@ -103,6 +105,7 @@ th select{
 td a{
   font-size: 15px;
   color:black;
+  width:10px;
 }
 
 .service-img{
@@ -120,8 +123,7 @@ td a{
 
 .button-container{
   display:flex;
-  margin-left:auto;
-  width:fit-content;
+  justify-content: end;
 }
 
 .button-container button{
@@ -132,10 +134,10 @@ td a{
   border:solid black 1px;
   border-radius: 5px;;
   outline:none;
-  margin-left: 10px;
-  margin-right: 10px;
   background-color: #F2F2F2;
   text-transform: capitalize;
+  margin-left:10px;
+  margin-right:10px;
   transition: background-color .5s;
 }
 

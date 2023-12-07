@@ -4,8 +4,8 @@ const dbConn = require('../config/db.config.js');
 /** For the Accounts */
 
 function Account(account) {
-    this.Email          = account.Email,
-    this.Password       = account.Password,
+    this.email          = account.email,
+    this.password       = account.password,
     this.firstName      = account.firstName,
     this.lastName       = account.lastName,
     this.phoneNumber    = account.phoneNumber,
@@ -36,7 +36,7 @@ Account.create = (newAccount, result) => {
 }
 
 Account.findById = (userID, result) => {
-    dbConn.query("SELECT * FROM accounts where userID = ?", id, (err, res) => {
+    dbConn.query("SELECT * FROM accounts where userID = ?", userID, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -60,8 +60,8 @@ Account.findAll = (result) => {
 
 Account.update = (id, account, result) => {
     dbConn.query("UPDATE accounts SET  Email = ?, Password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ? WHERE userID = ?", [
-        account.Email,
-        account.Password,
+        account.email,
+        account.password,
         account.firstName,
         account.lastName,
         account.phoneNumber,

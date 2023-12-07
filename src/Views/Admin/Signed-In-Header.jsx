@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../General/CSS/default.css'
+import './CSS/default.css'
 import { Link } from 'react-router-dom';
 import Ditto from './Icons/ditto.jpg';
 

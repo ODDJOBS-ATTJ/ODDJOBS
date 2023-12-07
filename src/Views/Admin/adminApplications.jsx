@@ -25,11 +25,11 @@ function AdminApplications() {
           <table className={styles["services"]}>
             <tbody>
               <tr>
-                <th>No</th>
+                <th >No</th>
                 <th>Applicants</th>
                 <th>Date</th>
                 <th>Manage</th>
-                <th style={{ textAlign: 'end' }}>
+                <th className={styles["th-end"]}>
                   <select name="sort" id="sort">
                     <option value="volvo">Sort By Date</option>
                   </select>

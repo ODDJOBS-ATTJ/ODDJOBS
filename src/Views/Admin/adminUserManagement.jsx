@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './CSS/userManagement.module.css';
+import styles from './CSS/services-management.module.css';
 import SignedInHeader from './Signed-In-Header';
-import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import SearchIcon from './Icons/magnifying-glass.png';
 import Back from './Icons/back.png';
 import Next from './Icons/next.png';
@@ -9,6 +9,8 @@ import View from './Icons/clipboard.png';
 import Delete from './Icons/traffic-signal.png';
 
 function AdminUserManagement() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <SignedInHeader />
@@ -43,7 +45,7 @@ function AdminUserManagement() {
                 <td>
                   <div className={styles["button-container"]}>
                     2100+
-                    <Link to='/admin/user-management/reports'><button><img src={View} alt="View Icon" />View</button></Link>
+                    <button onClick={()=>navigate("/admin/user-management/reports")}><img src={View} alt="View Icon" />View</button>
                     <button><img src={Delete} alt="Delete Icon" />Ban Account</button>
                   </div>
                 </td>
