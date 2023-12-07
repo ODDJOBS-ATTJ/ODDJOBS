@@ -35,6 +35,41 @@ exports.create = (req, res) => {
     }
 }
 
+exports.login = (req, res) => {
+    const { email, password } = req.body;
+
+    // Check if email and password are provided
+    if (!email || !password) {
+        return res.status(400).json({ status: 400, message: 'Email and password are required' });
+    }
+
+    // Find the account by email
+    Account.findByEmail(email, (err, account) => {
+        if (err) {
+            return res.status(500).json({ status: 500, message: 'Internal server error' });
+        }
+
+        // Check if the account exists
+        if (!account) {
+            return res.status(401).json({ status: 401, message: 'Invalid credentials' });
+        }
+
+        // Check if the provided password matches the stored password
+        if (password !== account.password) {
+            return res.status(401).json({ status: 401, message: 'Invalid credentials' });
+        }
+
+        // Check if the account is verified
+        if (!account.isVerified) {
+            console.log('Account is not yet verified');
+            return res.status(401).json({ status: 401, message: 'Account is not yet verified' });
+        }
+
+        // Login successful
+            res.json({ status: 200, message: 'Login successful', data: account });
+    });
+};
+
 exports.update = (req, res) => {
     if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
         res.status(400).send({ error: true, message: 'Please provide all the required field' });

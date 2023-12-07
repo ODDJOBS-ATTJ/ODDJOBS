@@ -81,7 +81,7 @@ function Register() {
     }
 
     // Send a POST request to your server using Axios
-    axios.post('http://localhost:3000/', jsonObject)
+    axios.post('http://localhost:3000/accounts/register', jsonObject)
       .then((response) => {
         console.log(response.data);
         console.log('Request sent successfully');

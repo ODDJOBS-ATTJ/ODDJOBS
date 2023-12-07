@@ -1,28 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import generalStyles from './CSS/general-styles.module.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:3000/accounts/login', {
+                email,
+                password,
+            });
+
+            // Handle the response accordingly, e.g., set user authentication status
+            console.log(response.data);
+            navigate('/customer/services');
+        } catch (error) {
+            console.error('Login failed:', error.message);
+            // Handle login failure
+        }
+    };
+
     return (
         <div>
             <SignedOutHeader />
             <div className={generalStyles.container}>
                 <div className={generalStyles['card-form']}>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <h1>LOGIN</h1>
                         <div className={generalStyles.content}>
                             <div className={generalStyles['input-field']}>
-                                <input type="email" placeholder="Email" autoComplete="nope" />
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    autoComplete="nope"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
                             <div className={generalStyles['input-field']}>
                                 <input
                                     type="password"
                                     placeholder="Password"
                                     autoComplete="new-password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
-                            <button className={generalStyles['submit-button']}>Sign in</button>
+                            <button type="submit" className={generalStyles['submit-button']}>
+                                Sign in
+                            </button>
                             <div>
                                 Don't have an account?{' '}
                                 <Link to="/register" className={generalStyles.linkunderlined}>
