@@ -11,13 +11,47 @@ function Register() {
   const form = useRef();
   const [emailSent, setEmailSent] = useState(false);
 
-  const sendEmail = (e) => {
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+
+  //   const formFields = form.current.elements;
+  //   let isValid = true;
+
+  //   for (let i = 0; i < formFields.length - 1; i++) {
+  //     if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
+  //       isValid = false;
+  //       console.log(`Error: ${formFields[i].name} is required.`);
+  //     }
+  //   }
+
+  //   if (!isValid) {
+  //     return;
+  //   }
+
+  //   // Send form data to emailjs
+  //   emailjs
+  //     .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //         console.log('email sent successfully');
+  //         // Continue with sending form data to your server using Axios
+  //         sendFormDataToServer();
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //         console.log('Email was not sent. An Error was encountered');
+  //       }
+  //     );
+  //  };
+
+  const mockSendEmail = (e) => {
     e.preventDefault();
 
     const formFields = form.current.elements;
     let isValid = true;
 
-    for (let i = 0; i < formFields.length   - 1; i++) {
+    for (let i = 0; i < formFields.length - 1; i++) {
       if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
         isValid = false;
         console.log(`Error: ${formFields[i].name} is required.`);
@@ -28,29 +62,21 @@ function Register() {
       return;
     }
 
-    // Send form data to emailjs
-    emailjs
-      .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log('email sent successfully');
-          // Continue with sending form data to your server using Axios
-          sendFormDataToServer();
-        },
-        (error) => {
-          console.log(error.text);
-          console.log('Email was not sent. An Error was encountered');
-        }
-      );
+    // Simulate sending an email
+    setTimeout(() => {
+      console.log('Email sent successfully');
+      setEmailSent(true);
+      sendFormDataToServer();
+    }, 500); // Simulate delay
   };
+
 
   const sendFormDataToServer = () => {
     // Create a FormData object to send the form data
     const formData = new FormData(form.current);
 
     // Send a POST request to your server using Axios
-    axios.post('/', formData)
+    axios.post('http:localhost/3000/account', formData)
       .then((response) => {
         console.log(response.data);
         console.log('Request sent successfully');
@@ -60,7 +86,7 @@ function Register() {
         console.error('Error sending request:', error);
       });
   };
-  
+
   const handleCloseModal = () => {
     setEmailSent(false);
   };
@@ -74,11 +100,10 @@ function Register() {
         </Link>
         {/* REGISTER FORM */}
         <div className={generalStyles['card-form']}>
-          {emailSent && null}
           {emailSent ? (
             <EmailSentPopup onClose={handleCloseModal} />
           ) : (
-            <form ref={form} onSubmit={sendEmail}>
+            <form ref={form} onSubmit={mockSendEmail}>
               <h1>SIGN UP</h1>
               <div className={generalStyles.content}>
                 <div className={generalStyles['input-field']}>
