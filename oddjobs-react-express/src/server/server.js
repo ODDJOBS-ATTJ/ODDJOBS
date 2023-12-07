@@ -1,8 +1,8 @@
 // import cors from 'cors';
 // import express from 'express';
 // import bodyParser from 'body-parser';
-
 // import accountRoutes from '../server/routes/oddjobs.route.js';
+
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');

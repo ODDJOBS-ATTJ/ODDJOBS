@@ -9,7 +9,7 @@ export default defineConfig({
       '/server': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (path) => path
+        rewrite: (path) => path.replace('/^\server/', '')
         //no need to add rewrite
         //path.rewrite is needed if the request to the server contains a starting string
         //that starting string is then converted into another string for request
