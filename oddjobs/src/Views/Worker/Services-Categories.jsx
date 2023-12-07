@@ -34,7 +34,7 @@ function ServicesCategories() {
                                     <h1>featured</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -42,7 +42,7 @@ function ServicesCategories() {
                                     <h1>home</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -50,7 +50,7 @@ function ServicesCategories() {
                                     <h1>event</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -58,7 +58,7 @@ function ServicesCategories() {
                                     <h1>health</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -66,7 +66,7 @@ function ServicesCategories() {
                                     <h1>engineer</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -80,7 +80,7 @@ function ServicesCategories() {
                         <h1>HOME</h1>
                     </div>
                     <div className={Styles["services-container-row"]}>
-                        <Link to='/worker/services-details'>
+                        <Link to='/worker/services/details'>
                             <button className={Styles["other-categories-row"]}>
                                 <div className={Styles["other-categories-content"]}>
                                     <div className={Styles["image"]}>
@@ -110,7 +110,7 @@ function ServicesCategories() {
                         </Link>
                     </div>
                     <div className={Styles["services-container-row"]}>
-                        <Link to='/worker/services-details'>
+                        <Link to='/worker/services/details'>
                             <button className={Styles["other-categories-row"]}>
                                 <div className={Styles["other-categories-content"]}>
                                     <div className={Styles["image"]}>
@@ -140,7 +140,7 @@ function ServicesCategories() {
                         </Link>
                     </div>
                     <div className={Styles["services-container-row"]}>
-                        <Link to='/worker/services-details'>
+                        <Link to='/worker/services/details'>
                             <button className={Styles["other-categories-row"]}>
                                 <div className={Styles["other-categories-content"]}>
                                     <div className={Styles["image"]}>
@@ -170,7 +170,7 @@ function ServicesCategories() {
                         </Link>
                     </div>
                     <div className={Styles["services-container-row"]}>
-                        <Link to='/worker/services-details'>
+                        <Link to='/worker/services/details'>
                             <button className={Styles["other-categories-row"]}>
                                 <div className={Styles["other-categories-content"]}>
                                     <div className={Styles["image"]}>

@@ -34,7 +34,7 @@ function Services() {
                                     <h1>featured</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -42,7 +42,7 @@ function Services() {
                                     <h1>home</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -50,7 +50,7 @@ function Services() {
                                     <h1>event</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -58,7 +58,7 @@ function Services() {
                                     <h1>health</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -66,7 +66,7 @@ function Services() {
                                     <h1>engineer</h1>
                                 </button>
                             </Link>
-                            <Link to="/worker/services-categories">
+                            <Link to="/worker/services/categories">
                                 <button className={Styles["categories"]}>
                                     <div className={Styles["category-img"]}>
                                         <img src={Sample} />
@@ -81,7 +81,7 @@ function Services() {
                     </div>
                     <div className={Styles['services-container-row']}>
                         <div className={Styles['featured-services-row']}>
-                            <Link to="/worker/services-details" className={Styles["details-link"]}>
+                            <Link to="/worker/services/details" className={Styles["details-link"]}>
                                 <button className={Styles["featured-services-col"]}>
                                     <div className={Styles["featured-services-content"]}>
                                         <div className={Styles["image"]}>
@@ -103,7 +103,7 @@ function Services() {
                             </Link>
                             <div className={Styles["featured-services-space"]}>
                             </div>
-                            <Link to="/worker/services-details" className={Styles["details-link"]}>
+                            <Link to="/worker/services/details" className={Styles["details-link"]}>
                                 <button className={Styles["featured-services-col"]}>
                                     <div className={Styles["featured-services-content"]}>
                                         <div className={Styles["image"]}>
@@ -127,7 +127,7 @@ function Services() {
                     </div>
                     <div className={Styles['services-container-row']}>
                         <div className={Styles['featured-services-row']}>
-                            <Link to="/worker/services-details" className={Styles["details-link"]}>
+                            <Link to="/worker/services/details" className={Styles["details-link"]}>
                                 <button className={Styles["featured-services-col"]}>
                                     <div className={Styles["featured-services-content"]}>
                                         <div className={Styles["image"]}>
@@ -149,7 +149,7 @@ function Services() {
                             </Link>
                             <div className={Styles["featured-services-space"]}>
                             </div>
-                            <Link to="/worker/services-details" className={Styles["details-link"]}>
+                            <Link to="/worker/services/details" className={Styles["details-link"]}>
                                 <button className={Styles["featured-services-col"]}>
                                     <div className={Styles["featured-services-content"]}>
                                         <div className={Styles["image"]}>

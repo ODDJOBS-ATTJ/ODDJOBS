@@ -21,7 +21,7 @@ function UserProfileEdit() {
                         </div>
                     </div>
                     <div className={styles['edit-button-box']}>
-                        <Link to="/worker/user-profile" className={styles['edit-button']}>
+                        <Link to="/worker/profile" className={styles['edit-button']}>
                             <p>SAVE PROFILE</p>
                         </Link>
                     </div>

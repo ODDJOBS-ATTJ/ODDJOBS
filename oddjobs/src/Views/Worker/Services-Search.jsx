@@ -27,7 +27,7 @@ function ServicesSearch() {
                         <h1>About 1 Results</h1>
                     </div>
                     <div className={Styles["services-container-row"]}>
-                        <Link to='/worker/services-details'>
+                        <Link to='/worker/services/details'>
                             <button className={Styles["other-categories-row"]}>
                                 <div className={Styles["other-categories-content"]}>
                                     <div className={Styles["image"]}>

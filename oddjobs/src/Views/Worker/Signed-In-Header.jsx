@@ -16,12 +16,12 @@ function SignedInHeader(){
     <ul className="nav">
       <li><Link to="/worker/services">SERVICES</Link></li>
       <li><Link to="/worker/bookings">BOOKINGS</Link></li>
-      <li className="user-greeting"><Link to="/worker/user-profile">Hi, Johnny</Link></li>
+      <li className="user-greeting"><Link to="/worker/profile">Hi, Johnny</Link></li>
       <li className="pfp" tabIndex={0}>
         <div className="dropdown">
           <img src={Johnny} alt="User Profile" className="dropbtn" />
           <div className="dropdown-content">
-            <Link to="/worker/user-profile">User Profile</Link>
+            <Link to="/worker/profile">User Profile</Link>
             <Link to="/worker/worker-profile">Worker Profile</Link>
             <Link to="/worker/billings">Billings</Link>
             <Link to="#">Switch to Customer view</Link>
