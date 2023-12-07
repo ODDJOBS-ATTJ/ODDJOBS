@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 05:17 AM
+-- Generation Time: Dec 07, 2023 at 11:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accounts` (
   `userID` int(11) NOT NULL,
-  `Email` varchar(320) DEFAULT NULL,
-  `Password` varchar(60) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `firstName` varchar(50) DEFAULT NULL,
   `lastName` varchar(50) DEFAULT NULL,
   `phoneNumber` varchar(15) DEFAULT NULL,
@@ -44,7 +44,8 @@ CREATE TABLE `accounts` (
   `fbLink` varchar(255) DEFAULT NULL,
   `instaLink` varchar(255) DEFAULT NULL,
   `pfp` blob DEFAULT NULL,
-  `isDeleted` tinyint(1) DEFAULT NULL
+  `isDeleted` tinyint(1) DEFAULT NULL,
+  `isVerified` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
