@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import generalStyles from './CSS/general-styles.module.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
 import RegisterForm from './Backend/RegisterForm';
+import axios from 'axios';
 
 function Register() {
   const navigate = useNavigate();

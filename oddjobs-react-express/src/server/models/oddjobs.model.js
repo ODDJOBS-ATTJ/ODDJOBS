@@ -36,7 +36,7 @@ Account.create = (newAccount, result) => {
 }
 
 Account.findById = (userID, result) => {
-    dbConn.query("SELECT * FROM accounts where userID = ?", id, (err, res) => {
+    dbConn.query("SELECT * FROM accounts where userID = ?", userID, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -58,7 +58,7 @@ Account.findAll = (result) => {
     });
 }
 
-Account.update = (id, employee, result) => {
+Account.update = (id, account, result) => {
     dbConn.query("UPDATE accounts SET  Email = ?, Password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, idAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ? WHERE userID = ?", [
         account.Email,
         account.Password,
@@ -75,7 +75,8 @@ Account.update = (id, employee, result) => {
         account.fbLink, 
         account.instaLink,
         account.pfp,
-        false
+        false,
+        id
     ],
     (err, res) => {
         if (err) {
@@ -88,7 +89,7 @@ Account.update = (id, employee, result) => {
     });
 }
 
-Account.delete = (id, result) => {
+Account.delete = (id, res) => {
     dbConn.query("DELETE FROM accounts WHERE userID = ?", [id], (err, result) => {
         if (err) {
             console.log("error: ", err);

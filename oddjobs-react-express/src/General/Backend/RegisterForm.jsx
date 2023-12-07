@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import generalStyles from '../CSS/general-styles.module.css';
+import axios from 'axios'; // Import axios
 
 function RegisterForm() {
   const navigate = useNavigate();
@@ -24,37 +25,20 @@ function RegisterForm() {
     e.preventDefault();
 
     try {
-      console.log('Form Data:', formData);
+      const response = await axios.post('http://localhost:3000/', formData); // Use axios.post instead of fetch
+      console.log('Server Response:', response.data);
 
-      const response = await fetch('http://localhost:5173/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      console.log('Server Response Status:', response.status);
-
-      if (!response.ok) {
-        console.error('Server Error:', response.statusText);
-        // Handle error, return, or throw an error
-        return;
-      }
-
-      const data = await response.json();
-
-      console.log('Server Response:', data);
-
-      if (data.success) {
+      if (response.data.success) {
         navigate('/role-select');
       } else {
-        console.error('Error registering user:', data.message);
+        console.error('Error registering user:', response.data.message);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
+
+  // ... rest of your component
 
   return (
     <form onSubmit={handleRegister}>
@@ -123,9 +107,7 @@ function RegisterForm() {
             onChange={handleChange}
           />
         </div> */}
-        <button className={generalStyles['submit-button']} type="submit">
-          CONTINUE
-        </button>
+        <input type="submit" className={generalStyles['submit-button']} />
       </div>
     </form>
   );
