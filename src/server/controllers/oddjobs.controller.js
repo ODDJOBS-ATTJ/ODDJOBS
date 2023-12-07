@@ -66,7 +66,12 @@ exports.login = (req, res) => {
         }
 
         // Login successful
-            res.json({ status: 200, message: 'Login successful', data: account });
+
+        req.session.userID = account.id;
+
+        res.json({ status: 200, message: 'Login successful', data: account });
+        
+        
     });
 };
 
