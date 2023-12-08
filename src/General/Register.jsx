@@ -60,7 +60,6 @@ function Register() {
         //     (result) => {
         //       console.log(result.text);
         //       console.log('Email with Form-data + uniqueID sent successfully');
-        //       setEmailSent(true);
         //     },
         //     (error) => {
         //       console.log(error.text);
@@ -69,7 +68,7 @@ function Register() {
         //   );
 
         // Simulate email with form Data + unique ID sent successfully
-        console.log('Simulated email with Form-data + uniqueID sent successfully');
+        // console.log('Simulated email with Form-data + uniqueID sent successfully');
         setEmailSent(true);
       }, 2000); // Simulate a 2-second delay (you can adjust the delay time as needed)
 

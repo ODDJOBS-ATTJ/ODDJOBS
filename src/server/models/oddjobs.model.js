@@ -20,8 +20,8 @@ function Account(account) {
   (this.isWorker = false),
     (this.isAdmin = false),
     (this.isDeleted = false),
-    (this.isVerified = false); // Added isVerified field
-  this.verificationID = account.verificationID;
+    (this.isVerified = false), // Added isVerified field
+  (this.verificationID = account.verificationID);
 }
 
 Account.create = (newAccount, result) => {
@@ -64,39 +64,44 @@ Account.findAll = (result) => {
 };
 
 Account.update = (id, account, result) => {
-  dbConn.query(
-    "UPDATE accounts SET  email = ?, password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ?, verificationID = ?, WHERE userID = ?",
-    [
-      account.email,
-      account.password,
-      account.firstName,
-      account.lastName,
-      account.phoneNumber,
-      account.birthday,
-      account.region,
-      account.city,
-      account.barangay,
-      account.zipCode,
-      false,
-      false,
-      account.fbLink,
-      account.instaLink,
-      account.pfp,
-      false,
-      false,
-      account.verificationID,
-      account.id,
-    ],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-      } else {
-        console.log("Updated account: ", res);
-        result(null, res);
+  if (id === null) {
+    console.log("error: userID is null");
+    result({ error: "userID is null" }, null);
+  } else {
+    dbConn.query(
+      "UPDATE accounts SET  email = ?, password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ?, verificationID = ? WHERE userID = ?",
+      [
+        account.email,
+        account.password,
+        account.firstName,
+        account.lastName,
+        account.phoneNumber,
+        account.birthday,
+        account.region,
+        account.city,
+        account.barangay,
+        account.zipCode,
+        false,
+        false,
+        account.fbLink,
+        account.instaLink,
+        account.pfp,
+        false,
+        false,
+        account.verificationID,
+        id,
+      ],
+      (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(null, err);
+        } else {
+          console.log("Updated account: ", res);
+          result(null, res);
+        }
       }
-    }
-  );
+    );
+  }
 };
 
 Account.delete = (id, result) => {
@@ -154,10 +159,10 @@ Account.updateVerificationID = (userID, verificationID, result) => {
 };
 
 // Add this function
-Account.removeVerificationID = (userID, result) => {
+Account.removeVerificationID = (verificationID, result) => {
   dbConn.query(
-    "UPDATE accounts SET verificationID = NULL WHERE userID = ?",
-    userID,
+    "UPDATE accounts SET isVerified = 1, verificationID = NULL WHERE verificationID = ?",
+    verificationID,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -180,6 +185,40 @@ Account.findUserIDbyVerificationID = (verificationID, result) => {
         result(err, null);
       } else {
         result(null, res[0] ? res[0].userID : null);
+      }
+    }
+  );
+};
+
+// Add this function
+Account.setAdmin = (userID, result) => {
+  dbConn.query(
+    "UPDATE accounts SET isAdmin = 1 WHERE userID = ?",
+    userID,
+    (err, res) => {
+      if (err) {
+        console.error("error: ", err);
+        result(err, null);
+      } else {
+        console.log("Admin status set successfully");
+        result(null, res);
+      }
+    }
+  );
+};
+
+// Add this function
+Account.checkWorkerStatus = (userID, result) => {
+  dbConn.query(
+    "SELECT isWorker FROM accounts WHERE userID = ?",
+    userID,
+    (err, res) => {
+      if (err) {
+        console.error("error: ", err);
+        result(err, null);
+      } else {
+        console.log("Worker status retrieved successfully");
+        result(null, res);
       }
     }
   );

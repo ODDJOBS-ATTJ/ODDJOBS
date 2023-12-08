@@ -16,6 +16,7 @@ const billingRoutes     = require('../server/routes/billing.route.js');
 const ratingsRoute      = require('../server/routes/ratings.route.js');
 const reportsRoute      = require('../server/routes/report.route.js');
 const statusRoute       = require('../server/routes/status.route.js');
+const fileUploadRoute   = require('../server/routes/fileUpload.route.js');
 
 
 const app = express();
@@ -53,6 +54,7 @@ app.use('/billing',     billingRoutes);
 app.use('ratings',      ratingsRoute);
 app.use('/reports',     reportsRoute);
 app.use('/status',      statusRoute);
+app.use('/file',        fileUploadRoute);
 
 app.listen(port, () => {
   console.log(`Server port is ${port}`);

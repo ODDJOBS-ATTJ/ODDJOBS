@@ -10,14 +10,37 @@ function Verification({ onClose }) {
     const location = useLocation();
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
+        const checkVerificationID = async () => {
+          const verificationID = new URLSearchParams(location.search).get('verificationID');
+      
+          if (!verificationID) {
+            console.error('VerificationID not found in the URL');
+            navigate('/login');
+            return;
+          }
+      
+          try {
+            const response = await axios.post('http://localhost:3000/accounts/checkVerificationID', {
+              verificationID: verificationID,
+            });
+      
+            if (response.status !== 200) {
+              console.error('VerificationID does not exist');
+              navigate('/login');
+              return;
+            }
+      
+            // If the verificationID exists, show the modal and verify the account
             setModalVisible(true);
-            // Call the verification function here
             verifyAccount();
-        }, 100);
-
-        return () => clearTimeout(timeout);
-    }, []);
+          } catch (error) {
+            console.error('Error checking verificationID:', error);
+            navigate('/login');
+          }
+        };
+      
+        checkVerificationID();
+      }, []);
 
     const closeModal = () => {
         setModalVisible(false);
@@ -27,39 +50,31 @@ function Verification({ onClose }) {
     const verifyAccount = async () => {
         // Extract verificationID from the URL
         const verificationID = new URLSearchParams(location.search).get('verificationID');
-    
+      
         if (!verificationID) {
-            console.error('VerificationID not found in the URL');
-            return;
+          console.error('VerificationID not found in the URL');
+          return;
         }
-    
+      
         try {
-            // Make a request to the backend to find userID by verificationID
-            const userIDResponse = await axios.post('http://localhost:3000/accounts/findUserIDbyVerificationID', {
-                verificationID: verificationID,
-            });
-    
-            if (userIDResponse.status === 200) {
-                const userID = userIDResponse.data.userID;
-    
-                // Now you have the userID, you can use it in your next request
-                const verifyResponse = await axios.put('http://localhost:3000/accounts/removeVerificationID', {
-                    userID: userID,
-                });
-    
-                if (verifyResponse.status === 200) {
-                    console.log('Account verified successfully');
-                } else {
-                    console.error('Failed to verify account');
-                }
-            } else {
-                console.error('Failed to find userID');
-            }
+          console.log('Making request to remove verificationID'); // Add this line
+          // Now you have the verificationID, you can use it in your request
+          const verifyResponse = await axios.post('http://localhost:3000/accounts/removeVerificationID', {
+            verificationID: verificationID,
+          });
+      
+          console.log('Response from removeVerificationID:', verifyResponse); // Add this line
+      
+          if (verifyResponse.status === 200) {
+            console.log('Account verified successfully');
+          } else {
+            console.error('Failed to verify account');
+          }
         } catch (error) {
-            console.error('Error during verification:', error);
+          console.error('Error during verification:', error);
         }
-    };
-    
+      };
+
 
     return (
         <div>
