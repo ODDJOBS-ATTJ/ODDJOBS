@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CSS/services.module.css';
 import SignedInHeader from './Signed-In-Header';
 import magnifyingGlass from './IMAGE/Icons/magnifying-glass.png';
 import samplePhoto from './IMAGE/icons/samplePhoto.png';
+import featured from './IMAGE/icons/featured.png';
+import house from './IMAGE/icons/home.png';
+import event from './IMAGE/icons/event.png';
+import health from './IMAGE/icons/health.png';
+import mechanical from './IMAGE/icons/mechanical.png';
+import misc from './IMAGE/icons/misc.png';
+
 
 function Services() {
+    const [type, setType] = useState(0);
+    const chooseType = (num) => {
+        setType(num);    
+    };
+
     return (
         <div>
             <SignedInHeader />
@@ -25,37 +37,37 @@ function Services() {
                     <div className={styles['categories-card']}>
                         <Link to="/customer/services" className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={featured} alt="Category" />
                             </div>
                             <h1>featured</h1>
                         </Link>
-                        <Link to="/customer/services/categories" className={styles['categories']}>
+                        <Link onClick={()=>chooseType(1)} className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={house} alt="Category" />
                             </div>
                             <h1>home</h1>
                         </Link>
                         <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={event} alt="Category" />
                             </div>
                             <h1>event</h1>
                         </Link>
                         <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={health} alt="Category" />
                             </div>
                             <h1>health</h1>
                         </Link>
                         <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={mechanical} alt="Category" />
                             </div>
-                            <h1>engineer</h1>
+                            <h1>mechanical</h1>
                         </Link>
                         <Link to="/customer/services/categories" className={styles['categories']}>
                             <div className={styles['category-img']}>
-                                <img src={samplePhoto} alt="Category" />
+                                <img src={misc} alt="Category" />
                             </div>
                             <h1>misc</h1>
                         </Link>
@@ -63,7 +75,8 @@ function Services() {
                     </div>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <h1>FEATURED SERVICES</h1>
+
+                    <h1></h1>
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['featured-services-row']}>
