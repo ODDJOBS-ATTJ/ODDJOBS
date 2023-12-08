@@ -39,62 +39,35 @@ function Register() {
 
         // Set the value of the userID input field
         userIDInput.value = userID;
-        
-        // Send form data to emailjs
-        emailjs
-          .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
-          .then(
-            (result) => {
-              console.log(result.text);
-              console.log(response.data.userID);
-              console.log('Email sent successfully');
-              setEmailSent(true);
-            },
-            (error) => {
-              console.log(error.text);
-              console.log('Email was not sent. An Error was encountered');
-            }
-          );
+
+        // Simulate email sending with setTimeout
+        setTimeout(() => {
+          // Uncomment the following block to send the actual email using emailjs
+          // emailjs
+          //   .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
+          //   .then(
+          //     (result) => {
+          //       console.log(result.text);
+          //       console.log(response.data.userID);
+          //       console.log('Email sent successfully');
+          //       setEmailSent(true);
+          //     },
+          //     (error) => {
+          //       console.log(error.text);
+          //       console.log('Email was not sent. An Error was encountered');
+          //     }
+          //   );
+
+          // Simulate email sent successfully
+          console.log('Simulated email sent successfully');
+          setEmailSent(true);
+        }, 2000); // Simulate a 2-second delay (you can adjust the delay time as needed)
+
       })
       .catch((error) => {
         console.error('Error finding userID:', error);
       });
   };
-
-
-  // const mockSendEmail = (e) => {
-  //   e.preventDefault();
-
-  //   const formFields = form.current.elements;
-  //   let isValid = true;
-
-  //   for (let i = 0; i < formFields.length - 1; i++) {
-  //     if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
-  //       isValid = false;
-  //       console.log(`Error: ${formFields[i].name} is required.`);
-  //     }
-  //   }
-
-  //   if (!isValid) {
-  //     return;
-  //   }
-  //   sendFormDataToServer();
-  //   console.log('Formdata sent to database');
-
-  //   axios.post('http://localhost:3000/accounts/findUserID', { email: formFields.email.value })
-  //     .then((response) => {
-  //       const userID = response.data.userID;
-  //       // Include userID in the form data
-  //       formFields.userID = userID;
-
-  //       // Simulate sending an email
-  //       setTimeout(() => {
-  //         console.log(response.data.userID);
-  //         console.log('Email sent successfully');
-  //         setEmailSent(true);
-  //       }, 500); // Simulate delay
-  //     })}
-
 
   const sendFormDataToServer = () => {
     // Create a FormData object to send the form data
