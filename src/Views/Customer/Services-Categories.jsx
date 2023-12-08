@@ -1,9 +1,10 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CSS/services.module.css';
 import SignedInHeader from './Signed-In-Header';
 import magnifyingGlass from './IMAGE/Icons/magnifying-glass.png';
 import samplePhoto from './IMAGE/icons/samplePhoto.png';
+
 
 function ServicesCategories() {
     return (
@@ -23,7 +24,7 @@ function ServicesCategories() {
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['categories-card']}>
-                        <Link to="/customer/services" className={styles['categories']}>
+                        <Link className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={samplePhoto} alt="Category" />
                             </div>
