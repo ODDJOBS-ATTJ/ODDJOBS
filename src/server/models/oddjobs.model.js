@@ -4,24 +4,24 @@ const dbConn = require("../config/db.config.js");
 /** For the Accounts */
 
 function Account(account) {
-  (this.email = account.email),
-    (this.password = account.password),
-    (this.firstName = account.firstName),
-    (this.lastName = account.lastName),
-    (this.phoneNumber = account.phoneNumber),
-    (this.birthday = account.birthday),
-    (this.region = account.region),
-    (this.city = account.city),
-    (this.barangay = account.barangay),
-    (this.zipCode = account.zipCode),
-    (this.fbLink = account.fbLink),
-    (this.instaLink = account.instaLink),
-    (this.pfp = account.pfp);
-  (this.isWorker = false),
-    (this.isAdmin = false),
-    (this.isDeleted = false),
-    (this.isVerified = false); // Added isVerified field
-    (this.verificationID = account.verrificationID);
+    (this.email           = account.email),
+    (this.password        = account.password),
+    (this.firstName       = account.firstName),
+    (this.lastName        = account.lastName),
+    (this.phoneNumber     = account.phoneNumber),
+    (this.birthday        = account.birthday),
+    (this.region          = account.region),
+    (this.city            = account.city),
+    (this.barangay        = account.barangay),
+    (this.zipCode         = account.zipCode),
+    (this.fbLink          = account.fbLink),
+    (this.instaLink       = account.instaLink),
+    (this.pfp             = account.pfp);
+    (this.isWorker        = false),
+    (this.isAdmin         = false),
+    (this.isDeleted       = false),
+    (this.isVerified      = false); // Added isVerified field
+    (this.verificationID  = account.verrificationID);
 }
 
 Account.create = (newAccount, result) => {
