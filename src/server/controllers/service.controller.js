@@ -68,3 +68,21 @@ exports.delete = (req, res) => {
     res.json({ error: false, message: "Service deleted!", status: 200 });
   });
 };
+
+exports.findByCategory = (req, res) => {
+  Service.findByCategory(req.params.category, (err, service) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send({ status: 200, data: service });
+  });
+};
+
+exports.findByFeatured = (req, res) => {
+  Service.findByFeatured((err, service) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send({ status: 200, data: service });
+  });
+};

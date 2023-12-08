@@ -15,40 +15,119 @@ import misc from './IMAGE/icons/misc.png';
 
 function Services() {
     const [type, setType] = useState(0);
-
+    const [services, setServices] = useState([[]]);
+    const [allserv, setAllServ] = useState([]); 
+  
     const chooseType = (num) => {
-        setType(num);    
+      setType(num);    
     };
 
+    useEffect(() => {
+        axios.get(`http://localhost:3000/service`)
+            .then(response => {
+                setAllServ(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching data: ${error}`);
+            })
+    }, []);
+
+    useEffect(() => {
+        let category;
     
-    // function random(){
-    //     let category;
+        switch(type){
+            case 0: category = 'featured services'; break;
+            case 1: category = 'home'; break;
+            case 2: category = 'event'; break;
+            case 3: category = 'health'; break;
+            case 4: category = 'mechanical'; break;
+            case 5: category = 'misc'; break;
+            default: category = 'featured services'; break;
+        }
+    
+        axios.get(`http://localhost:3000/service/category/${category}`)
+            .then(response => {
+                setServices(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching data: ${error}`);
+            })
+    }, [type]);
 
-    //     switch(type){
-    //         case 0: category = 'featured services'; break;
-    //         case 1: category = serviceTypes[0].serviceTypeName; break;
-    //         case 2: category = serviceTypes[1].serviceTypeName; break;
-    //         case 3: category = serviceTypes[2].serviceTypeName; break;
-    //         case 4: category = serviceTypes[3].serviceTypeName; break;
-    //         case 5: category = serviceTypes[4].serviceTypeName; break;
-    //     }
+    
+    function catType(){
+        let category;
 
-    //     return(
-    //         <div style={{textTransform:"uppercase"}}>
-    //             <h1>{category}</h1>;
-    //         </div> 
-    //     )
-    // }
-    // <h1>Service Types</h1>
-    // <ul>
-    //   {serviceTypes.map(serviceType => (
-    //     <li key={serviceType.serviceTypeID}>{serviceType.serviceTypeName}</li>
-    //   ))}
-    // </ul>
+        switch(type){
+            case 0: category = 'featured services'; break;
+            case 1: category = 'home'; break;
+            case 2: category = 'event'; break;
+            case 3: category = 'health'; break;
+            case 4: category = 'mechanical'; break;
+            case 5: category = 'misc'; break;
+        }
+
+        return(
+            <div style={{textTransform:"uppercase"}}>
+                <h1>{category}</h1>
+            </div> 
+        )
+    }
+
+    function renderFeaturedFromAll() {
+        return allserv.map((service, index) => {
+            if (service.isFeatured === 1) {
+                return (
+                    <div key={index} className={styles['services-container-row']}>
+                        <Link to="/Customer/services/details" className={styles['other-categories-row']}>
+                            <div className={styles['other-categories-content']}>
+                                <div className={styles['image']}>
+                                    <img src={service.cover} alt="Service" />
+                                </div>
+                                <div className={styles['space']}></div>
+                                <div className={styles['description']}>
+                                    <h1>{service.serviceName}</h1>
+                                    <p>{service.shortDesc}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                );
+            }
+        });
+    }
+                
+    function otherServices() {
+        return services.map((service, index) => (
+            <div key={index} className={styles['services-container-row']}>
+                <Link to="/Customer/services/details" className={styles['other-categories-row']}>
+                <div className={styles['other-categories-content']}>
+                    <div className={styles['image']}>
+                        <img src={service.cover} alt="Service" />
+                    </div>
+                    <div className={styles['space']}></div>
+                    <div className={styles['description']}>
+                        <h1>{service.serviceName}</h1>
+                        <p>{service.shortDesc}</p>
+                    </div>
+                </div>
+                </Link>
+            </div>
+        ));
+    }
+
+    function renderServicesBasedOnType() {
+        if (type === 0) {
+            return renderFeaturedFromAll();
+        } else {
+            return otherServices();
+        }
+    }
 
     return (
         <div>
             <SignedInHeader />
+            
             <div className={styles['services-container']}>
                 <div className={styles['services-container-row']}>
                     <div className={styles['services-container-col']}>
@@ -103,45 +182,9 @@ function Services() {
                     </div>
                 </div>
                 <div className={styles['services-container-row']}>
-                    {/* {random()} */}
-                </div>
-                <div className={styles['services-container-row']}>
-                    <div className={styles['featured-services-row']}>
-                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
-                            <div className={styles['featured-services-content']}>
-                                <div className={styles['image']}>
-                                    <img src={samplePhoto} alt="Featured Service" />
-                                </div>
-                                <div className={styles['space']} />
-                                <div className={styles['description']}>
-                                    <h1>massage therapy</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis,
-                                        convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula </p>
-                                </div>
-                            </div>
-                        </Link>
-                        <div className={styles['featured-services-space']}></div>
-                        <Link to="/Customer/services/details" className={styles['featured-services-col']}>
-                            <div className={styles['featured-services-content']}>
-                                <div className={styles['image']}>
-                                    <img src={samplePhoto} alt="Featured Service" />
-                                </div>
-                                <div className={styles['space']} />
-                                <div className={styles['description']}>
-                                    <h1>PROFESSIONAL LINE STANDER</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis,
-                                        convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula </p>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-                <div className={styles['services-container-row']}>
-                    <div className={styles['featured-services-row']}>
-                        
-                        <div className={styles['featured-services-space']}></div>
-                    </div>
-                </div>
+                    {catType()}
+                </div> 
+                    {renderServicesBasedOnType()}
             </div>
         </div>
     );
