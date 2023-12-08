@@ -5,6 +5,9 @@ const session = require('express-session');
 
 const accountRoutes = require('../server/routes/oddjobs.route.js');
 const workerRoutes = require('../server/routes/workers.route.js');
+const serviceRoutes = require('../server/routes/service.route.js');
+const bookingRoutes = require('../server/routes/bookings.route.js');
+const adminlogRoutes = require('../server/routes/adminlog.route.js');
 
 const app = express();
 app.use(cors());
@@ -30,6 +33,9 @@ app.use(bodyParser.json());
 
 app.use('/accounts', accountRoutes);
 app.use('/workers', workerRoutes);
+app.use('/service', serviceRoutes);
+app.use('/bookings', bookingRoutes);
+app.use('/adminlog', adminlogRoutes);
 
 app.listen(port, () => {
   console.log(`Server port is ${port}`);
