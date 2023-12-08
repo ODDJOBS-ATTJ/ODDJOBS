@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CSS/default.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
 import { useAuth } from '../../server/useAuth.js';
 import logout from '../../server/logout.js';
+
 function SignedInHeader() {
+    const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(true); // Initial state based on authentication status
+
     useAuth();
+
+    const handleLogout = async () => {
+        await logout(); // Call the logout function
+
+        // Update the local state to reflect the authentication status
+        setAuthenticated(false);
+
+        // Redirect to the login page
+        navigate('/login');
+    };
+
+    // Conditional rendering based on authentication status
+    if (!authenticated) {
+        return null; // Render nothing if not authenticated
+    }
 
     return (
         <div className={styles.header}>
@@ -27,7 +46,7 @@ function SignedInHeader() {
                                 <Link to="../">Switch to worker view</Link>
                                 <Link to="/customer/billings" className={styles.billings}>Billings</Link>
                                 <div className={styles.line} />
-                                <Link onClick={logout} className={styles.signout}>Log Out</Link>
+                                <Link onClick={handleLogout} className={styles.signout}>Log Out</Link>
                             </div>
                         </div>
                     </li>

@@ -3,6 +3,8 @@ import axios from 'axios';
 import generalStyles from './CSS/general-styles.module.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -11,34 +13,34 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-    
+
         try {
             const response = await axios.post('http://localhost:3000/accounts/login', {
                 email,
                 password,
             });
-            
+
             // Handle the response accordingly, e.g., set user authentication status
             console.log(response.data);
-            
+
             // Check if login was successful
             if (response.data.status === 200) {
-                // Set user authentication status or token in local storage/cookies
-                // For now, let's assume that response.data.userID contains the user ID
-                // You may want to customize this based on your authentication mechanism
-                localStorage.setItem('userID', response.data.userID);
-    
+                // Set user authentication status or token in cookies with SameSite option
+                Cookies.set('userID', response.data.userID, { sameSite: 'strict' });
+
                 // Redirect to the protected route
                 navigate('/customer/services');
             } else {
                 // Handle login failure
                 console.error('Login failed:', response.data.message);
             }
+
         } catch (error) {
             console.error('Login failed:', error.message);
             // Handle login failure
         }
     };
+
 
     return (
         <div>
