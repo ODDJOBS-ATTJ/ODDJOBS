@@ -1,4 +1,4 @@
-const Report = require("../models/reports.model.js");
+const Report = require("../models/report.model.js");
 
 exports.findAll = (req, res) => {
   Report.findAll((err, data) => {

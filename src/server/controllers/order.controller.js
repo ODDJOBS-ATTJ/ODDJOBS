@@ -1,4 +1,4 @@
-const Order = require("../models/orders.model.js");
+const Order = require("../models/order.model.js");
 
 exports.findAll = (req, res) => {
   Order.findAll((err, data) => {

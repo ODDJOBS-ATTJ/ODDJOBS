@@ -1,4 +1,4 @@
-const Application = require("../models/applications.model.js");
+const Application = require("../models/application.model.js");
 
 exports.findAll = (req, res) => {
   Application.findAll((err, data) => {

@@ -1,4 +1,4 @@
-const Billing = require("../models/billings.model.js");
+const Billing = require("../models/billing.model.js");
 
 exports.findAll = (req, res) => {
   Billing.findAll((err, data) => {
