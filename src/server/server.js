@@ -11,7 +11,7 @@ app.use(cors());
 // Use express session
 app.use(
   session({
-    secret: 'j03m4m4t3mpk3y',
+    secret: 'mugi-nice',
     resave: false,
     saveUninitialized: true,
     cookie: {
