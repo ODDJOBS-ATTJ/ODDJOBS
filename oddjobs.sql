@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 02:56 PM
+-- Generation Time: Dec 08, 2023 at 03:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -131,13 +131,13 @@ CREATE TABLE `bookings` (
   `bookingID` int(11) NOT NULL,
   `serviceID` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `statusID` int(11) DEFAULT NULL,
   `paymentMethod` varchar(255) DEFAULT NULL,
   `orderID` int(11) DEFAULT NULL,
   `orderQuantity` int(11) DEFAULT NULL,
   `serviceTypeNum` int(11) DEFAULT NULL,
   `serviceFee` decimal(10,0) DEFAULT NULL,
-  `totalPrice` decimal(10,0) DEFAULT NULL
+  `totalPrice` decimal(10,0) DEFAULT NULL,
+  `status` enum('pending','approved','ongoing','completed','cancelled') DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -206,17 +206,6 @@ CREATE TABLE `service` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
---
-
-CREATE TABLE `status` (
-  `statusID` int(11) NOT NULL,
-  `statusType` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `workers`
 --
 
@@ -280,8 +269,7 @@ ALTER TABLE `billing`
 --
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`bookingID`),
-  ADD KEY `serviceID` (`serviceID`),
-  ADD KEY `statusID` (`statusID`);
+  ADD KEY `serviceID` (`serviceID`);
 
 --
 -- Indexes for table `orders`
@@ -313,12 +301,6 @@ ALTER TABLE `reports`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`serviceID`);
-
---
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`statusID`);
 
 --
 -- Indexes for table `workers`
@@ -392,12 +374,6 @@ ALTER TABLE `service`
   MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `status`
---
-ALTER TABLE `status`
-  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `workers`
 --
 ALTER TABLE `workers`
@@ -437,8 +413,7 @@ ALTER TABLE `billing`
 -- Constraints for table `bookings`
 --
 ALTER TABLE `bookings`
-  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`),
-  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
+  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`);
 
 --
 -- Constraints for table `orders`
