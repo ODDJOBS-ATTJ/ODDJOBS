@@ -17,6 +17,7 @@ const ratingsRoute      = require('../server/routes/ratings.route.js');
 const reportsRoute      = require('../server/routes/report.route.js');
 const statusRoute       = require('../server/routes/status.route.js');
 
+
 const app = express();
 app.use(cors());
 

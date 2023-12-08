@@ -27,29 +27,39 @@ function Verification({ onClose }) {
     const verifyAccount = async () => {
         // Extract verificationID from the URL
         const verificationID = new URLSearchParams(location.search).get('verificationID');
-
+    
         if (!verificationID) {
             console.error('VerificationID not found in the URL');
             return;
         }
-
+    
         try {
-            // Make a request to update isVerified in the backend
-            const response = await axios.put('/api/updateVerification', {
-                userID: null, // Replace with the actual userID or logic to fetch it
+            // Make a request to the backend to find userID by verificationID
+            const userIDResponse = await axios.post('http://localhost:3000/accounts/findUserIDbyVerificationID', {
                 verificationID: verificationID,
             });
-
-            if (response.status === 200) {
-                console.log('Account verified successfully');
-                // Optionally, you can do additional actions here if needed
+    
+            if (userIDResponse.status === 200) {
+                const userID = userIDResponse.data.userID;
+    
+                // Now you have the userID, you can use it in your next request
+                const verifyResponse = await axios.put('http://localhost:3000/accounts/removeVerificationID', {
+                    userID: userID,
+                });
+    
+                if (verifyResponse.status === 200) {
+                    console.log('Account verified successfully');
+                } else {
+                    console.error('Failed to verify account');
+                }
             } else {
-                console.error('Failed to verify account');
+                console.error('Failed to find userID');
             }
         } catch (error) {
             console.error('Error during verification:', error);
         }
     };
+    
 
     return (
         <div>

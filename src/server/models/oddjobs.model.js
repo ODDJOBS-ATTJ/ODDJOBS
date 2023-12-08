@@ -21,7 +21,7 @@ function Account(account) {
     (this.isAdmin = false),
     (this.isDeleted = false),
     (this.isVerified = false); // Added isVerified field
-  this.verificationID = account.verrificationID;
+  this.verificationID = account.verificationID;
 }
 
 Account.create = (newAccount, result) => {
@@ -148,6 +148,38 @@ Account.updateVerificationID = (userID, verificationID, result) => {
       } else {
         console.log("VerificationID updated successfully");
         result(null, res);
+      }
+    }
+  );
+};
+
+// Add this function
+Account.removeVerificationID = (userID, result) => {
+  dbConn.query(
+    "UPDATE accounts SET verificationID = NULL WHERE userID = ?",
+    userID,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        console.log("VerificationID removed successfully");
+        result(null, res);
+      }
+    }
+  );
+};
+
+Account.findUserIDbyVerificationID = (verificationID, result) => {
+  dbConn.query(
+    "SELECT userID FROM accounts WHERE verificationID = ?",
+    verificationID,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res[0] ? res[0].userID : null);
       }
     }
   );
