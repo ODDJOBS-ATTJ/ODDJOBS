@@ -1,5 +1,7 @@
 "use strict";
 const Account = require("../models/oddjobs.model");
+const multer = require("multer");
+const upload = multer({ dest: "../../General/IMAGE/uploads" });
 
 exports.checkLoggedIn = (req, res, next) => {
   if (!req.session.user) {
@@ -201,7 +203,9 @@ exports.checkVerificationID = (req, res) => {
     }
 
     if (!userID) {
-      return res.status(404).json({ message: "User not found with the provided verificationID" });
+      return res
+        .status(404)
+        .json({ message: "User not found with the provided verificationID" });
     }
 
     res.status(200).json({ userID: userID });
@@ -278,4 +282,30 @@ exports.checkWorkerStatus = (req, res) => {
 
     res.status(200).json({ isWorker: result[0].isWorker });
   });
+};
+
+exports.updateProfile = (req, res) => {
+  const id = req.params.id;
+  const account = req.body;
+
+  // If a file was uploaded, add the file path to the account data
+  if (req.file) {
+      account.pfp = req.file.path;
+  }
+
+  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      res.status(400).send({ error: true, message: "Please provide all the required fields" });
+  } else {
+      Account.updateProfile(id, account, (err, account) => {
+          if (err) {
+              res.send(err);
+          }
+          res.json({
+              error: false,
+              status: 200,
+              message: "Account updated accordingly",
+              data: account,
+          });
+      });
+  }
 };

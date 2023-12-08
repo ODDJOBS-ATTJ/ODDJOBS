@@ -1,59 +1,123 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CSS/user-profile-edit.module.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function UserProfileEdit() {
+    const [region, setRegion] = useState("");
+    const [city, setCity] = useState("");
+    const [barangay, setBarangay] = useState("");
+
+    const barangays = {
+        "Visayas": {
+            "Cebu": ["Talamban", "Banilad", "Lahug"],
+            "Lapu-Lapu": ["Gun-Ob", "Pajo", "Maribago"]
+        }
+    };
+
+    const handleRegionChange = (event) => {
+        setRegion(event.target.value);
+        setCity(""); // Reset city when region changes
+        setBarangay(""); // Reset barangay when region changes
+    };
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+        setBarangay(""); // Reset barangay when city changes
+    };
+
+    const handleBarangayChange = (event) => {
+        setBarangay(event.target.value);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const userID = Cookies.get('userID');
+
+        const data = new FormData();
+        data.append('email', event.target.elements.email.value);
+        data.append('phoneNumber', event.target.elements.phone.value);
+        data.append('birthday', event.target.elements.date.value);
+        data.append('region', region);
+        data.append('city', city);
+        data.append('barangay', barangay);
+        data.append('zipCode', event.target.elements.zipcode.value);
+        data.append('fbLink', event.target.elements.fbLink.value);
+        data.append('instaLink', event.target.elements.instaLink.value);
+        data.append('pfp', event.target.elements.fileInput1.files[0]);
+
+        try {
+            const response = await axios.put(`http://localhost:3000/accounts/updateProfile/${userID}`, data);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div>
             <SignedInHeader />
-            <div className={styles['container']}>
-                {/* USER CARD */}
-                <div className={styles['user-card']}>
-                    <div className={styles['profile-pic']}>
-                        <div className={styles['centerer']}>
-                            <label htmlFor="fileInput1" className={styles['styled-input']} id={styles['label1']} onClick={() => document.getElementById('fileInput1').click()}>
-                                Upload Photo
-                            </label>
-                            <input type="file" id="fileInput1" className={styles['file-input']} style={{ display: 'none' }} />
-                            <img src={pfp} alt="User Profile" />
+            <form onSubmit={handleSubmit}>
+                <div className={styles['container']}>
+                    {/* USER CARD */}
+                    <div className={styles['user-card']}>
+                        <div className={styles['profile-pic']}>
+                            <div className={styles['centerer']}>
+                                <label htmlFor="fileInput1" className={styles['styled-input']} id={styles['label1']}>
+                                    Upload Photo
+                                </label>
+                                <input type="file" id="fileInput1" className={styles['file-input']} style={{ display: 'none' }} />
+                                <img src={pfp} alt="User Profile" />
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles['edit-button-box']}>
-                        <Link to="/customer/profile" className={styles['edit-button']}>
-                            <p>SAVE PROFILE</p>
-                        </Link>
-                    </div>
-                    <div className={styles['user-info']}>
-                        <div className={styles['user-info-box']}>
-                            <div className={styles['input-field-edit']}>
-                                <h3>Edit your account details:</h3>
-                                <input type="url" placeholder="Facebook Link" autoComplete="nope" />
-                                <input type="url" placeholder="Instagram link" autoComplete="nope" />
-                                <input type="email" placeholder="Email" autoComplete="nope" />
-                                <input id="phone" type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" />
-                                <input type="date" autoComplete="nope" />
-                                <h4>Current Address:</h4>
-                                <div className={styles['input-field-select']}>
-                                    <select id="Region" size={1}>
-                                        <option value="" selected="selected">Select Region</option>
-                                    </select>
-                                    <select id="City" size={1}>
-                                        <option value="" selected="selected">Select City</option>
-                                    </select>
-                                </div>
-                                <div className={styles['input-field-select-rowtwo']}>
-                                    <select id="Barangay" size={1}>
-                                        <option value="" selected="selected">Select Barangay</option>
-                                    </select>
-                                    <input type="tel" pattern="\d{4}" placeholder="Zip Code" maxLength={4} autoComplete="nope" className={styles['zipcode']} />
+                        <div className={styles['edit-button-box']}>
+                            <button className={styles['edit-button']}>
+                                <p>SAVE PROFILE</p>
+                            </button>
+                        </div>
+                        <div className={styles['user-info']}>
+                            <div className={styles['user-info-box']}>
+                                <div className={styles['input-field-edit']}>
+                                    <h3>Edit your account details:</h3>
+                                    <input type="url" placeholder="Facebook Link" autoComplete="nope" />
+                                    <input type="url" placeholder="Instagram link" autoComplete="nope" />
+                                    <input type="email" placeholder="Email" autoComplete="nope" />
+                                    <input id="phone" type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" />
+                                    <input type="date" autoComplete="nope" />
+                                    <h4>Current Address:</h4>
+                                    <div className={styles['input-field-select']}>
+                                        <select id="Region" value={region} onChange={handleRegionChange}>
+                                            <option value="">Select Region</option>
+                                            {Object.keys(barangays).map((region) => (
+                                                <option key={region} value={region}>{region}</option>
+                                            ))}
+                                        </select>
+                                        <select id="City" value={city} onChange={handleCityChange}>
+                                            <option value="">Select City</option>
+                                            {region && Object.keys(barangays[region]).map((city) => (
+                                                <option key={city} value={city}>{city}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className={styles['input-field-select-rowtwo']}>
+                                        <select id="Barangay" value={barangay} onChange={handleBarangayChange}>
+                                            <option value="">Select Barangay</option>
+                                            {city && barangays[region][city].map((barangay) => (
+                                                <option key={barangay} value={barangay}>{barangay}</option>
+                                            ))}
+                                        </select>
+                                        <input type="tel" pattern="\d{4}" placeholder="Zip Code" maxLength={4} autoComplete="nope" className={styles['zipcode']} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

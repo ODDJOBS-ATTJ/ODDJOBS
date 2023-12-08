@@ -27,13 +27,11 @@
 /* Services Container */
 .services-container {
   margin: 50px auto;
-
   width: 1250px;
 }
 
 .services-container-row {
   display: flex;
-  width: 100%;
   align-items: center;
 }
 
@@ -73,7 +71,7 @@
   background-color: white;
   height: 230px;
   padding: 10px;
-  width: 100%;
+  width: 1225px;
   border-radius: 10px;
   margin-bottom: 50px;
 }
@@ -131,6 +129,7 @@
   padding-bottom: 20px;
   width: 100%;
   display: flex;
+  border: solid;
   align-items: center;
 }
 

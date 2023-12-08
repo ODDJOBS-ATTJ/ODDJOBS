@@ -53,6 +53,7 @@ app.use('/billing',     billingRoutes);
 app.use('ratings',      ratingsRoute);
 app.use('/reports',     reportsRoute);
 app.use('/status',      statusRoute);
+app.use('/uploads', express.static('../../General/IMAGE/uploads'));
 
 app.listen(port, () => {
   console.log(`Server port is ${port}`);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 04:12 PM
+-- Generation Time: Dec 08, 2023 at 10:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,7 @@ CREATE TABLE `accounts` (
   `isAdmin` tinyint(1) DEFAULT NULL,
   `fbLink` varchar(255) DEFAULT NULL,
   `instaLink` varchar(255) DEFAULT NULL,
-  `pfp` blob DEFAULT NULL,
+  `pfp` varchar(255) DEFAULT NULL,
   `isDeleted` tinyint(1) DEFAULT NULL,
   `verificationID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -54,9 +54,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isVerified`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`, `verificationID`) VALUES
-(33, '22100327@usc.edu.ph', '123123123', 'Ditto', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, NULL),
-(38, 'xaviersotin@gmail.com', '12312313', 'Xavier ', 'Paul', NULL, '2311-12-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, NULL),
-(47, 'beneditto.tiu@cie.edu.ph', '123123123', 'Beneditto Alfonso', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0, '47-d284ca45-e6d6-4ac0-b274-7b935dab52f0');
+(54, '22100327@usc.edu.ph', '123123123', 'Ditto', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 1, 1, 1, NULL, NULL, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,7 +314,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `action`

@@ -81,4 +81,28 @@ Service.delete = (id, result) => {
   });
 };
 
+Service.findByCategory = (category, result) => {
+  dbConn.query("SELECT * FROM service WHERE serviceCat = ?", category, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      console.log("Services: ", res);
+      result(null, res);
+    }
+  });
+};
+
+Service.findByFeatured = (result) => {
+  dbConn.query("SELECT * FROM service WHERE isFeatured = 1", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+    } else {
+      console.log("Services: ", res);
+      result(null, res);
+    }
+  });
+};
+
 module.exports = Service;

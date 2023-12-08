@@ -224,4 +224,31 @@ Account.checkWorkerStatus = (userID, result) => {
   );
 };
 
+Account.updateProfile = (id, account, result) => {
+  dbConn.query(
+      "UPDATE accounts SET email = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, fbLink = ?, instaLink = ?, pfp = ? WHERE userID = ?",
+      [
+          account.email,
+          account.phoneNumber,
+          account.birthday,
+          account.region,
+          account.city,
+          account.barangay,
+          account.zipCode,
+          account.fbLink,
+          account.instaLink,
+          account.pfp,
+          id,
+      ],
+      (err, res) => {
+          if (err) {
+              console.log("error: ", err);
+              result(null, err);
+          } else {
+              console.log("Updated account: ", res);
+              result(null, res);
+          }
+      }
+  );
+};
 module.exports = Account;
