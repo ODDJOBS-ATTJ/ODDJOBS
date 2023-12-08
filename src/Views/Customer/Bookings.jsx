@@ -4,10 +4,8 @@ import bookings from './CSS/bookings.module.css'; // Import your CSS module
 import SignedInHeader from './Signed-In-Header';
 import samplePhoto from './IMAGE/Icons/samplePhoto.png';
 import massageTherapy from '../../General/IMAGE/MassageTherapy.jpg';
-import { useAuth } from '../../server/useAuth.js';
 
 function Bookings() {
-    useAuth();
     return (
         <div>
             <SignedInHeader />

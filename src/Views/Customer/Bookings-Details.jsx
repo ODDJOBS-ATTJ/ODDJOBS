@@ -7,10 +7,8 @@ import bookingPlaced from './IMAGE/Icons/bookingPlaced.png';
 import paymentConfirmed from './IMAGE/Icons/paymentConfirmed.png';
 import arriving from './IMAGE/Icons/arriving.png';
 import serviceFinished from './IMAGE/Icons/serviceFinished.png';
-import { useAuth } from '../../server/useAuth.js';
 
 function BookingsDetails() {
-    useAuth();
     return (
         <div>
             <SignedInHeader />

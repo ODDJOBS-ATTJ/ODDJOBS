@@ -3,10 +3,8 @@ import styles from './CSS/user-profile-edit.module.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
-import { useAuth } from '../../server/useAuth.js';
 
 function UserProfileEdit() {
-    useAuth();
     return (
         <div>
             <SignedInHeader />

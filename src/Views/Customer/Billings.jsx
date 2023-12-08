@@ -7,10 +7,8 @@ import XMark from './IMAGE/Icons/xmark-solid.svg';
 import Cards from './IMAGE/Icons/cards.png';
 import Paypal from './IMAGE/Icons/paypal.png';
 import Trashbin from './IMAGE/Icons/trash-bin.png';
-import { useAuth } from '../../server/useAuth.js';
 
 function Billings() {
-    useAuth();
     return (
         <>
             <SignedInHeader />
