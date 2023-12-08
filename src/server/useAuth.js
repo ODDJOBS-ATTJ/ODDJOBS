@@ -7,25 +7,24 @@ export const useAuth = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const userIdFromCookie = Cookies.get('userID');
+        const checkAuth = () => {
+            const userIdFromCookie = Cookies.get('userID');
 
-        // Redirect to login if userID is not present in cookies
-        if (!userIdFromCookie) {
-            navigate('/login');
-        }
-
-        // Add event listener for storage changes (optional)
-        const handleStorageChange = () => {
-            const userIdFromStorage = localStorage.getItem('userID');
-            if (!userIdFromStorage) {
+            // Redirect to login if userID is not present in cookies
+            if (!userIdFromCookie) {
                 navigate('/login');
             }
         };
 
-        window.addEventListener('storage', handleStorageChange);
+        // Check auth status on mount
+        checkAuth();
 
+        // Add event listener for storage changes
+        window.addEventListener('storage', checkAuth);
+
+        // Clean up event listener on unmount
         return () => {
-            window.removeEventListener('storage', handleStorageChange);
+            window.removeEventListener('storage', checkAuth);
         };
     }, [navigate]);
 };
