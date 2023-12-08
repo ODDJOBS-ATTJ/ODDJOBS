@@ -8,7 +8,7 @@ export const useAuth = () => {
     useEffect(() => {
         // Function to handle changes in local storage
         const handleStorageChange = () => {
-            const userIdFromStorage = localStorage.getItem('userId');
+            const userIdFromStorage = localStorage.getItem('userID');
 
             // Redirect to login if userID is not present in local storage
             if (!userIdFromStorage) {
@@ -27,7 +27,7 @@ export const useAuth = () => {
 
     useEffect(() => {
         // Check if userID is already in local storage
-        const userIdFromStorage = localStorage.getItem('userId');
+        const userIdFromStorage = localStorage.getItem('userID');
 
         // Get userID from query parameters
         const params = new URLSearchParams(location.search);
@@ -35,7 +35,7 @@ export const useAuth = () => {
 
         // If userID is not present in local storage but is in the URL, store it
         if (!userIdFromStorage && userIdFromUrl) {
-            localStorage.setItem('userId', userIdFromUrl);
+            localStorage.setItem('userID', userIdFromUrl);
         }
 
         // If userID is not present in local storage and not in the URL, redirect to login

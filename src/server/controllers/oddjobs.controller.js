@@ -77,7 +77,7 @@ exports.login = (req, res) => {
         req.session.user = account;
         
         // Send the user ID (or any identifier you want) to the client
-        res.json({ status: 200, message: 'Login successful', userId: account.userID });
+        res.json({ status: 200, message: 'Login successful', userID: account.userID });
     });
 };
 

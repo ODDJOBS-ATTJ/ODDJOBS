@@ -2,8 +2,8 @@
 
 const logout = () => {
     try {
-        // Remove the userId from local storage
-        localStorage.removeItem('userId');
+        // Remove the userID from local storage
+        localStorage.removeItem('userID');
     } catch (error) {
         console.error('Error during logout:', error);
     }

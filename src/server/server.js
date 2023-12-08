@@ -9,13 +9,17 @@ const app = express();
 app.use(cors());
 
 // Use express session
-app.use(express.json());
-app.use(session({
-  secret: 'mugi', // Replace with a strong secret key
-  cookie: { 
-    sameSite:'strict',
-  },
-}));
+app.use(
+  session({
+    secret: 'j03m4m4t3mpk3y',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      expires: 60000,
+    },
+  })
+);
 
 const port = process.env.PORT || 3000;
 

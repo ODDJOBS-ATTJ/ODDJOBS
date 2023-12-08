@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 05:40 PM
+-- Generation Time: Dec 08, 2023 at 09:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,15 +45,16 @@ CREATE TABLE `accounts` (
   `fbLink` varchar(255) DEFAULT NULL,
   `instaLink` varchar(255) DEFAULT NULL,
   `pfp` blob DEFAULT NULL,
-  `isDeleted` tinyint(1) DEFAULT NULL
+  `isDeleted` tinyint(1) DEFAULT NULL,
+  `verificationID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isVerified`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`) VALUES
-(4, '22100327@usc.edu.ph', '123', 'Beneditto Alfonso', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0);
+INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isVerified`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`, `verificationID`) VALUES
+(33, '22100327@usc.edu.ph', '123123123', 'Ditto', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, '1');
 
 -- --------------------------------------------------------
 
@@ -349,7 +350,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `action`

@@ -24,9 +24,9 @@ function Login() {
             // Check if login was successful
             if (response.data.status === 200) {
                 // Set user authentication status or token in local storage/cookies
-                // For now, let's assume that response.data.userId contains the user ID
+                // For now, let's assume that response.data.userID contains the user ID
                 // You may want to customize this based on your authentication mechanism
-                localStorage.setItem('userId', response.data.userId);
+                localStorage.setItem('userID', response.data.userID);
     
                 // Redirect to the protected route
                 navigate('/customer/services');
