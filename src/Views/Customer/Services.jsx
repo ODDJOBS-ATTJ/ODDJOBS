@@ -15,21 +15,11 @@ import misc from './IMAGE/icons/misc.png';
 
 function Services() {
     const [type, setType] = useState(0);
-    const [serviceTypes, setServiceTypes] = useState([]);
 
     const chooseType = (num) => {
         setType(num);    
     };
 
-    useEffect(() => {
-      axios.get('http://localhost:3000/serviceType/findAll')
-        .then(response => {
-          setServiceTypes(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching service types:', error);
-        });
-    }, []);
     
     // function random(){
     //     let category;

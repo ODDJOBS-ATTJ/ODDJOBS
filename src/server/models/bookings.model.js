@@ -8,7 +8,6 @@ function Booking(booking) {
   this.paymentMethod = booking.paymentMethod;
   this.orderID = booking.orderID;
   this.orderQuantity = booking.orderQuantity;
-  this.serviceTypeNum = booking.serviceTypeNum;
   this.serviceFee = booking.serviceFee;
   this.totalPrice = booking.totalPrice;
   this.status = booking.status;
@@ -27,14 +26,18 @@ Booking.create = (newBooking, result) => {
 };
 
 Booking.findById = (bookingID, result) => {
-  dbConn.query("SELECT * FROM bookings where bookingID = ?", bookingID, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-    } else {
-      result(null, res);
+  dbConn.query(
+    "SELECT * FROM bookings where bookingID = ?",
+    bookingID,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
     }
-  });
+  );
 };
 
 Booking.findAll = (result) => {
@@ -51,8 +54,18 @@ Booking.findAll = (result) => {
 
 Booking.update = (id, booking, result) => {
   dbConn.query(
-    "UPDATE bookings SET serviceID = ?, date = ?, paymentMethod = ?, orderID = ?, orderQuantity = ?, serviceTypeNum = ?, serviceFee = ?, totalPrice = ?, status = ? WHERE bookingID = ?",
-    [booking.serviceID, booking.date, booking.paymentMethod, booking.orderID, booking.orderQuantity, booking.serviceTypeNum, booking.serviceFee, booking.totalPrice, booking.status, id],
+    "UPDATE bookings SET serviceID = ?, date = ?, paymentMethod = ?, orderID = ?, orderQuantity = ?, serviceFee = ?, totalPrice = ?, status = ? WHERE bookingID = ?",
+    [
+      booking.serviceID,
+      booking.date,
+      booking.paymentMethod,
+      booking.orderID,
+      booking.orderQuantity,
+      booking.serviceFee,
+      booking.totalPrice,
+      booking.status,
+      id,
+    ],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
