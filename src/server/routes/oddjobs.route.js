@@ -9,6 +9,7 @@ router.post('/login', accountController.login); // POST login
 router.post('/findUserID', accountController.findUserID); // POST login
 router.post('/logout', accountController.logout); //LOGOUT
 router.post('/updateVerificationID', accountController.updateVerificationID);
+router.post('/checkVerificationID', accountController.checkVerificationID);
 router.post('/findUserIDbyVerificationID', accountController.findUserIDbyVerificationID);
 router.post('/removeVerificationID', accountController.removeVerificationID);
 router.get('/:id', accountController.findById); // GET id account

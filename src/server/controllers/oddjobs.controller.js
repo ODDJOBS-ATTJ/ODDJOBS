@@ -171,56 +171,77 @@ exports.logout = (req, res) => {
 };
 
 exports.updateVerificationID = (req, res) => {
-    const { userID, verificationID } = req.body;
-  
-    if (!userID || !verificationID) {
-      return res.status(400).json({ message: "userID and verificationID are required" });
-    }
-  
-    Account.updateVerificationID(userID, verificationID, (err, result) => {
-      if (err) {
-        return res.status(500).json({ message: "Internal server error" });
-      }
-  
-      res.status(200).json({ message: "VerificationID updated successfully" });
-    });
-  };
+  const { userID, verificationID } = req.body;
 
-  
-  exports.removeVerificationID = (req, res) => {
-    const { userID } = req.body;
+  if (!userID || !verificationID) {
+    return res
+      .status(400)
+      .json({ message: "userID and verificationID are required" });
+  }
 
-    if (!userID) {
-        return res.status(400).json({ message: "userID is required" });
+  Account.updateVerificationID(userID, verificationID, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
     }
 
-    Account.removeVerificationID(userID, (err, result) => {
-        if (err) {
-            return res.status(500).json({ message: "Internal server error" });
-        }
-
-        res.status(200).json({ message: "VerificationID removed successfully" });
-    });
+    res.status(200).json({ message: "VerificationID updated successfully" });
+  });
 };
 
-  exports.findUserIDbyVerificationID = (req, res) => {
-    const { verificationID } = req.body;
-  
-    if (!verificationID) {
-      return res.status(400).json({ message: "verificationID is required" });
+exports.checkVerificationID = (req, res) => {
+  const { verificationID } = req.body;
+
+  if (!verificationID) {
+    return res.status(400).json({ message: "verificationID is required" });
+  }
+
+  Account.findUserIDbyVerificationID(verificationID, (err, userID) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
     }
-  
-    Account.findUserIDbyVerificationID(verificationID, (err, userID) => {
-      if (err) {
-        return res.status(500).json({ message: "Internal server error" });
-      }
-  
-      if (!userID) {
-        return res
-          .status(404)
-          .json({ message: "User not found with the provided verificationID" });
-      }
-  
-      res.status(200).json({ userID: userID });
-    });
-  };
+
+    if (!userID) {
+      return res.status(404).json({ message: "User not found with the provided verificationID" });
+    }
+
+    res.status(200).json({ userID: userID });
+  });
+};
+
+exports.removeVerificationID = (req, res) => {
+  const { verificationID } = req.body;
+
+  if (!verificationID) {
+    return res.status(400).json({ message: "verificationID is required" });
+  }
+
+  Account.removeVerificationID(verificationID, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    res.status(200).json({ message: "VerificationID removed successfully" });
+  });
+};
+
+exports.findUserIDbyVerificationID = (req, res) => {
+  const { verificationID } = req.body;
+
+  if (!verificationID) {
+    return res.status(400).json({ message: "verificationID is required" });
+  }
+
+  Account.findUserIDbyVerificationID(verificationID, (err, userID) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    if (!userID) {
+      return res
+        .status(404)
+        .json({ message: "User not found with the provided verificationID" });
+    }
+
+    res.status(200).json({ userID: userID });
+  });
+};
