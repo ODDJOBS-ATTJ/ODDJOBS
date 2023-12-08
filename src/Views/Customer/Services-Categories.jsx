@@ -19,7 +19,7 @@ function ServicesCategories() {
                     </div>
                 </div>
                 <div className={styles['services-container-row']}>
-                    <h1>CATEGORIES</h1>
+                    <h1>C</h1>
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['categories-card']}>
