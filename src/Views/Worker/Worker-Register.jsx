@@ -32,11 +32,34 @@ function WorkerRegister() {
             return;
         }
 
-        // Add logic to handle the submission of the worker application
-        // This can include making API calls, handling file uploads, etc.
+        const formData = new FormData();
 
-        // For demonstration purposes, let's simulate a successful submission
-        setApplicationSubmitted(true);
+        Object.keys(fileNames).forEach((inputId) => {
+            const fileInput = document.getElementById(inputId);
+            const file = fileInput.files[0];
+            if (file) {
+                formData.append(inputId, file);
+            }
+        });
+
+        fetch('http://localhost:3000/file/worker', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            setApplicationSubmitted(true);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
     };
 
     const handleFileInputChange = (inputId) => (event) => {
