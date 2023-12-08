@@ -3,9 +3,10 @@ import styles from './CSS/default.module.css';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
 import { useAuth } from '../../server/useAuth.js';
-
+import logout from '../../server/logout.js';
 function SignedInHeader() {
     useAuth();
+
     return (
         <div className={styles.header}>
             <div className={styles.inner_header}>
@@ -26,8 +27,7 @@ function SignedInHeader() {
                                 <Link to="../">Switch to worker view</Link>
                                 <Link to="/customer/billings" className={styles.billings}>Billings</Link>
                                 <div className={styles.line} />
-                                <Link to="../../General/home" className={styles.signout}>Log Out</Link>
-                                {/* ../../General/home.html */}
+                                <Link onClick={logout} className={styles.signout}>Log Out</Link>
                             </div>
                         </div>
                     </li>

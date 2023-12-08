@@ -6,23 +6,40 @@ export const useAuth = () => {
     const location = useLocation();
 
     useEffect(() => {
+        // Function to handle changes in local storage
+        const handleStorageChange = () => {
+            const userIdFromStorage = localStorage.getItem('userId');
+
+            // Redirect to login if userID is not present in local storage
+            if (!userIdFromStorage) {
+                navigate('/login');
+            }
+        };
+
+        // Add event listener for storage changes
+        window.addEventListener('storage', handleStorageChange);
+
+        // Cleanup function to remove the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, [navigate]);
+
+    useEffect(() => {
         // Check if userID is already in local storage
         const userIdFromStorage = localStorage.getItem('userId');
-
-        // If userID is present in local storage, do nothing
-        if (userIdFromStorage) {
-            return;
-        }
 
         // Get userID from query parameters
         const params = new URLSearchParams(location.search);
         const userIdFromUrl = params.get('userID');
 
-        // If userID is present in the URL, store it in local storage
-        if (userIdFromUrl) {
+        // If userID is not present in local storage but is in the URL, store it
+        if (!userIdFromStorage && userIdFromUrl) {
             localStorage.setItem('userId', userIdFromUrl);
-        } else {
-            // Redirect to login if userID is not present (user not authenticated)
+        }
+
+        // If userID is not present in local storage and not in the URL, redirect to login
+        if (!userIdFromStorage && !userIdFromUrl) {
             navigate('/login');
         }
     }, [location, navigate]);
