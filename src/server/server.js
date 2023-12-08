@@ -16,6 +16,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       secure: false,
+      sameSite: 'strict',  // Corrected to 'strict'
       expires: 60000,
     },
   })

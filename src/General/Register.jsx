@@ -110,7 +110,6 @@ function Register() {
       .then((response) => {
         console.log(response.data);
         console.log('Request sent successfully');
-        setEmailSent(true);
       })
       .catch((error) => {
         console.error('Error sending request:', error);
