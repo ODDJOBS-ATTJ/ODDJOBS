@@ -3,6 +3,28 @@
 
   /** For the Accounts */
 
+<<<<<<< HEAD
+function Account(account) {
+    (this.email           = account.email),
+    (this.password        = account.password),
+    (this.firstName       = account.firstName),
+    (this.lastName        = account.lastName),
+    (this.phoneNumber     = account.phoneNumber),
+    (this.birthday        = account.birthday),
+    (this.region          = account.region),
+    (this.city            = account.city),
+    (this.barangay        = account.barangay),
+    (this.zipCode         = account.zipCode),
+    (this.fbLink          = account.fbLink),
+    (this.instaLink       = account.instaLink),
+    (this.pfp             = account.pfp);
+    (this.isWorker        = false),
+    (this.isAdmin         = false),
+    (this.isDeleted       = false),
+    (this.isVerified      = false); // Added isVerified field
+    (this.verificationID  = account.verrificationID);
+}
+=======
   function Account(account) {
     (this.email = account.email),
       (this.password = account.password),
@@ -23,6 +45,7 @@
       (this.isVerified = false); // Added isVerified field
       (this.verificationID = account.verrificationID);
   }
+>>>>>>> 7b09aeb3ffbe5ad7844ab4ee9f23df686bcc7984
 
   Account.create = (newAccount, result) => {
     dbConn.query("INSERT INTO accounts set ?", newAccount, (err, res) => {

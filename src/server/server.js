@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const accountRoutes = require('../server/routes/oddjobs.route.js');
+const workerRoutes = require('../server/routes/workers.route.js');
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/accounts', accountRoutes);
+app.use('/workers', workerRoutes);
 
 app.listen(port, () => {
   console.log(`Server port is ${port}`);
