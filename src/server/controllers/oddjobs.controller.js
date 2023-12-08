@@ -169,3 +169,22 @@ exports.logout = (req, res) => {
     res.json({ status: 200, message: "Logout successful" });
   });
 };
+
+exports.updateVerificationID = (req, res) => {
+    const { userID, verificationID } = req.body;
+  
+    if (!userID || !verificationID) {
+      return res.status(400).json({ message: "userID and verificationID are required" });
+    }
+  
+    Account.updateVerificationID(userID, verificationID, (err, result) => {
+      if (err) {
+        return res.status(500).json({ message: "Internal server error" });
+      }
+  
+      res.status(200).json({ message: "VerificationID updated successfully" });
+    });
+  };
+
+  
+  

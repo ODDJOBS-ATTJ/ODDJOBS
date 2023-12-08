@@ -21,7 +21,8 @@ function EmailSentPopup({ onClose }) {
   return (
     <div className={`modal-box ${modalVisible ? 'show' : ''}`} onClick={closeModal}>
       <div className="text">
-        <p> An email has been sent! please check the link in your inbox shortly!</p>
+        <p> An email has been sent! Please check your inbox to complete the registration process
+          and verify your account.</p>
       </div>
       <div className="modal-buttons">
         <div className="modal-button cancel-button" onClick={closeModal}>
@@ -33,3 +34,4 @@ function EmailSentPopup({ onClose }) {
 }
 
 export default EmailSentPopup;
+  

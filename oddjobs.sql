@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 09:07 AM
+-- Generation Time: Dec 08, 2023 at 02:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -54,7 +54,9 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`userID`, `email`, `password`, `firstName`, `lastName`, `phoneNumber`, `birthday`, `region`, `city`, `barangay`, `zipCode`, `isVerified`, `isWorker`, `isAdmin`, `fbLink`, `instaLink`, `pfp`, `isDeleted`, `verificationID`) VALUES
-(33, '22100327@usc.edu.ph', '123123123', 'Ditto', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, '1');
+(33, '22100327@usc.edu.ph', '123123123', 'Ditto', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, NULL),
+(38, 'xaviersotin@gmail.com', '12312313', 'Xavier ', 'Paul', NULL, '2311-12-31', NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, NULL, 0, NULL),
+(47, 'beneditto.tiu@cie.edu.ph', '123123123', 'Beneditto Alfonso', 'Tiu', NULL, '2005-07-31', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0, '47-d284ca45-e6d6-4ac0-b274-7b935dab52f0');
 
 -- --------------------------------------------------------
 
@@ -188,7 +190,6 @@ CREATE TABLE `service` (
   `serviceID` int(11) NOT NULL,
   `serviceName` varchar(255) DEFAULT NULL,
   `basePrice` decimal(10,0) DEFAULT NULL,
-  `serviceTypeID` int(11) DEFAULT NULL,
   `policies` blob DEFAULT NULL,
   `cover` blob DEFAULT NULL,
   `banner` blob DEFAULT NULL,
@@ -197,18 +198,9 @@ CREATE TABLE `service` (
   `overview` text DEFAULT NULL,
   `isFeatured` tinyint(1) DEFAULT NULL,
   `isVisible` tinyint(1) DEFAULT NULL,
-  `isDeleted` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `servicetypes`
---
-
-CREATE TABLE `servicetypes` (
-  `serviceTypeID` int(11) NOT NULL,
-  `serviceTypeName` varchar(255) DEFAULT NULL
+  `isDeleted` tinyint(1) DEFAULT NULL,
+  `serviceCat` enum('featured','home','event','health','mechanical','misc') NOT NULL,
+  `serviceType` enum('unspecified','duration','quantity') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -320,14 +312,7 @@ ALTER TABLE `reports`
 -- Indexes for table `service`
 --
 ALTER TABLE `service`
-  ADD PRIMARY KEY (`serviceID`),
-  ADD KEY `serviceTypeID` (`serviceTypeID`);
-
---
--- Indexes for table `servicetypes`
---
-ALTER TABLE `servicetypes`
-  ADD PRIMARY KEY (`serviceTypeID`);
+  ADD PRIMARY KEY (`serviceID`);
 
 --
 -- Indexes for table `status`
@@ -350,7 +335,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `action`
@@ -405,12 +390,6 @@ ALTER TABLE `reports`
 --
 ALTER TABLE `service`
   MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `servicetypes`
---
-ALTER TABLE `servicetypes`
-  MODIFY `serviceTypeID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -482,12 +461,6 @@ ALTER TABLE `ratings`
 ALTER TABLE `reports`
   ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `accounts` (`userID`),
   ADD CONSTRAINT `reports_ibfk_2` FOREIGN KEY (`workerID`) REFERENCES `workers` (`workerID`);
-
---
--- Constraints for table `service`
---
-ALTER TABLE `service`
-  ADD CONSTRAINT `service_ibfk_1` FOREIGN KEY (`serviceTypeID`) REFERENCES `servicetypes` (`serviceTypeID`);
 
 --
 -- Constraints for table `workers`

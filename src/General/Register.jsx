@@ -5,6 +5,7 @@ import EmailSentPopup from './Backend/Email-Sent-Popup';
 import axios from 'axios';  // Import Axios library
 import emailjs from '@emailjs/browser';
 import generalStyles from './CSS/general-styles.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function Register() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Register() {
 
     for (let i = 0; i < formFields.length - 1; i++) {
       // Skip validation for the userID field
-      if (formFields[i].type !== 'submit' && formFields[i].name !== 'userID' && formFields[i].value.trim() === '') {
+      if (formFields[i].type !== 'submit' && formFields[i].name !== 'verificationID' && formFields[i].value.trim() === '') {
         isValid = false;
         console.log(`Error: ${formFields[i].name} is required.`);
       }
@@ -31,42 +32,59 @@ function Register() {
     sendFormDataToServer();
     // Send form data to your server using Axios to get the userID
     axios.post('http://localhost:3000/accounts/findUserID', { email: formFields.email.value })
-      .then((response) => {
-        const userID = response.data.userID;
+  .then(async (response) => {
+    const userID = response.data.userID;
 
-        // Get the form control with the name 'userID'
-        const userIDInput = form.current.elements['userID'];
+    // Get the form control with the name 'verificationID'
+    const verificationIDInput = form.current.elements['verificationID'];
 
-        // Set the value of the userID input field
-        userIDInput.value = userID;
+    // Generate verificationID using userID
+    const verificationID = generateUniqueID(userID);
 
-        // Simulate email sending with setTimeout
-        setTimeout(() => {
-          // Uncomment the following block to send the actual email using emailjs
-          // emailjs
-          //   .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
-          //   .then(
-          //     (result) => {
-          //       console.log(result.text);
-          //       console.log(response.data.userID);
-          //       console.log('Email sent successfully');
-          //       setEmailSent(true);
-          //     },
-          //     (error) => {
-          //       console.log(error.text);
-          //       console.log('Email was not sent. An Error was encountered');
-          //     }
-          //   );
+    // Set the value of the verificationID input field
+    verificationIDInput.value = verificationID;
 
-          // Simulate email sent successfully
-          console.log('Simulated email sent successfully');
-          setEmailSent(true);
-        }, 2000); // Simulate a 2-second delay (you can adjust the delay time as needed)
+    console.log('Unique ID (Verification ID):', verificationID);
 
-      })
-      .catch((error) => {
-        console.error('Error finding userID:', error);
-      });
+    try {
+      // Update verificationID in the database
+      await axios.post('http://localhost:3000/accounts/updateVerificationID', { userID, verificationID });
+      console.log('Verification ID updated in the database successfully');
+      
+      // Simulate email sending with setTimeout
+      setTimeout(() => {
+        // Uncomment the following block to send the actual email using emailjs
+        // emailjs
+        //   .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
+        //   .then(
+        //     (result) => {
+        //       console.log(result.text);
+        //       console.log('Email with Form-data + uniqueID sent successfully');
+        //       setEmailSent(true);
+        //     },
+        //     (error) => {
+        //       console.log(error.text);
+        //       console.log('Email was not sent. An Error was encountered');
+        //     }
+        //   );
+
+        // Simulate email with form Data + unique ID sent successfully
+        console.log('Simulated email with Form-data + uniqueID sent successfully');
+        setEmailSent(true);
+      }, 2000); // Simulate a 2-second delay (you can adjust the delay time as needed)
+
+    } catch (error) {
+      console.error('Error updating verification ID in the database:', error);
+    }
+  })
+  .catch((error) => {
+    console.error('Error finding userID:', error);
+  });
+};
+
+  const generateUniqueID = (userID) => {
+    // Generate a random UUID (Universally Unique Identifier)
+    return `${userID}-${uuidv4()}`;
   };
 
   const sendFormDataToServer = () => {
@@ -123,7 +141,7 @@ function Register() {
                 <div className={generalStyles['input-field']}>
                   <input type="password" placeholder="Password" autoComplete="new-password" name="password" />
                 </div>
-                <input type="hidden" name="userID" value="" />
+                <input type="hidden" name="verificationID" value="" />
                 <button className={generalStyles['submit-button']} type="submit">
                   CONTINUE
                 </button>

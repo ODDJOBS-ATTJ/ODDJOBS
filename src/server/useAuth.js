@@ -1,10 +1,10 @@
+// useAuth.js
 import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 export const useAuth = () => {
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() => {
         const userIdFromCookie = Cookies.get('userID');
@@ -28,17 +28,4 @@ export const useAuth = () => {
             window.removeEventListener('storage', handleStorageChange);
         };
     }, [navigate]);
-
-    useEffect(() => {
-        const userIdFromCookie = Cookies.get('userID');
-        const userIdFromUrl = new URLSearchParams(location.search).get('userID');
-
-        if (!userIdFromCookie && userIdFromUrl) {
-            Cookies.set('userID', userIdFromUrl);
-        }
-
-        if (!userIdFromCookie && !userIdFromUrl) {
-            navigate('/login');
-        }
-    }, [location, navigate]);
 };

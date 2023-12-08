@@ -8,6 +8,7 @@ router.post('/register', accountController.create); // POST register
 router.post('/login', accountController.login); // POST login
 router.post('/findUserID', accountController.findUserID); // POST login
 router.post('/logout', accountController.logout); //LOGOUT
+router.post('/updateVerificationID', accountController.updateVerificationID);
 router.get('/:id', accountController.findById); // GET id account
 router.put('/:id', accountController.update); // PUT id account
 router.delete('/:id', accountController.delete); // DELETE id account
