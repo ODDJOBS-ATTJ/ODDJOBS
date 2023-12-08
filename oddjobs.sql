@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 03:11 PM
+-- Generation Time: Dec 08, 2023 at 04:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -134,7 +134,6 @@ CREATE TABLE `bookings` (
   `paymentMethod` varchar(255) DEFAULT NULL,
   `orderID` int(11) DEFAULT NULL,
   `orderQuantity` int(11) DEFAULT NULL,
-  `serviceTypeNum` int(11) DEFAULT NULL,
   `serviceFee` decimal(10,0) DEFAULT NULL,
   `totalPrice` decimal(10,0) DEFAULT NULL,
   `status` enum('pending','approved','ongoing','completed','cancelled') DEFAULT 'pending'
