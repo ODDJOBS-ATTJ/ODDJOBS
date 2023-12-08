@@ -12,6 +12,8 @@ router.post('/updateVerificationID', accountController.updateVerificationID);
 router.post('/checkVerificationID', accountController.checkVerificationID);
 router.post('/findUserIDbyVerificationID', accountController.findUserIDbyVerificationID);
 router.post('/removeVerificationID', accountController.removeVerificationID);
+router.post('/setAdmin', accountController.setAdmin); // POST setAdmin
+router.post('/checkWorkerStatus', accountController.checkWorkerStatus); // POST checkWorkerStatus
 router.get('/:id', accountController.findById); // GET id account
 router.put('/:id', accountController.update); // PUT id account
 router.delete('/:id', accountController.delete); // DELETE id account

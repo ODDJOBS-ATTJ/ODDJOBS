@@ -245,3 +245,37 @@ exports.findUserIDbyVerificationID = (req, res) => {
     res.status(200).json({ userID: userID });
   });
 };
+
+// Add this function
+exports.setAdmin = (req, res) => {
+  const { userID } = req.body;
+
+  if (!userID) {
+    return res.status(400).json({ message: "userID is required" });
+  }
+
+  Account.setAdmin(userID, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    res.status(200).json({ message: "Admin status set successfully" });
+  });
+};
+
+// Add this function
+exports.checkWorkerStatus = (req, res) => {
+  const { userID } = req.body;
+
+  if (!userID) {
+    return res.status(400).json({ message: "userID is required" });
+  }
+
+  Account.checkWorkerStatus(userID, (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    res.status(200).json({ isWorker: result[0].isWorker });
+  });
+};

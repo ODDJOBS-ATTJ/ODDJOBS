@@ -1,4 +1,4 @@
-    import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import generalStyles from './CSS/general-styles.module.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
@@ -7,6 +7,8 @@ import workers from "./IMAGE/workers.png";
 import admin from "./IMAGE/admin.png";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../server/useAuth';
+import axios from 'axios';
+import Cookies from 'js-cookie'; 
 
 function RoleSelect() {
     useAuth();
@@ -18,16 +20,22 @@ function RoleSelect() {
         setAdminPassword(e.target.value);
     };
 
-    const handleAdminSubmit = () => {
+    const handleAdminButtonSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    const handleAdminSubmit = async () => {
+        const userID = Cookies.get('userID'); // Get userID from cookies
         if (adminPassword === correctAdminPassword) {
-            navigate("/admin/profile");
+            try {
+                await axios.post('http://localhost:3000/accounts/setAdmin', { userID });
+                navigate("/admin/log");
+            } catch (error) {
+                console.error('Error setting admin status:', error);
+            }
         } else {
             alert("Incorrect admin password. Please try again."); // You can customize this alert message
         }
-    };
-
-    const handleAdminButtonClick = (e) => {
-        e.preventDefault();
     };
 
     const handleKeyDown = (e) => {
@@ -36,6 +44,20 @@ function RoleSelect() {
             handleAdminSubmit();
         }
     };
+
+    const checkWorkerStatus = async () => {
+        const userID = Cookies.get('userID'); // Get userID from cookies
+        try {
+            const response = await axios.post('http://localhost:3000/accounts/checkWorkerStatus', { userID });
+            if (response.data.isWorker) {
+                navigate("/worker/services");
+            } else {
+                navigate("/worker/register");
+            }
+        } catch (error) {
+            console.error('Error checking worker status:', error);
+        }
+    };  
 
     return (
         <div>
@@ -61,7 +83,7 @@ function RoleSelect() {
                         </button>
 
                         {/* WORKER */}
-                        <button className={generalStyles['decision-button']} onClick={() => navigate("/worker/register")}>
+                        <button className={generalStyles['decision-button']} onClick={checkWorkerStatus}>
                             <h1>WORKERS</h1>
                             <img src={workers} alt="Workers" />
                             <div className={generalStyles['description-decision-button']}>
@@ -70,7 +92,7 @@ function RoleSelect() {
                         </button>
 
                         {/* ADMIN */}
-                        <form onSubmit={handleAdminButtonClick}>
+                        <form onSubmit={handleAdminButtonSubmit}>
                             <button type="submit" className={generalStyles['decision-button']}>
                                 <h1>ADMINS</h1>
                                 <img src={admin} alt="Admin" />

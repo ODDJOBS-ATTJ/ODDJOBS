@@ -29,7 +29,7 @@ function Login() {
                 Cookies.set('userID', response.data.userID, { sameSite: 'strict' });
 
                 // Redirect to the protected route
-                navigate('/customer/services');
+                navigate('/role-select');
             } else {
                 // Handle login failure
                 console.error('Login failed:', response.data.message);
@@ -40,7 +40,6 @@ function Login() {
             // Handle login failure
         }
     };
-
 
     return (
         <div>

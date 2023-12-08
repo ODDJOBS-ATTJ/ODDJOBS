@@ -190,4 +190,38 @@ Account.findUserIDbyVerificationID = (verificationID, result) => {
   );
 };
 
+// Add this function
+Account.setAdmin = (userID, result) => {
+  dbConn.query(
+    "UPDATE accounts SET isAdmin = 1 WHERE userID = ?",
+    userID,
+    (err, res) => {
+      if (err) {
+        console.error("error: ", err);
+        result(err, null);
+      } else {
+        console.log("Admin status set successfully");
+        result(null, res);
+      }
+    }
+  );
+};
+
+// Add this function
+Account.checkWorkerStatus = (userID, result) => {
+  dbConn.query(
+    "SELECT isWorker FROM accounts WHERE userID = ?",
+    userID,
+    (err, res) => {
+      if (err) {
+        console.error("error: ", err);
+        result(err, null);
+      } else {
+        console.log("Worker status retrieved successfully");
+        result(null, res);
+      }
+    }
+  );
+};
+
 module.exports = Account;
