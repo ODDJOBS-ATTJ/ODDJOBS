@@ -1,73 +1,70 @@
-const Booking = require("../models/bookings.model.js");
+"use strict";
+const Booking = require("../models/bookings.model");
 
 exports.findAll = (req, res) => {
-  Booking.findAll((err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while retrieving bookings.",
-      });
-    else res.send(data);
+  Booking.findAll((err, booking) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send({ status: 200, data: booking });
+  });
+};
+
+exports.findById = (req, res) => {
+  Booking.findById(req.params.id, (err, booking) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ status: 200, data: booking });
   });
 };
 
 exports.create = (req, res) => {
   const newBooking = new Booking(req.body);
-
-  Booking.create(newBooking, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Booking.",
-      });
-    else res.send(data);
-  });
-};
-
-exports.findById = (req, res) => {
-  Booking.findById(req.params.bookingId, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found Booking with id ${req.params.bookingId}.`,
-        });
-      } else {
-        res.status(500).send({
-          message: "Error retrieving Booking with id " + req.params.bookingId,
-        });
+  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+    res
+      .status(400)
+      .send({ error: true, message: "Please provide all the required fields" });
+  } else {
+    Booking.create(newBooking, (err, booking) => {
+      if (err) {
+        res.send(err);
       }
-    } else res.send(data);
-  });
+      res.json({
+        error: false,
+        status: 200,
+        message: "Booking submitted",
+        data: booking,
+      });
+    });
+  }
 };
 
 exports.update = (req, res) => {
-  const booking = new Booking(req.body);
-
-  Booking.update(req.params.bookingId, booking, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found Booking with id ${req.params.bookingId}.`,
-        });
-      } else {
-        res.status(500).send({
-            message: "Error updating Booking with id " + req.params.bookingId,
+  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+    res
+      .status(400)
+      .send({ error: true, message: "Please provide all the required field" });
+  } else {
+    Booking.update(req.params.id, new Booking(req.body), (err, booking) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json({
+                error: false,
+                status: 200,
+                message: "Booking updated accordingly",
+                data: booking,
+              });
+            });
+          }
+        };
+        
+        exports.delete = (req, res) => {
+          Booking.delete(req.params.id, (err, booking) => {
+            if (err) {
+              res.send(err);
+            }
+            res.json({ error: false, message: "Booking deleted!", status: 200 });
           });
-        }
-      } else res.send(data);
-    });
-  };
-  
-exports.delete = (req, res) => {
-Booking.delete(req.params.bookingId, (err, data) => {
-    if (err) {
-    if (err.kind === "not_found") {
-        res.status(404).send({
-        message: `Not found Booking with id ${req.params.bookingId}.`,
-        });
-    } else {
-        res.status(500).send({
-        message: "Could not delete Booking with id " + req.params.bookingId,
-        });
-    }
-    } else res.send({ message: `Booking was deleted successfully!` });
-});
-};
+        };
