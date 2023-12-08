@@ -11,7 +11,58 @@ function Register() {
   const form = useRef();
   const [emailSent, setEmailSent] = useState(false);
 
-  // const sendEmail = (e) => {
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    const formFields = form.current.elements;
+    let isValid = true;
+
+    for (let i = 0; i < formFields.length - 1; i++) {
+      // Skip validation for the userID field
+      if (formFields[i].type !== 'submit' && formFields[i].name !== 'userID' && formFields[i].value.trim() === '') {
+        isValid = false;
+        console.log(`Error: ${formFields[i].name} is required.`);
+      }
+    }
+
+    if (!isValid) {
+      return;
+    }
+    sendFormDataToServer();
+    // Send form data to your server using Axios to get the userID
+    axios.post('http://localhost:3000/accounts/findUserID', { email: formFields.email.value })
+      .then((response) => {
+        const userID = response.data.userID;
+
+        // Get the form control with the name 'userID'
+        const userIDInput = form.current.elements['userID'];
+
+        // Set the value of the userID input field
+        userIDInput.value = userID;
+        
+        // Send form data to emailjs
+        emailjs
+          .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
+          .then(
+            (result) => {
+              console.log(result.text);
+              console.log(response.data.userID);
+              console.log('Email sent successfully');
+              setEmailSent(true);
+            },
+            (error) => {
+              console.log(error.text);
+              console.log('Email was not sent. An Error was encountered');
+            }
+          );
+      })
+      .catch((error) => {
+        console.error('Error finding userID:', error);
+      });
+  };
+
+
+  // const mockSendEmail = (e) => {
   //   e.preventDefault();
 
   //   const formFields = form.current.elements;
@@ -27,48 +78,22 @@ function Register() {
   //   if (!isValid) {
   //     return;
   //   }
+  //   sendFormDataToServer();
+  //   console.log('Formdata sent to database');
 
-  //   // Send form data to emailjs
-  //   emailjs
-  //     .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //         console.log('email sent successfully');
-  //         // Continue with sending form data to your server using Axios
-  //         sendFormDataToServer();
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //         console.log('Email was not sent. An Error was encountered');
-  //       }
-  //     );
-  //  };
+  //   axios.post('http://localhost:3000/accounts/findUserID', { email: formFields.email.value })
+  //     .then((response) => {
+  //       const userID = response.data.userID;
+  //       // Include userID in the form data
+  //       formFields.userID = userID;
 
-  const mockSendEmail = (e) => {
-    e.preventDefault();
-
-    const formFields = form.current.elements;
-    let isValid = true;
-
-    for (let i = 0; i < formFields.length - 1; i++) {
-      if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
-        isValid = false;
-        console.log(`Error: ${formFields[i].name} is required.`);
-      }
-    }
-
-    if (!isValid) {
-      return;
-    }
-
-    // Simulate sending an email
-    setTimeout(() => {
-      console.log('Email sent successfully');
-      setEmailSent(true);
-      sendFormDataToServer();
-    }, 500); // Simulate delay
-  };
+  //       // Simulate sending an email
+  //       setTimeout(() => {
+  //         console.log(response.data.userID);
+  //         console.log('Email sent successfully');
+  //         setEmailSent(true);
+  //       }, 500); // Simulate delay
+  //     })}
 
 
   const sendFormDataToServer = () => {
@@ -76,7 +101,7 @@ function Register() {
     const formData = new FormData(form.current);
 
     let jsonObject = {};
-    for (const [key,value] of formData.entries()) {
+    for (const [key, value] of formData.entries()) {
       jsonObject[key] = value;
     }
 
@@ -108,7 +133,7 @@ function Register() {
           {emailSent ? (
             <EmailSentPopup onClose={handleCloseModal} />
           ) : (
-            <form ref={form} onSubmit={mockSendEmail}>
+            <form ref={form} onSubmit={sendEmail}>
               <h1>SIGN UP</h1>
               <div className={generalStyles.content}>
                 <div className={generalStyles['input-field']}>
@@ -126,6 +151,7 @@ function Register() {
                 <div className={generalStyles['input-field']}>
                   <input type="password" placeholder="Password" autoComplete="new-password" name="password" />
                 </div>
+                <input type="hidden" name="userID" value="" />
                 <button className={generalStyles['submit-button']} type="submit">
                   CONTINUE
                 </button>

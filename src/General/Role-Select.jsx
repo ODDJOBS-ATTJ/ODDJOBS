@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+    import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import generalStyles from './CSS/general-styles.module.css';
 import SignedOutHeader from '../General/Signed-Out-Header';
@@ -6,8 +6,10 @@ import customer from "./IMAGE/customer.png";
 import workers from "./IMAGE/workers.png";
 import admin from "./IMAGE/admin.png";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../server/useAuth';
 
 function RoleSelect() {
+    useAuth();
     const navigate = useNavigate();
     const [adminPassword, setAdminPassword] = useState("");
     const correctAdminPassword = "we-go-econ-mugi"; // Replace with your actual admin password
