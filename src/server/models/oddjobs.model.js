@@ -21,6 +21,7 @@ function Account(account) {
     (this.isAdmin = false),
     (this.isDeleted = false),
     (this.isVerified = false); // Added isVerified field
+    (this.verificationID = account.verrificationID);
 }
 
 Account.create = (newAccount, result) => {
@@ -64,7 +65,7 @@ Account.findAll = (result) => {
 
 Account.update = (id, account, result) => {
   dbConn.query(
-    "UPDATE accounts SET  email = ?, password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ? WHERE userID = ?",
+    "UPDATE accounts SET  email = ?, password = ?, firstName = ?, lastName = ?, phoneNumber = ?, birthday = ?, region = ?, city = ?, barangay = ?, zipCode = ?, isWorker = ?, isAdmin = ?, fbLink = ?, instaLink = ?, pfp = ?, isDeleted = ?, isVerified = ?, verificationID = ?, WHERE userID = ?",
     [
       account.email,
       account.password,
@@ -83,6 +84,7 @@ Account.update = (id, account, result) => {
       account.pfp,
       false,
       false,
+      account.verrificationID,
       account.id,
     ],
     (err, res) => {
