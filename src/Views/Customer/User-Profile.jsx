@@ -5,8 +5,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
+import { useAuth } from '../../server/useAuth.js';
 
 function UserProfile() {
+    useAuth();
     return (
         <div>
             <SignedInHeader />

@@ -2,8 +2,10 @@ import React from 'react';
 import styles from './CSS/default.module.css';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
+import { useAuth } from '../../server/useAuth.js';
 
 function SignedInHeader() {
+    useAuth();
     return (
         <div className={styles.header}>
             <div className={styles.inner_header}>

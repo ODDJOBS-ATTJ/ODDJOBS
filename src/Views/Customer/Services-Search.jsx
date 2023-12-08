@@ -4,9 +4,11 @@ import styles from './CSS/services.module.css';
 import SignedInHeader from './Signed-In-Header';
 import magnifyingGlass from './IMAGE/Icons/magnifying-glass.png';
 import samplePhoto from './IMAGE/icons/samplePhoto.png';
+import { useAuth } from '../../server/useAuth.js';
 
 function ServicesSearch() {
     const navigate = useNavigate();
+    useAuth();
     return (
         <div>
             <SignedInHeader />

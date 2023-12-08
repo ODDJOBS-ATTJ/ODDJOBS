@@ -105,22 +105,21 @@ exports.delete = (req, res) => {
 
 exports.findUserID = (req, res) => {
     const { email } = req.body;
-  
+
     if (!email) {
-      return res.status(400).json({ message: 'Email is required' });
+        return res.status(400).json({ message: 'Email is required' });
     }
-  
+
     // Call the model function to find userID by email
     Account.findUserIDByEmail(email, (err, userID) => {
-      if (err) {
+        if (err) {
         return res.status(500).json({ message: 'Internal server error' });
-      }
-  
-      if (!userID) {
+        }
+
+        if (!userID) {
         return res.status(404).json({ message: 'User not found with the provided email' });
-      }
-  
-      res.status(200).json({ userID: userID });
+        }
+
+        res.status(200).json({ userID: userID });
     });
-  };
-  
+};  
