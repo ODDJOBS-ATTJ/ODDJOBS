@@ -14,7 +14,7 @@ function RoleSelect() {
     useAuth();
     const navigate = useNavigate();
     const [adminPassword, setAdminPassword] = useState("");
-    const correctAdminPassword = "we-go-econ-mugi"; // Replace with your actual admin password
+    const correctAdminPassword = "admin1234"; // Replace with your actual admin password
 
     const handleAdminPasswordChange = (e) => {
         setAdminPassword(e.target.value);
