@@ -5,8 +5,10 @@ import Styles from './CSS/services.module.css'
 import './CSS/services-details.css'
 import SignedInHeader from "./Signed-In-Header"
 import Sample from './Image/icons/samplePhoto.png'
+import { useAuth } from '../../server/useAuth.js';
 
 function ServicesDetails() {
+    useAuth();
     return (
         <>
             <SignedInHeader />
