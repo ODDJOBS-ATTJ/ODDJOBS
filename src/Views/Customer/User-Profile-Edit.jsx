@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './CSS/user-profile-edit.module.css';
+import { useNavigate } from 'react-router-dom';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
@@ -7,10 +8,24 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 function UserProfileEdit() {
+    const navigate = useNavigate();
     const [region, setRegion] = useState("");
     const [city, setCity] = useState("");
     const [barangay, setBarangay] = useState("");
     const [fileName, setFileName] = useState("");
+    const userID = Cookies.get('userID');
+    const [user, setUser] = useState([{}]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/accounts/${userID}`)
+            .then(response => {
+                setUser(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching user data: ${error}`);
+            });
+    }, []);
+    console.log(user);
 
     const barangays = {
         "Visayas": {
@@ -54,6 +69,7 @@ function UserProfileEdit() {
         try {
             const response = await axios.put(`http://localhost:3000/accounts/updateProfile/${userID}`, data);
             console.log(response.data);
+            navigate('/customer/profile');
         } catch (error) {
             console.error(error);
         }
@@ -90,11 +106,11 @@ function UserProfileEdit() {
                             <div className={styles['user-info-box']}>
                                 <div className={styles['input-field-edit']}>
                                     <h3>Edit your account details:</h3>
-                                    <input type="url" name="fbLink" placeholder="Facebook Link" autoComplete="nope" />
-                                    <input type="url" name="instaLink" placeholder="Instagram link" autoComplete="nope" />
-                                    <input type="email" name="email" placeholder="Email" autoComplete="nope" />
-                                    <input id="phone" type="tel" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" />
-                                    <input type="date" name="date" autoComplete="nope" />
+                                    <input type="url" name="fbLink" placeholder="Facebook Link" autoComplete="nope" value={user[0].fbLink}/>
+                                    <input type="url" name="instaLink" placeholder="Instagram link" autoComplete="nope" value={user[0].instaLink}/>
+                                    <input type="email" name="email" placeholder="Email" autoComplete="nope" value={user[0].email}/>
+                                    <input id="phone" type="tel" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" value={user[0].phoneNumber}/>
+                                    <input type="date" name="date" autoComplete="nope"/>
                                     <h4>Current Address:</h4>
                                     <div className={styles['input-field-select']}>
                                         <select id="Region" value={region} onChange={handleRegionChange}>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './CSS/default.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
 import { useAuth } from '../../server/useAuth.js';
 import logout from '../../server/logout.js';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 function SignedInHeader() {
     const navigate = useNavigate();
@@ -13,6 +14,18 @@ function SignedInHeader() {
     useAuth();
 
     const userID = Cookies.get('userID');
+    const [user, setUser] = useState([{}]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/accounts/${userID}`)
+            .then(response => {
+                setUser(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching user data: ${error}`);
+            });
+    }, []);
+    console.log(user);
     
 
     const handleLogout = async () => {
@@ -41,7 +54,7 @@ function SignedInHeader() {
                 <ul className={styles.nav}>
                     <li><Link to="/customer/services">SERVICES</Link></li>
                     <li><Link to="/customer/bookings">BOOKINGS</Link></li>
-                    <li className={styles['user-greeting']}><Link to="/customer/profile">Hi, Juan</Link></li>
+                    <li className={styles['user-greeting']}><Link to="/customer/profile">Hi, {user[0].firstName}</Link></li>
                     <li className={styles.pfp} tabIndex={0}>
                         <div className={styles.dropdown}>
                             <img src={pfp} alt="User Profile" className={styles.dropbtn} />

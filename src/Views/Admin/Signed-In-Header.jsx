@@ -2,8 +2,24 @@ import React from 'react';
 import './CSS/default.css'
 import { Link } from 'react-router-dom';
 import Ditto from './Icons/ditto.jpg';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 function SignedInHeader(){
+  const userID = Cookies.get('userID');
+    const [user, setUser] = useState([{}]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/accounts/${userID}`)
+            .then(response => {
+                setUser(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching user data: ${error}`);
+            });
+    }, []);
+    console.log(user);
+
   return (
   <div className="header">
     <div className="inner_header">

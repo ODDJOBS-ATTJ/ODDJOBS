@@ -73,7 +73,7 @@ function Services() {
             </div> 
         )
     }
-
+    console.log();
     function renderFeaturedFromAll() {
         return allserv.map((service, index) => {
             if (service.isFeatured === 1) {
