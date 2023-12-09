@@ -16,7 +16,6 @@ const billingRoutes     = require('../server/routes/billing.route.js');
 const ratingsRoute      = require('../server/routes/ratings.route.js');
 const reportsRoute      = require('../server/routes/report.route.js');
 const statusRoute       = require('../server/routes/status.route.js');
-const fileUploadRoute   = require('../server/routes/fileUpload.route.js');
 
 
 const app = express();
@@ -47,16 +46,20 @@ app.use('/service',     serviceRoutes);
 app.use('/bookings',    bookingRoutes);
 app.use('/adminlog',    adminlogRoutes);
 app.use('/action',      actionRoutes);
-app.use('/application', applicationRoutes);
+app.use('/application', applicationRoutes);     
 app.use('/applied',     appliedjobsRoutes);
 app.use('/order',       orderRoutes);
 app.use('/billing',     billingRoutes);
 app.use('ratings',      ratingsRoute);
 app.use('/reports',     reportsRoute);
 app.use('/status',      statusRoute);
-app.use('/file',        fileUploadRoute);
 app.use('/uploads', express.static('../../General/IMAGE/uploads'));
 
 app.listen(port, () => {
   console.log(`Server port is ${port}`);
 });
+
+const multer = require('multer');
+const upload = multer({ dest: '../../General/IMAGE/uploads' });
+
+app.use(upload.array());

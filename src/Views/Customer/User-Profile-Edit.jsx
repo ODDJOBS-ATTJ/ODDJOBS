@@ -10,6 +10,7 @@ function UserProfileEdit() {
     const [region, setRegion] = useState("");
     const [city, setCity] = useState("");
     const [barangay, setBarangay] = useState("");
+    const [fileName, setFileName] = useState("");
 
     const barangays = {
         "Visayas": {
@@ -63,14 +64,20 @@ function UserProfileEdit() {
             <SignedInHeader />
             <form onSubmit={handleSubmit}>
                 <div className={styles['container']}>
-                    {/* USER CARD */}
                     <div className={styles['user-card']}>
                         <div className={styles['profile-pic']}>
                             <div className={styles['centerer']}>
                                 <label htmlFor="fileInput1" className={styles['styled-input']} id={styles['label1']}>
-                                    Upload Photo
+                                    {fileName ? fileName : "Upload Photo"}
                                 </label>
-                                <input type="file" id="fileInput1" className={styles['file-input']} style={{ display: 'none' }} />
+                                <input
+                                    type="file"
+                                    id="fileInput1"
+                                    name="fileInput1"
+                                    className={styles['file-input']}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => setFileName(e.target.files[0].name)}
+                                />
                                 <img src={pfp} alt="User Profile" />
                             </div>
                         </div>
@@ -83,11 +90,11 @@ function UserProfileEdit() {
                             <div className={styles['user-info-box']}>
                                 <div className={styles['input-field-edit']}>
                                     <h3>Edit your account details:</h3>
-                                    <input type="url" placeholder="Facebook Link" autoComplete="nope" />
-                                    <input type="url" placeholder="Instagram link" autoComplete="nope" />
-                                    <input type="email" placeholder="Email" autoComplete="nope" />
-                                    <input id="phone" type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" />
-                                    <input type="date" autoComplete="nope" />
+                                    <input type="url" name="fbLink" placeholder="Facebook Link" autoComplete="nope" />
+                                    <input type="url" name="instaLink" placeholder="Instagram link" autoComplete="nope" />
+                                    <input type="email" name="email" placeholder="Email" autoComplete="nope" />
+                                    <input id="phone" type="tel" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone Number" autoComplete="nope" />
+                                    <input type="date" name="date" autoComplete="nope" />
                                     <h4>Current Address:</h4>
                                     <div className={styles['input-field-select']}>
                                         <select id="Region" value={region} onChange={handleRegionChange}>
@@ -110,7 +117,7 @@ function UserProfileEdit() {
                                                 <option key={barangay} value={barangay}>{barangay}</option>
                                             ))}
                                         </select>
-                                        <input type="tel" pattern="\d{4}" placeholder="Zip Code" maxLength={4} autoComplete="nope" className={styles['zipcode']} />
+                                        <input type="tel" pattern="\d{4}" name="zipcode" placeholder="Zip Code" maxLength={4} autoComplete="nope" className={styles['zipcode']} />
                                     </div>
                                 </div>
                             </div>
