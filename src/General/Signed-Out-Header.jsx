@@ -6,7 +6,7 @@ function SignedOutHeader() {
     return (
         <div className="header">
             <div className="inner_header">
-                <Link to="./General/home/home.html" className="logo_container">
+                <Link to="/" className="logo_container">
                     <div className="logo_box">
                         <h1>
                             ODD<span>JOBS</span>

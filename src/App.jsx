@@ -9,10 +9,13 @@ import CustomerRoutes from './Views/Routes/customer';
 import WorkerRoutes from './Views/Routes/worker';
 import AdminRoutes from './Views/Routes/admin';
 import Verification from './General/Verification';
+import Home from './General/Home';
 
 function App() {
   return (
     <Routes>
+      
+      <Route path='/' element={<Home />}/>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path='/verification' element={<Verification />} />
@@ -22,6 +25,7 @@ function App() {
       <Route path="/customer/*" element={<CustomerRoutes />} />
       <Route path="/worker/*" element={<WorkerRoutes />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
+
     </Routes>
   );
 }
