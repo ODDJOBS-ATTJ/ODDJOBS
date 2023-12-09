@@ -1,7 +1,9 @@
-import React from 'react';
-import './CSS/default.css'
-import { Link } from 'react-router-dom';
-import Ditto from './Icons/ditto.jpg';
+import React, { useState, useEffect } from 'react';
+import styles from './CSS/default.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import pfp from './Icons/ditto.jpg';
+import { useAuth } from '../../server/useAuth.js';
+import logout from '../../server/logout.js';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 

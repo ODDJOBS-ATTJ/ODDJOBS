@@ -21,7 +21,7 @@ function WorkerApplicationPopup({ onClose }) {
 
   const handleDoneClick = () => {
     closeModal();
-    navigate('../../customer/User-Profile-Edit');  // Use navigate for redirection
+    navigate('/customer/profile/edit');  // Use navigate for redirection
   };
 
   return (

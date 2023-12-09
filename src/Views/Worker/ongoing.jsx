@@ -15,10 +15,10 @@ function Ongoing() {
     return (
         <div>
             <SignedInHeader />
-            <div className="container">
             <Link className='back-button' onClick={() => navigate(-1)}>
                 &larr; Back
             </Link>
+            <div className="container">
                 <div className="booking-details-container">
                     <h1 className="completed">SERVICE IN PROGRESS</h1>
                     <div className="status-container">

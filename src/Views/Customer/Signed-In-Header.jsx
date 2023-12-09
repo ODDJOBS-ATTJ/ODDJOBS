@@ -60,7 +60,7 @@ function SignedInHeader() {
                             <img src={pfp} alt="User Profile" className={styles.dropbtn} />
                             <div className={styles['dropdown-content']}>
                                 <Link to="/customer/profile">User Profile</Link>
-                                <Link to="../">Switch to worker view</Link>
+                                <Link to="/role-select">Switch to worker view</Link>
                                 <Link to="/customer/billings" className={styles.billings}>Billings</Link>
                                 <div className={styles.line} />
                                 <Link onClick={handleLogout} className={styles.signout}>Log Out</Link>
