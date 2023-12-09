@@ -4,12 +4,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import pfp from './IMAGE/juan.png';
 import { useAuth } from '../../server/useAuth.js';
 import logout from '../../server/logout.js';
+import Cookies from 'js-cookie';
 
 function SignedInHeader() {
     const navigate = useNavigate();
     const [authenticated, setAuthenticated] = useState(true); // Initial state based on authentication status
-
+    
     useAuth();
+
+    const userID = Cookies.get('userID');
+    
 
     const handleLogout = async () => {
         await logout(); // Call the logout function

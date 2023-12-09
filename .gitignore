@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/Views/Admin/serviceCreate.jsx
+src/Views/Routes/customer.jsx
