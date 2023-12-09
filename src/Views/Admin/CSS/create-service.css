@@ -23,7 +23,8 @@ a.back-button {
   font-weight: 600;
 }
 
-a.create-button {
+.create-button {
+  border:none;
   display: absolute;
   top: 10px;
   padding: 12px 40px;
