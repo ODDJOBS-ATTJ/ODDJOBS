@@ -11,6 +11,7 @@ function WorkerRegister() {
     const navigate = useNavigate();
     const form = useRef();
     const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+    const [userID, setUserID] = useState(Cookies.get('userID')); // Add this line
     const [fileNames, setFileNames] = useState({
         fileInput1: '',
         fileInput2: '',

@@ -4,19 +4,18 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const accountRoutes     = require('../server/routes/oddjobs.route.js');
-const workerRoutes      = require('../server/routes/workers.route.js');
+const workerRoutes      = require('../server/routes/worker.route.js');
 const serviceRoutes     = require('../server/routes/service.route.js');
 const bookingRoutes     = require('../server/routes/bookings.route.js');
 const adminlogRoutes    = require('../server/routes/adminlog.route.js');
 const actionRoutes      = require('../server/routes/action.route.js');
-const applicationRoutes = require('../server/routes/application.route.js');
+const applicationRoutes = require('../server/routes/application.route.js');     
 const appliedjobsRoutes = require('../server/routes/appliedjobs.route.js');
 const orderRoutes       = require('../server/routes/order.route.js');
 const billingRoutes     = require('../server/routes/billing.route.js');
 const ratingsRoute      = require('../server/routes/ratings.route.js');
 const reportsRoute      = require('../server/routes/report.route.js');
 const statusRoute       = require('../server/routes/status.route.js');
-
 
 const app = express();
 app.use(cors());
@@ -58,8 +57,3 @@ app.use('/uploads', express.static('../../General/IMAGE/uploads'));
 app.listen(port, () => {
   console.log(`Server port is ${port}`);
 });
-
-const multer = require('multer');
-const upload = multer({ dest: '../../General/IMAGE/uploads' });
-
-app.use(upload.array());
