@@ -20,6 +20,21 @@ exports.create = (req, res) => {
     });
 };
 
+exports.registerWorker = (req, res) => {
+    const newWorker = {
+        ...req.body,
+        document1: req.files.fileInput1[0].path,
+        document2: req.files.fileInput2[0].path,
+        document3: req.files.fileInput3[0].path,
+    };
+    Worker.create(newWorker, (err, worker) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json({ error: false, message: "Worker added successfully!", data: worker });
+    });
+};
+
 exports.findAll = (req, res) => {
     Worker.findAll((err, worker) => {
         if (err) {
@@ -59,3 +74,4 @@ exports.delete = (req, res) => {
         res.json({ error: false, message: 'Worker successfully deleted' });
     });
 };
+

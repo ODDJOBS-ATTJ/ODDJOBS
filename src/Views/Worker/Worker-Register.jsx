@@ -4,6 +4,8 @@ import SignedOutHeader from '../../General/Signed-Out-Header';
 import './CSS/worker-register.css';
 import WorkerApplicationPopup from './Backend/Worker-Application-Popup';
 import generalStyles from '../../General/CSS/general-styles.module.css';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 function WorkerRegister() {
     const navigate = useNavigate();
@@ -15,11 +17,14 @@ function WorkerRegister() {
         fileInput3: '',
     });
 
-    const submitApplication = (e) => {
+    const submitApplication = async (e) => {
         e.preventDefault();
+
+        const userID = Cookies.get('userID');
 
         const formFields = form.current.elements;
         let isValid = true;
+
 
         for (let i = 0; i < formFields.length - 1; i++) {
             if (formFields[i].type !== 'submit' && formFields[i].value.trim() === '') {
@@ -28,38 +33,25 @@ function WorkerRegister() {
             }
         }
 
+
         if (!isValid) {
             return;
         }
 
-        const formData = new FormData();
+        // Add logic to handle the submission of the worker application
+        // This can include making API calls, handling file uploads, etc.
 
-        Object.keys(fileNames).forEach((inputId) => {
-            const fileInput = document.getElementById(inputId);
-            const file = fileInput.files[0];
-            if (file) {
-                formData.append(inputId, file);
-            }
-        });
+        // For demonstration purposes, let's simulate a successful submission
 
-        fetch('http://localhost:3000/file/worker', {
-            method: 'POST',
-            body: formData,
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-            setApplicationSubmitted(true);
-        })
-        .catch((error) => {
+        const formData = new FormData(form.current);
+        try {
+            const response = await axios.post('http://localhost:3000/workers/registerWorker', formData);
+            console.log(response.data);
+        } catch (error) {
             console.error(error);
-        });
+        }
 
+        setApplicationSubmitted(true);
     };
 
     const handleFileInputChange = (inputId) => (event) => {
@@ -83,6 +75,7 @@ function WorkerRegister() {
                         <WorkerApplicationPopup onClose={handleCloseModal} />
                     ) : (
                         <form action="/upload" method="post" encType="multipart/form-data" ref={form} onSubmit={submitApplication}>
+                            <input type="hidden" name="userID" value={userID} />
                             <h1>SUBMIT REQUIRED DOCUMENTS</h1>
                             <div className="content">
                                 {Object.keys(fileNames).map((inputId, index) => (
