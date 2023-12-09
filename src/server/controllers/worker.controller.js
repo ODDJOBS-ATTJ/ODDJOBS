@@ -74,4 +74,3 @@ exports.delete = (req, res) => {
         res.json({ error: false, message: 'Worker successfully deleted' });
     });
 };
-
