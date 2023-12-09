@@ -74,22 +74,4 @@ Worker.delete = (id, result) => {
     });
 };
 
-Worker.updateDocuments = (userID, files, result) => {
-    const documentPaths = files.map(file => file.path);
-
-    dbConn.query(
-        "INSERT INTO workers (userID, document1, document2, document3) VALUES (?, ?, ?, ?)",
-        [userID, ...documentPaths],
-        (err, res) => {
-            if (err) {
-                console.log("error: ", err);
-                result(err, null);
-            } else {
-                console.log("Inserted worker: ", res);
-                result(null, res);
-            }
-        }
-    );
-};
-
 module.exports = Worker;
