@@ -3,7 +3,7 @@ import { ReactDOM } from "react"
 import { Link } from "react-router-dom"
 import SignedInHeader from "./Signed-In-Header"
 import Styles from './CSS/worker-profile-edit.module.css'
-import Johnny from './Image/Johnny.jpg'
+import Johnny from './Image/male.png'
 import RandomPerson from './Image/randomPerson.png'
 import Suitcase from './Image/suitcase.png'
 

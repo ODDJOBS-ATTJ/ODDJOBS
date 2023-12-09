@@ -59,6 +59,7 @@ a.back-button {
 .booking-container td {
   padding: 5px;
   align-items: center;
+  width: 50%;
 }
 
 

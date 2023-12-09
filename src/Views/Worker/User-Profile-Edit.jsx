@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CSS/user-profile-edit.module.css';
 import SignedInHeader from './Signed-In-Header';
 import { Link } from 'react-router-dom';
-import pfp from './IMAGE/johnny.jpg';
+import pfp from './IMAGE/male.png';
 
 function UserProfileEdit() {
     return (

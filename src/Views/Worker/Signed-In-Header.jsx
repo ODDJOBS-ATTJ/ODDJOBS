@@ -2,7 +2,7 @@ import React from "react"
 import { ReactDOM } from "react"
 import { Link } from "react-router-dom"
 import './CSS/default.css'
-import Johnny from './Image/Johnny.jpg'
+import Male from './Image/male.png'
 
 function SignedInHeader(){
     return(
@@ -19,7 +19,7 @@ function SignedInHeader(){
       <li className="user-greeting"><Link to="/worker/profile">Hi, Johnny</Link></li>
       <li className="pfp" tabIndex={0}>
         <div className="dropdown">
-          <img src={Johnny} alt="User Profile" className="dropbtn" />
+          <img src={Male} alt="User Profile" className="dropbtn" />
           <div className="dropdown-content">
             <Link to="/worker/profile">User Profile</Link>
             <Link to="/worker/worker-profile">Worker Profile</Link>

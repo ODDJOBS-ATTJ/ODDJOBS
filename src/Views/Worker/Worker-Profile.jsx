@@ -3,7 +3,7 @@ import { ReactDOM } from "react"
 import { Link } from "react-router-dom"
 import SignedInHeader from "./Signed-In-Header"
 import './CSS/worker-profile.css'
-import Johnny from './Image/Johnny.jpg'
+import Johnny from './Image/male.png'
 import RandomPerson from './Image/randomPerson.png'
 import Suitcase from './Image/suitcase.png'
 
@@ -12,7 +12,7 @@ function WorkerProfile(){
         <>
             <SignedInHeader/>
             <a href="#" className="back-button"> ← Back</a>
-            <Link to="/workerProfile/edit" className="edit-button">EDIT</Link>
+            <Link to="/worker/worker-profile/edit" className="back-button">EDIT</Link>
             <div className="container">
             <div className="workers-profile-container">
               <div className="card-container">

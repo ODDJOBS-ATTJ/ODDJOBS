@@ -4,7 +4,7 @@ import SignedInHeader from "./Signed-In-Header";
 import styles from './CSS/user-profile.module.css';
 import '../Customer/CSS/user-profile-fab.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Johnny from './Image/Johnny.jpg';
+import Johnny from './Image/male.png';
 
 function UserProfile() {
     return (
