@@ -58,3 +58,8 @@ app.use('/uploads', express.static('../../General/IMAGE/uploads'));
 app.listen(port, () => {
   console.log(`Server port is ${port}`);
 });
+
+const multer = require('multer');
+const upload = multer({ dest: '../../General/IMAGE/uploads' });
+
+app.use(upload.array());

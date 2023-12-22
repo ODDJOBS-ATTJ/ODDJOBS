@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import generalStyles from './CSS/general-styles.module.css';
-import SignedOutHeader from '../General/Signed-Out-Header';
+import RoleSelectHeader from '../General/Role-Select-Header';
 import customer from "./IMAGE/customer.png";
 import workers from "./IMAGE/workers.png";
 import admin from "./IMAGE/admin.png";
@@ -61,7 +61,7 @@ function RoleSelect() {
 
     return (
         <div>
-            <SignedOutHeader />
+            <RoleSelectHeader />
             <div className={generalStyles.container}>
                 <Link className={generalStyles['back-button']} onClick={() => navigate(-1)}>
                     &larr; Back

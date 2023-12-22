@@ -21,13 +21,6 @@ exports.create = (req, res) => {
 };
 
 exports.registerWorker = (req, res) => {
-
-    console.log(req.files);
-
-    console.log(req.files.fileInput1[0].originalname);
-    console.log(req.files.fileInput1[0].mimetype);
-    console.log(req.files.fileInput1[0].size);
-
     const newWorker = {
         ...req.body,
         document1: req.files.fileInput1[0].path,
