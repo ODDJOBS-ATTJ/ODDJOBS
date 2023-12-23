@@ -31,14 +31,18 @@ Service.create = (newService, result) => {
 };
 
 Service.findById = (serviceID, result) => {
-  dbConn.query("SELECT * FROM service where serviceID = ?", serviceID, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-    } else {
-      result(null, res);
+  dbConn.query(
+    "SELECT * FROM service where serviceID = ?",
+    serviceID,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        result(null, res);
+      }
     }
-  });
+  );
 };
 
 Service.findAll = (result) => {
@@ -56,7 +60,22 @@ Service.findAll = (result) => {
 Service.update = (id, service, result) => {
   dbConn.query(
     "UPDATE service SET serviceName = ?, basePrice = ?, policies = ?, cover = ?, banner = ?, shortDesc = ?, specifics = ?, overview = ?, isFeatured = ?, isVisible = ?, isDeleted = ?, serviceCat = ?, serviceType = ? WHERE serviceID = ?",
-    [service.serviceName, service.basePrice, service.policies, service.cover, service.banner, service.shortDesc, service.specifics, service.overview, service.isFeatured, service.isVisible, service.isDeleted, service.serviceCat, service.serviceType, id],
+    [
+      service.serviceName,
+      service.basePrice,
+      service.policies,
+      service.cover,
+      service.banner,
+      service.shortDesc,
+      service.specifics,
+      service.overview,
+      service.isFeatured,
+      service.isVisible,
+      service.isDeleted,
+      service.serviceCat,
+      service.serviceType,
+      id,
+    ],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -82,7 +101,23 @@ Service.delete = (id, result) => {
 };
 
 Service.findByCategory = (category, result) => {
-  dbConn.query("SELECT * FROM service WHERE serviceCat = ?", category, (err, res) => {
+  dbConn.query(
+    "SELECT * FROM service WHERE serviceCat = ?",
+    category,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+      } else {
+        console.log("Services: ", res);
+        result(null, res);
+      }
+    }
+  );
+};
+
+Service.findByFeatured = (result) => {
+  dbConn.query("SELECT * FROM service WHERE isFeatured = 1", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -93,13 +128,14 @@ Service.findByCategory = (category, result) => {
   });
 };
 
-Service.findByFeatured = (result) => {
-  dbConn.query("SELECT * FROM service WHERE isFeatured = 1", (err, res) => {
+Service.search = (query, result) => {
+  console.log("Query sent to database:", '%' + query + '%'); // Add this line
+  dbConn.query("SELECT * FROM service WHERE serviceName LIKE ?", ['%' + query + '%'], (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.error("Error in Service.search:", err);
       result(err, null);
     } else {
-      console.log("Services: ", res);
+      console.log("Services in Service.search:", res);
       result(null, res);
     }
   });

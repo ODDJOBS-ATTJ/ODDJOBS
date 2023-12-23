@@ -86,3 +86,15 @@ exports.findByFeatured = (req, res) => {
     res.send({ status: 200, data: service });
   });
 };
+
+exports.search = (req, res) => {
+  const searchQuery = req.body.query;
+  Service.search(searchQuery, (err, service) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.send({ status: 200, data: service });
+    }
+  });
+};

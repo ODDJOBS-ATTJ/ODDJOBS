@@ -24,18 +24,22 @@ a.back-button {
 }
 
 .services-container{
+  height: 811.8px;
   margin: 0 auto;
-  width:1500px;
-  background-color: white;
-  padding: 20px 0px 5px 0px;
+  width:1400px;
+  padding: 0px 0px 5px 0px;
   border-radius:5px;
 }
 
 .services-header{
-  padding:5px 40px 20px 40px;
+  padding:15px 40px 15px 40px;
   display:flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1; /* Ensure it's above other elements */
 }
 
 .services-header button{
@@ -56,19 +60,20 @@ a.back-button {
 
 .services-header .search{
   border:solid grey 2px;
-  padding:5px 25px 5px 25px;
+  padding:10px 25px 10px 25px;
   border-radius: 25px;
   text-align: center;
   display:flex;
 }
 
 .search img{
-  width:25px;
+  width:20px;
+  height: 20px;
 }
 
 .search input{
-  width:115px;
-  margin-left:20px;
+  width:255px;
+  margin-left:10px;
   border:none;
   outline:none;
 }
@@ -78,13 +83,28 @@ a.back-button {
   border-collapse: collapse;
 }
 
+
 .services th,td{
   text-align: left;
-  padding:15px 40px 15px 40px;
+  padding:15px 40px 15px 40px!important;
   width:fit-content;
+  background-color: white;
+}
+
+.services th{
+  padding:15px 0px 15px 40px!important;
+}
+
+.services-th{
+  width: 400px!important;
+}
+
+.manage-th{
+  width: 564.36!important;
 }
 
 .services .th-end{
+  width: 500px!important; /* Increase the width as needed */
   text-align: end;
 }
 
@@ -93,16 +113,33 @@ a.back-button {
   font-size:20px;
 }
 
+.no-th{
+  width: 20px!important;
+}
+
 th select{
   background-color: #F2F2F2;
   cursor:pointer;
   text-transform: uppercase;
-  width:150px;
+  width:125px;
+  margin-right: 30px;
+  width: 165px; /* Increase the width as needed */
+  white-space: nowrap; /* Prevents the text from wrapping onto the next line */
+  overflow: hidden; /* Hides the text that overflows the element's box */
+  text-overflow: ellipsis; /* Indicates that the text should be clipped and an ellipsis (...) should be displayed */
 }
 
 td a{
   font-size: 15px;
   color:black;
+}
+
+.services td:first-child {
+  width: 50px; /* Adjust this value as needed */
+}
+
+.services td:nth-child(3) {
+  width: 150px; /* Adjust this value as needed */
 }
 
 .service-img{
@@ -118,9 +155,16 @@ td a{
   align-items: center;
 }
 
+.button-td{
+  display: flex;
+  justify-content: end;
+  width: 540px;
+  padding:15px 25px 15px 40px!important;
+}
+
 .button-container{
   display:flex;
-  margin-left:auto;
+  justify-content: center;
   width:fit-content;
 }
 

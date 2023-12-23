@@ -29,7 +29,7 @@ function RoleSelect() {
         if (adminPassword === correctAdminPassword) {
             try {
                 await axios.post('http://localhost:3000/accounts/setAdmin', { userID });
-                navigate("/admin/logs");
+                navigate("/admin/profile");
             } catch (error) {
                 console.error('Error setting admin status:', error);
             }

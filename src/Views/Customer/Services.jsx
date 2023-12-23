@@ -11,15 +11,23 @@ import event from './IMAGE/icons/event.png';
 import health from './IMAGE/icons/health.png';
 import mechanical from './IMAGE/icons/mechanical.png';
 import misc from './IMAGE/icons/misc.png';
-
+import { useNavigate } from 'react-router-dom';
 
 function Services() {
+    const navigate = useNavigate();
+
+    const handleSearch = (event) => {
+        if (event.key === 'Enter') {
+            navigate(`/Customer/services/search?search=${event.target.value}`);
+        }
+    };
+
     const [type, setType] = useState(0);
     const [services, setServices] = useState([[]]);
-    const [allserv, setAllServ] = useState([]); 
-  
+    const [allserv, setAllServ] = useState([]);
+
     const chooseType = (num) => {
-      setType(num);    
+        setType(num);
     };
 
     useEffect(() => {
@@ -34,8 +42,8 @@ function Services() {
 
     useEffect(() => {
         let category;
-    
-        switch(type){
+
+        switch (type) {
             case 0: category = 'featured services'; break;
             case 1: category = 'home'; break;
             case 2: category = 'event'; break;
@@ -44,7 +52,7 @@ function Services() {
             case 5: category = 'misc'; break;
             default: category = 'featured services'; break;
         }
-    
+
         axios.get(`http://localhost:3000/service/category/${category}`)
             .then(response => {
                 setServices(response.data.data);
@@ -54,11 +62,11 @@ function Services() {
             })
     }, [type]);
 
-    
-    function catType(){
+
+    function catType() {
         let category;
 
-        switch(type){
+        switch (type) {
             case 0: category = 'featured services'; break;
             case 1: category = 'home'; break;
             case 2: category = 'event'; break;
@@ -67,10 +75,10 @@ function Services() {
             case 5: category = 'misc'; break;
         }
 
-        return(
-            <div style={{textTransform:"uppercase"}}>
+        return (
+            <div style={{ textTransform: "uppercase" }}>
                 <h1>{category}</h1>
-            </div> 
+            </div>
         )
     }
     console.log();
@@ -79,38 +87,37 @@ function Services() {
             if (service.isFeatured === 1) {
                 return (
                     <div key={index} className={styles['services-container-row']}>
-                        <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                            <div className={styles['other-categories-content']}>
-                                <div className={styles['image']}>
-                                    <img src={service.cover} alt="Service" />
-                                </div>
-                                <div className={styles['space']}></div>
-                                <div className={styles['description']}>
-                                    <h1>{service.serviceName}</h1>
-                                    <p>{service.shortDesc}</p>
-                                </div>
+                        <Link to={`/customer/services/details?serviceID=${service.serviceID}`} className={styles['other-categories-row']}>                            <div className={styles['other-categories-content']}>
+                            <div className={styles['image']}>
+                                <img src={service.cover} alt="Service" />
                             </div>
+                            <div className={styles['space']}></div>
+                            <div className={styles['description']}>
+                                <h1>{service.serviceName}</h1>
+                                <p>{service.shortDesc}</p>
+                            </div>
+                        </div>
                         </Link>
                     </div>
                 );
             }
         });
     }
-                
+
     function otherServices() {
         return services.map((service, index) => (
             <div key={index} className={styles['services-container-row']}>
-                <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                <div className={styles['other-categories-content']}>
-                    <div className={styles['image']}>
-                        <img src={service.cover} alt="Service" />
+                <Link to={`/customer/services/details?serviceID=${service.serviceID}`} className={styles['other-categories-row']}>
+                    <div className={styles['other-categories-content']}>
+                        <div className={styles['image']}>
+                            <img src={service.cover} alt="Service" />
+                        </div>
+                        <div className={styles['space']}></div>
+                        <div className={styles['description']}>
+                            <h1>{service.serviceName}</h1>
+                            <p>{service.shortDesc}</p>
+                        </div>
                     </div>
-                    <div className={styles['space']}></div>
-                    <div className={styles['description']}>
-                        <h1>{service.serviceName}</h1>
-                        <p>{service.shortDesc}</p>
-                    </div>
-                </div>
                 </Link>
             </div>
         ));
@@ -127,13 +134,13 @@ function Services() {
     return (
         <div>
             <SignedInHeader />
-            
+
             <div className={styles['services-container']}>
                 <div className={styles['services-container-row']}>
                     <div className={styles['services-container-col']}>
                         <div className={styles['searchbar']}>
                             <img src={magnifyingGlass} alt="Magnifying Glass" />
-                            <input type="text" placeholder="Masseur, Pet Caretaker, and more Odd-Jobs" />
+                            <input type="text" placeholder="Masseur, Pet Caretaker, and more Odd-Jobs" onKeyDown={handleSearch} />
                         </div>
                     </div>
                 </div>
@@ -142,37 +149,37 @@ function Services() {
                 </div>
                 <div className={styles['services-container-row']}>
                     <div className={styles['categories-card']}>
-                        <Link onClick={()=>chooseType(0)}  className={styles['categories']}>
+                        <Link onClick={() => chooseType(0)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={featured} alt="Category" />
                             </div>
                             <h1>featured</h1>
                         </Link>
-                        <Link onClick={()=>chooseType(1)} className={styles['categories']}>
+                        <Link onClick={() => chooseType(1)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={house} alt="Category" />
                             </div>
                             <h1>home</h1>
                         </Link>
-                        <Link onClick={()=>chooseType(2)} className={styles['categories']}>
+                        <Link onClick={() => chooseType(2)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={event} alt="Category" />
                             </div>
                             <h1>event</h1>
                         </Link>
-                        <Link onClick={()=>chooseType(3)}  className={styles['categories']}>
+                        <Link onClick={() => chooseType(3)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={health} alt="Category" />
                             </div>
                             <h1>health</h1>
                         </Link>
-                        <Link onClick={()=>chooseType(4)} className={styles['categories']}>
+                        <Link onClick={() => chooseType(4)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={mechanical} alt="Category" />
                             </div>
                             <h1>mechanical</h1>
                         </Link>
-                        <Link onClick={()=>chooseType(5)} className={styles['categories']}>
+                        <Link onClick={() => chooseType(5)} className={styles['categories']}>
                             <div className={styles['category-img']}>
                                 <img src={misc} alt="Category" />
                             </div>
@@ -183,8 +190,8 @@ function Services() {
                 </div>
                 <div className={styles['services-container-row']}>
                     {catType()}
-                </div> 
-                    {renderServicesBasedOnType()}
+                </div>
+                {renderServicesBasedOnType()}
             </div>
         </div>
     );

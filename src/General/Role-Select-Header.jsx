@@ -46,7 +46,7 @@ function RoleSelectHeader() {
     return (
         <div className={styles.header}>
             <div className={styles.inner_header}>
-                <Link to="/customer/services" className={styles.logo_container}>
+                <Link to="/role-select" className={styles.logo_container}>
                     <div className={styles.logo_box}>
                         <h1>ODD<span>JOBS</span></h1>
                     </div>

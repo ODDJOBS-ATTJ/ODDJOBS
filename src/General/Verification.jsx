@@ -10,37 +10,32 @@ function Verification({ onClose }) {
     const location = useLocation();
 
     useEffect(() => {
-        const checkVerificationID = async () => {
-          const verificationID = new URLSearchParams(location.search).get('verificationID');
-      
-          if (!verificationID) {
-            console.error('VerificationID not found in the URL');
-            navigate('/login');
-            return;
-          }
-      
-          try {
-            const response = await axios.post('http://localhost:3000/accounts/checkVerificationID', {
-              verificationID: verificationID,
-            });
-      
-            if (response.status !== 200) {
-              console.error('VerificationID does not exist');
-              navigate('/login');
+      const searchServices = async () => {
+          const searchQuery = new URLSearchParams(location.search).get('search');
+  
+          if (!searchQuery) {
+              console.error('Search query not found in the URL');
               return;
-            }
-      
-            // If the verificationID exists, show the modal and verify the account
-            setModalVisible(true);
-            verifyAccount();
-          } catch (error) {
-            console.error('Error checking verificationID:', error);
-            navigate('/login');
           }
-        };
-      
-        checkVerificationID();
-      }, []);
+  
+          try {
+              const response = await axios.post('http://localhost:3000/service/search', {
+                  query: searchQuery,
+              });
+  
+              if (response.status !== 200) {
+                  console.error('Error searching services');
+                  return;
+              }
+  
+              setServices(response.data.data);
+          } catch (error) {
+              console.error('Error fetching data:', error);
+          }
+      };
+  
+      searchServices();
+  }, [location.search]);
 
     const closeModal = () => {
         setModalVisible(false);

@@ -75,14 +75,14 @@ exports.login = (req, res) => {
     if (!account) {
       return res
         .status(401)
-        .json({ status: 401, message: "Invalid credentials" });
+        .json({ status: 401, message: "Email does not exist" });
     }
 
     // Check if the provided password matches the stored password
     if (password !== account.password) {
       return res
-        .status(401)
-        .json({ status: 401, message: "Invalid credentials" });
+        .status(403)
+        .json({ status: 403, message: "Incorrect password" });
     }
 
     // Check if the account is verified

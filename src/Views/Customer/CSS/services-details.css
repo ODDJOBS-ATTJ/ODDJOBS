@@ -19,8 +19,10 @@
 }
 
 .bottombox {
-    background: rgb(255, 255, 255);
-    border-top: 2px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .innerbox {
@@ -91,7 +93,7 @@
 
 .order label {
     text-transform: uppercase;
-    padding: 2px;
+    padding: 2px!important;
     width: 100%;
     font-size: 15px;
     font-weight: 600;
@@ -108,26 +110,43 @@
     text-transform: lowercase;
 }
 
-.order input, select {
-    padding: 3px;
-    width: 100%;
-    border-radius: 5px;
-    border: solid 1px;
+.order .input, select {
+    padding: 3px!important;
+    width: 90%;
     outline: none;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+
+.content-row button{
+    width: 40px;
+    cursor: pointer;
 }
 
 .content-row label[for="payment"] {
-    margin-top: 10px;
+    margin-top: 16px!important;
 }
 
 .content-row select[name="payment"] {
-    margin-top: 10px;
+    margin-top: 16px!important;
     height: 35px;
 }
 
 .content-row select, .content-row option {
     font-family: "FontAwesome", sans-serif;
     font-size: 15px;
+}
+
+.content-col{
+    margin-top: 5px;
+}
+
+.input-box {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0 10px;
+    text-align: center;
 }
 
 /* BOOKING */
@@ -152,16 +171,18 @@
 .booking-details h1 {
     text-align: center;
     border-bottom: 2px solid black;
-    margin-bottom: 20px;
+    margin-bottom: 15px!important;
 }
 
 .booking th, td {
     width: 50%;
-    padding: 6px;
+    padding:7px!important;
+    font-size: 15px!important;
 }
 
 .booking th {
-    width: 30%;
+    width: 40%!important;
+    font-weight: 600!important;
 }
 
 .booking button {
@@ -172,7 +193,7 @@
     background-color: #da4040;
     border: none;
     color: white;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s!important;
 }
 
 .booking button:hover {
@@ -194,6 +215,7 @@
 }
 
 .description {
+    margin-top: 40px;
     width: 100%;
 }
 

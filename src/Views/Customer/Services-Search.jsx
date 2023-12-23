@@ -3,10 +3,49 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './CSS/services.module.css';
 import SignedInHeader from './Signed-In-Header';
 import magnifyingGlass from './IMAGE/Icons/magnifying-glass.png';
-import samplePhoto from './IMAGE/icons/samplePhoto.png';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function ServicesSearch() {
     const navigate = useNavigate();
+
+    const handleSearch = (event) => {
+        if (event.key === 'Enter') {
+            navigate(`/Customer/services/search?search=${event.target.value}`);
+        }
+    };
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const searchQuery = queryParams.get('search');
+
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        axios({
+            method: 'post',
+            url: `http://localhost:3000/service/search`,
+            data: {
+                query: searchQuery
+            }
+        })
+            .then(response => {
+                console.log(searchQuery);
+                console.log(response.data);
+                setServices(response.data.data);
+            })
+            .catch(error => {
+                console.error(`Error fetching data: ${error}`);
+            });
+    }, [searchQuery]);
+
+    // Use a separate useEffect to observe changes in the 'services' state
+    useEffect(() => {
+        // Log the updated state
+        console.log(services);
+    }, [services]);
+
     return (
         <div>
             <SignedInHeader />
@@ -18,70 +57,35 @@ function ServicesSearch() {
                     <div className={styles['services-container-col']}>
                         <div className={styles['searchbar']}>
                             <img src={magnifyingGlass} alt="Magnifying Glass" />
-                            <input type="text" placeholder="Masseur, Pet Caretaker, and more Odd-Jobs" />
-                        </div>
+                            <input
+                                type="text"
+                                placeholder="Masseur, Pet Caretaker, and more Odd-Jobs"
+                                onKeyDown={handleSearch}
+                                defaultValue={searchQuery}
+                            />                        </div>
                     </div>
                 </div>
 
                 <div className={styles['services-container-row']}>
-                    <h1>About 4 results</h1>
+                    <h1>About {services.length} results</h1>
                 </div>
-                <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                        <div className={styles['other-categories-content']}>
-                            <div className={styles['image']}>
-                                <img src={samplePhoto} alt="Service" />
+
+                {services.map((service, index) => (
+                    <div key={index} className={styles['services-container-row']}>
+                        <Link to={`/customer/services/details?serviceID=${service.serviceID}`} className={styles['other-categories-row']}>
+                            <div className={styles['other-categories-content']}>
+                                <div className={styles['image']}>
+                                    <img src={service.cover} alt="Service" />
+                                </div>
+                                <div className={styles['space']}></div>
+                                <div className={styles['description']}>
+                                    <h1>{service.serviceName}</h1>
+                                    <p>{service.shortDesc}</p>
+                                </div>
                             </div>
-                            <div className={styles['space']}></div>
-                            <div className={styles['description']}>
-                                <h1>LAUNDRY SERVICE</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis, convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula quis, consectetur accumsan ligula. In non condimentum ligula, vel posuere neque. Donec id maximus ipsum. Nulla quis metus non mi pulvinar aliquam. Duis sit amet lectus semper diam convallis aliquam vitae vitae tellus. Donec in commodo mauris.</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-                <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                        <div className={styles['other-categories-content']}>
-                            <div className={styles['image']}>
-                                <img src={samplePhoto} alt="Service" />
-                            </div>
-                            <div className={styles['space']}></div>
-                            <div className={styles['description']}>
-                                <h1>CARPENTRY</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis, convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula quis, consectetur accumsan ligula. In non condimentum ligula, vel posuere neque. Donec id maximus ipsum. Nulla quis metus non mi pulvinar aliquam. Duis sit amet lectus semper diam convallis aliquam vitae vitae tellus. Donec in commodo mauris.</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-                <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                        <div className={styles['other-categories-content']}>
-                            <div className={styles['image']}>
-                                <img src={samplePhoto} alt="Service" />
-                            </div>
-                            <div className={styles['space']}></div>
-                            <div className={styles['description']}>
-                                <h1>FIXING SINKS</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis, convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula quis, consectetur accumsan ligula. In non condimentum ligula, vel posuere neque. Donec id maximus ipsum. Nulla quis metus non mi pulvinar aliquam. Duis sit amet lectus semper diam convallis aliquam vitae vitae tellus. Donec in commodo mauris.</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-                <div className={styles['services-container-row']}>
-                    <Link to="/Customer/services/details" className={styles['other-categories-row']}>
-                        <div className={styles['other-categories-content']}>
-                            <div className={styles['image']}>
-                                <img src={samplePhoto} alt="Service" />
-                            </div>
-                            <div className={styles['space']}></div>
-                            <div className={styles['description']}>
-                                <h1>CLEANING ROOMS</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex nisi, congue sit amet varius quis, convallis et nulla. Duis ac est diam. Maecenas diam nunc, vestibulum vitae ligula quis, consectetur accumsan ligula. In non condimentum ligula, vel posuere neque. Donec id maximus ipsum. Nulla quis metus non mi pulvinar aliquam. Duis sit amet lectus semper diam convallis aliquam vitae vitae tellus. Donec in commodo mauris.</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>  
+                        </Link>
+                    </div>
+                ))}
             </div>
         </div>
     );

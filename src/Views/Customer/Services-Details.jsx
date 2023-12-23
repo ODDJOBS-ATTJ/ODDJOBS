@@ -1,16 +1,71 @@
-import React from "react"
+import React, { useState, useEffect } from 'react';
 import { ReactDOM } from "react"
 import { Link } from "react-router-dom"
 import Styles from './CSS/services.module.css'
 import './CSS/services-details.css'
 import SignedInHeader from "./Signed-In-Header"
 import Sample from './Image/icons/samplePhoto.png'
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 function ServicesDetails() {
+    const location = useLocation();
+    const serviceID = new URLSearchParams(location.search).get('serviceID');
+    const [service, setService] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [activeTab, setActiveTab] = useState('overview');
+
+    const [order, setOrder] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const incrementOrder = () => {
+        if (order < 10) {
+            setOrder(order + 1);
+        }
+    };
+
+    const decrementOrder = () => {
+        if (order > 0) {
+            setOrder(order - 1);
+        }
+    };
+
+    const incrementDuration = () => {
+        if (duration < 10) {
+            setDuration(duration + 1);
+        }
+    };
+
+    const decrementDuration = () => {
+        if (duration > 0) {
+            setDuration(duration - 1);
+        }
+    };
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/service/${serviceID}`)
+            .then(response => {
+                setService(response.data.data[0]);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error(`Error fetching data: ${error}`);
+            })
+    }, [serviceID]);
+
+    useEffect(() => {
+        console.log("Service Name:", service.serviceName);
+        console.log("shortDesc:", service.shortDesc);
+    }, [service]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <>
+        <div>
             <SignedInHeader />
-            <a href="#" onclick="history.back();" className="back-button"> ← Back</a>
+            <a href="#" onClick={() => window.history.back()} className="back-button"> ← Back</a>
             <div className="container">
                 <section className="allbox">
                     <div className="topbox">
@@ -31,13 +86,17 @@ function ServicesDetails() {
                                             <label htmlFor="cars">Orders</label>
                                         </div>
                                         <div className="content-row">
-                                            <input type="text" />
+                                            <button onClick={decrementOrder}>-</button>
+                                            <div className="input">{order}</div>
+                                            <button onClick={incrementOrder}>+</button>
                                         </div>
                                         <div className="content-row">
-                                            <label htmlFor="cars">Duration <span>(hour)</span></label>
+                                            <label htmlFor="cars">{service.serviceType.toUpperCase()} <span>(hour)</span></label>
                                         </div>
                                         <div className="content-row">
-                                            <input type="text" />
+                                            <button onClick={decrementDuration}>-</button>
+                                            <div className="input">{duration}</div>
+                                            <button onClick={incrementDuration}>+</button>
                                         </div>
                                         <div className="content-row">
                                             <label htmlFor="payment">payment options</label>
@@ -59,25 +118,25 @@ function ServicesDetails() {
                                         <table>
                                             <tbody><tr>
                                                 <th>BASE PRICE:</th>
-                                                <td>₱500</td>
+                                                <td>₱{service.basePrice}</td>
                                             </tr>
                                             </tbody></table>
                                         <table>
                                             <tbody><tr>
                                                 <th>ORDER:</th>
-                                                <td>1</td>
+                                                <td>{order}</td>
                                             </tr>
                                             </tbody></table>
                                         <table className="duration">
                                             <tbody><tr>
-                                                <th>DURATION:</th>
-                                                <td>5</td>
+                                                <th>{service.serviceType.toUpperCase()}:</th>
+                                                <td>{duration}</td>
                                             </tr>
                                             </tbody></table>
                                         <table>
                                             <tbody><tr>
                                                 <th>TOTAL PRICE:</th>
-                                                <td>₱2500</td>
+                                                <td>₱{order * duration * service.basePrice}</td>
                                             </tr>
                                             </tbody></table>
                                         <div className="content-row">
@@ -92,27 +151,41 @@ function ServicesDetails() {
                         <div className="innerbox">
                             <div className="description-container">
                                 <div className="description">
-                                    <h1>MASSAGE THERAPY</h1>
-                                    <p>
-                                        Indulge in blissful relaxation with our professional in-home
-                                        massage service, tailored to your needs and delivered right to
-                                        your doorstep.
-                                    </p>
+                                    <h1>{service.serviceName}</h1>
+                                    <p>{service.shortDesc}</p>
                                     <div className="selector">
-                                        <button className="active-selector">OVERVIEW</button>
-                                        <button>SPECIFICS</button>
-                                        <button>POLICIES</button>
+                                        <button className={activeTab === 'overview' ? 'active-selector' : ''} onClick={() => setActiveTab('overview')}>OVERVIEW</button>
+                                        <button className={activeTab === 'specifics' ? 'active-selector' : ''} onClick={() => setActiveTab('specifics')}>SPECIFICS</button>
+                                        <button className={activeTab === 'policies' ? 'active-selector' : ''} onClick={() => setActiveTab('policies')}>POLICIES</button>
                                     </div>
                                     <div className="overview-specifics-policies">
-                                        <h1>What does this service provide?</h1>
-                                        <ul>
-                                            <li>
-                                                Skilled therapists delivering therapeutic techniques
-                                            </li>
-                                            <li>Convenient in-home massages tailored to you</li>
-                                            <li>Relaxation and stress reduction</li>
-                                            <li>Relief from muscle tension and pain</li>
-                                        </ul>
+                                        {activeTab === 'overview' && (
+                                            <>
+                                                <h1>What does this service provide?</h1>
+                                                <ul>
+                                                    <li>{service.overview}</li>
+                                                </ul>
+                                            </>
+                                        )}
+                                        {activeTab === 'specifics' && (
+                                            <>
+                                                <h1>Specifics</h1>
+                                                <ul>
+                                                    <li>{service.specifics}</li>
+                                                </ul>
+                                            </>
+                                        )}
+                                        {activeTab === 'policies' && (
+                                            <>
+                                                <h1>Policies</h1>
+                                                <ul>
+                                                    <li>Download
+                                                        <a href={`http://localhost:3000/${service.policies}`} download> {service.policies}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +193,7 @@ function ServicesDetails() {
                     </div>
                 </section>
             </div>
-        </>
+        </div>
     );
 }
 

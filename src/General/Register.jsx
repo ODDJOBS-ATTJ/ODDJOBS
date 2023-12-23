@@ -19,10 +19,9 @@ function Register() {
     let isValid = true;
 
     for (let i = 0; i < formFields.length - 1; i++) {
-      // Skip validation for the userID field
       if (formFields[i].type !== 'submit' && formFields[i].name !== 'verificationID' && formFields[i].value.trim() === '') {
         isValid = false;
-        console.log(`Error: ${formFields[i].name} is required.`);
+        alert(`Error: ${formFields[i].name} is required.`);
       }
     }
 
@@ -30,56 +29,50 @@ function Register() {
       return;
     }
     sendFormDataToServer();
-    // Send form data to your server using Axios to get the userID
     axios.post('http://localhost:3000/accounts/findUserID', { email: formFields.email.value })
-  .then(async (response) => {
-    const userID = response.data.userID;
-
-    // Get the form control with the name 'verificationID'
-    const verificationIDInput = form.current.elements['verificationID'];
-
-    // Generate verificationID using userID
-    const verificationID = generateUniqueID(userID);
-
-    // Set the value of the verificationID input field
-    verificationIDInput.value = verificationID;
-
-    console.log('Unique ID (Verification ID):', verificationID);
-
-    try {
-      // Update verificationID in the database
-      await axios.post('http://localhost:3000/accounts/updateVerificationID', { userID, verificationID });
-      console.log('Verification ID updated in the database successfully');
-      
-      // Simulate email sending with setTimeout
-      setTimeout(() => {
-        // Uncomment the following block to send the actual email using emailjs
-        // emailjs
-        //   .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
-        //   .then(
-        //     (result) => {
-        //       console.log(result.text);
-        //       console.log('Email with Form-data + uniqueID sent successfully');
-        //     },
-        //     (error) => {
-        //       console.log(error.text);
-        //       console.log('Email was not sent. An Error was encountered');
-        //     }
-        //   );
-
-        // Simulate email with form Data + unique ID sent successfully
-        // console.log('Simulated email with Form-data + uniqueID sent successfully');
-        setEmailSent(true);
-      }, 2000); // Simulate a 2-second delay (you can adjust the delay time as needed)
-
-    } catch (error) {
-      console.error('Error updating verification ID in the database:', error);
-    }
-  })
-  .catch((error) => {
-    console.error('Error finding userID:', error);
-  });
-};
+      .then(async (response) => {
+        const userID = response.data.userID;
+        const verificationIDInput = form.current.elements['verificationID'];
+        const verificationID = generateUniqueID(userID);
+        verificationIDInput.value = verificationID;
+        try {
+          await axios.post('http://localhost:3000/accounts/updateVerificationID', { userID, verificationID });
+          setTimeout(() => {
+            emailjs
+              .sendForm('service_2dlx871', 'template_yu3esct', form.current, 'NkYJx24dJ0Pj1HgI4')
+              .then(
+                (result) => {
+                  console.log(result.text);
+                  console.log('Email with Form-data + uniqueID sent successfully');
+                },
+                (error) => {
+                  alert(error.text);
+                  console.log('Email was not sent. An Error was encountered');
+                }
+              );
+            console.log('Simulated email with Form-data + uniqueID sent successfully');
+            setEmailSent(true);
+          }, 2000);
+        } catch (error) {
+          if (error.response) {
+            alert(error.response.data.message);
+          } else if (error.request) {
+            alert('Request was made but no response was received');
+          } else {
+            alert('Error', error.message);
+          }
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else if (error.request) {
+          alert('Request was made but no response was received');
+        } else {
+          alert('Error', error.message);
+        }
+      });
+  };
 
   const generateUniqueID = (userID) => {
     // Generate a random UUID (Universally Unique Identifier)

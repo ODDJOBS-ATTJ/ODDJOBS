@@ -1,0 +1,21 @@
+FRONT END IS FULLY FINISHED, BUT BACKEND IS LACKING
+
+DISCLAIMER: in workers page, search is non functional so use url (services/search)
+
+Home page does not work since it has css conflicts so we removed it. 
+Make sure to import the SQL to phpMyAdmin and npm install for all the dependencies
+
+Our working features are these:
+- Login page with verification
+- Registration with email verification + popup
+- Email verification has a hashed ID which is unique and uploaded to database; when a registration is submitted, it sends an email. When the verification landing page (url from the email) is entered, it makes the verification NULL, and isVerified is ticked to 1.
+- Each page has its authentication using cookies, and logging out removes the cookies. We made sure to use cookies allowing for a secure website.
+- User Profile works with updating. However the pfp part is lacking.
+- User Profile successfully displays after editting
+- Services displays sucessfully and is categorized by enums (from the database)
+- The search bars works with filtering
+- In the role select, the worker verification works, but not the registration; if isWorker is 1, it goes straight to the worker pages, else registration page. (isWorker is set in the admins page, however is not implemented yet).
+- In the role select page, ADMIN password is required. We can change it at any time in our codes. 
+- Admin page backend is not implemented, but all the pages are linked, as well as the worker pages
+- Customer service details and booking (includes booking process), is not implemented in the backend. The front end is entirely done however.
+- The rest of the front end is implemented, but the back end is lacking

@@ -10,5 +10,6 @@ router.put('/:id', serviceController.update); // UPDATE a service by id
 router.delete('/:id', serviceController.delete); // DELETE a service by id
 router.get('/category/:category', serviceController.findByCategory); // GET services by category
 router.get('/featured', serviceController.findByFeatured); // GET featured services
+router.post('/search', serviceController.search);
 
 module.exports = router;

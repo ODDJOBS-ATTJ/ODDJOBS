@@ -13,31 +13,31 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response = await axios.post('http://localhost:3000/accounts/login', {
                 email,
                 password,
             });
-
-            // Handle the response accordingly, e.g., set user authentication status
-            console.log(response.data);
-
-            // Check if login was successful
+    
             if (response.data.status === 200) {
-                // Set user authentication status or token in cookies with SameSite option
                 Cookies.set('userID', response.data.userID, { sameSite: 'strict' });
-
-                // Redirect to the protected route
                 navigate('/role-select');
             } else {
-                // Handle login failure
-                console.error('Login failed:', response.data.message);
+                alert(response.data.message);
             }
-
         } catch (error) {
-            console.error('Login failed:', error.message);
-            // Handle login failure
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                alert(error.response.data.message);
+            } else if (error.request) {
+                // The request was made but no response was received
+                alert('Request was made but no response was received');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                alert('Error', error.message);
+            }
         }
     };
 
