@@ -7,7 +7,6 @@ import AdminApplications from '../Admin/adminApplications';
 import AdminServiceManagement from '../Admin/adminServiceManagement';
 import ServiceCreate from '../Admin/serviceCreate';
 import ServiceEdit from '../Admin/serviceEdit';
-import ServiceView from '../Admin/serviceView';
 import AdminUserManagement from '../Admin/adminUserManagement';
 import ViewReports from '../Admin/viewReports';
 
@@ -22,7 +21,6 @@ function AdminRoutes() {
       <Route path="/service-management" element={<AdminServiceManagement/>} />
       <Route path="/service-management/create" element={< ServiceCreate/>} />
       <Route path="/service-management/edit" element={< ServiceEdit/>} />
-      <Route path="/service-management/view" element={< ServiceView/>} />
       <Route path="/user-management" element={<AdminUserManagement/>} />
       <Route path="/user-management/reports" element={<ViewReports/>} />
     </Routes>

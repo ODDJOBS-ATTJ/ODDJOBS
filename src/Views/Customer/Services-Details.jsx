@@ -91,13 +91,20 @@ function ServicesDetails() {
                                             <button onClick={incrementOrder}>+</button>
                                         </div>
                                         <div className="content-row">
-                                            <label htmlFor="cars">{service.serviceType.toUpperCase()} <span>(hour)</span></label>
+                                            {service.serviceType === 'quantity' && (
+                                                <label htmlFor="cars">{service.serviceType.toUpperCase()}</label>
+                                            )}
+                                            {service.serviceType === 'duration' && (
+                                                <label htmlFor="cars">{service.serviceType.toUpperCase()} <span>(hour)</span></label>
+                                            )}
                                         </div>
-                                        <div className="content-row">
-                                            <button onClick={decrementDuration}>-</button>
-                                            <div className="input">{duration}</div>
-                                            <button onClick={incrementDuration}>+</button>
-                                        </div>
+                                        {service.serviceType !== 'unspecified' && (
+                                            <div className="content-row">
+                                                <button onClick={decrementDuration}>-</button>
+                                                <div className="input">{duration}</div>
+                                                <button onClick={incrementDuration}>+</button>
+                                            </div>
+                                        )}
                                         <div className="content-row">
                                             <label htmlFor="payment">payment options</label>
                                         </div>
@@ -171,7 +178,9 @@ function ServicesDetails() {
                                             <>
                                                 <h1>Specifics</h1>
                                                 <ul>
-                                                    <li>{service.specifics}</li>
+                                                    {service.specifics.split(',').map((specific, index) => (
+                                                        <li key={index}>{specific}</li>
+                                                    ))}
                                                 </ul>
                                             </>
                                         )}

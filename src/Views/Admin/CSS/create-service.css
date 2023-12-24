@@ -1,44 +1,14 @@
 /* Container */
-.container{
+.container {
   position: absolute;
-  top: 150px; /* Adjust this value based on your header's height */
+  top: 100px;
+  /* Adjust this value based on your header's height */
   left: 0;
   right: 0;
   bottom: 0;
 }
 
 /* BACK BUTTON */
-a.back-button {
-  display: absolute;
-  top: 10px;
-  padding: 12px 40px;
-  background-color: #ffffff;
-  color: #000000;
-  text-decoration: none;
-  border-radius: 40px;
-  position: relative;
-  margin: 25px 30px;
-  z-index: 1;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  font-weight: 600;
-}
-
-.create-button {
-  border:none;
-  display: absolute;
-  top: 10px;
-  padding: 12px 40px;
-  background-color: #ffffff;
-  color: #000000;
-  text-decoration: none;
-  border-radius: 40px;
-  position: relative;
-  margin: 20px 25px;
-  z-index: 1;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  font-weight: 600;
-}
-
 a.save-button {
   display: absolute;
   top: 10px;
@@ -54,205 +24,232 @@ a.save-button {
   font-weight: 600;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.service-container{
-  width:1250px;
+.service-container {
+  width: 1250px;
   margin: 0 auto;
-  padding:5px;
+  padding: 5px;
 }
 
-.service-name-card{
-  display:block;
+.service-name-card {
+  display: block;
   background-color: white;
-  margin-bottom:10px;
-  border-radius:5px;
-}
-
-.service-name-card h1{
-  width:1200px;
-  padding:5px 0px 5px 20px;
-}
-
-.service-name-card input{
-  width:1200px;
-  outline:none;
-  padding:5px 0px 5px 20px;
-}
-
-.serviceName{
-  border:none;
-  font-size:30px;
-  font-weight:bold;
-  border-radius:5px;
-}
-
-hr{
-  border:solid 1px;
-}
-
-.shortDescription{
-  border:none;
-  border-radius:5px;
-}
-
-.service-details{
-  display:flex;
-}
-
-.service-details-container1{
-  width:620px;
-  margin-right:5px;
-}
-
-.service-details-container2{
-  width:620px;
-  margin-left:5px;
-}
-
-.service-details-container1 .specifics{
-  background-color: white;
-  padding:10px 20px 10px 20px;
-  height:550px;
-  border-radius:5px;
-}
-
-.specifics textarea{
-  border: solid grey;
-  border-radius: 5px;
-  width:555px;
-  outline:none;
-  padding:10px;
-  height:470px;
-  background-color: #f2f2f2;
-}
-
-.service-details-container2 .summary{
-  background-color: white;
-  padding:10px 20px 10px 20px;
   margin-bottom: 10px;
-  height:260px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
-.service-details-container2 .overview{
+.service-name-card h1 {
+  width: 1200px;
+  padding: 5px 0px 5px 20px;
+}
+
+.service-name-card input {
+  width: 1200px;
+  outline: none;
+  padding: 5px 0px 5px 20px;
+}
+
+.serviceName {
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+hr {
+  border: solid 1px;
+}
+
+.shortDescription {
+  border: none;
+  border-radius: 5px;
+}
+
+.service-details {
+  display: flex;
+}
+
+.service-details-container1 {
+  width: 620px;
+  margin-right: 5px;
+}
+
+.service-details-container2 {
+  width: 620px;
+  margin-left: 5px;
+}
+
+.service-details-container1 .specifics {
   background-color: white;
-  padding:10px 20px 10px 20px;
-  height:260px;
-  border-radius:5px;
+  padding: 10px 20px 10px 20px;
+  height: 550px;
+  border-radius: 5px;
 }
 
-.overview textarea{
+.specifics input {
   border: solid grey;
   border-radius: 5px;
-  width:555px;
-  outline:none;
-  padding:10px;
-  height:180px;
+  width: 555px;
+  outline: none;
+  padding: 10px;
+  height: 10px;
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+}
+
+.specifics button {
+  border: solid grey;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  height: 36px;
+  background-color: rgb(190, 190, 190);
+  /* Change this to the color you want */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600 !important;
+  color: rgb(27, 27, 27);
+}
+
+.specifics button.disabled {
+  cursor: not-allowed;
+  color: rgb(131, 131, 131);
+}
+
+.service-details-container2 .summary {
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  height: 260px;
+  border-radius: 5px;
+}
+
+.service-details-container2 .overview {
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  height: 260px;
+  border-radius: 5px;
+}
+
+.overview textarea {
+  border: solid grey;
+  border-radius: 5px;
+  width: 555px;
+  outline: none;
+  padding: 10px;
+  height: 180px;
   background-color: #f2f2f2;
 }
 
-.summaryContent{
+.summaryContent {
   display: flex;
   align-items: center;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 
-.summaryInputs input{
-  width:175px;
-  margin-right:15px;
-  height:25px;
+.summaryInputs input {
+  width: 175px;
+  margin-right: 15px;
+  height: 25px;
   background-color: #f2f2f2;
   border: solid grey 2px;
-  border-radius:5px;
+  border-radius: 5px;
   padding-left: 5px;
 }
 
-.summaryInputs select{
-  width:175px;
-  margin-right:15px;
-  height:27px;
+.summaryInputs select {
+  width: 175px;
+  margin-right: 15px;
+  height: 27px;
   background-color: #f2f2f2;
   border: solid grey 2px;
-  border-radius:5px;
-  outline:none;
+  border-radius: 5px;
+  outline: none;
+  /* Add these lines */
+  padding: 0px!important;
+  padding-left: 3px!important; /* Remove padding */
+  line-height: 27px!important; /* Set line-height equal to height */
 }
 
-.policies label{
-  cursor:pointer;
+.policies label {
+  cursor: pointer;
 }
 
-.policies h1{
+.policies h1 {
   font-size: 17px;
   font-weight: 400;
 }
 
-.policies input[type="file"]{
-  display:none;
+.policies input[type="file"] {
+  display: none;
 }
 
-.summaryImages h1{
+.summaryImages h1 {
   font-size: 15px;
   font-weight: 500;
 }
 
-.upload-boxes{
+.upload-boxes {
   display: flex;
 }
 
-.upload-image{
-  display:flex;
+.upload-image {
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius:5px;
-  border:dashed 3px;
-  width:110px;
-  height:110px;
+  border-radius: 5px;
+  border: dashed 3px;
+  width: 110px;
+  height: 110px;
   text-align: center;
 }
 
-.upload-image a{
-  color:black;
-  font-size:10px;
+.upload-image a {
+  color: black;
+  font-size: 10px;
 }
 
-.upload-image label{
+.upload-image label {
   font-size: 12px;
   padding: 40px 0px 40px 0px;
   cursor: pointer;
 }
 
-.upload-image input[type="file"]{
-  display:none;
+.upload-image input[type="file"] {
+  display: none;
 }
 
-.upload-banner{
-  display:flex;
+.upload-banner {
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius:5px;
+  border-radius: 5px;
   margin-left: auto;
   border: dashed 3px;
-  width:400px;
+  width: 400px;
   text-align: center;
 }
 
-.upload-banner a{
-  color:black;
-  font-size:10px;
+.upload-banner a {
+  color: black;
+  font-size: 10px;
 }
 
-.upload-banner label{
+.upload-banner label {
   font-size: 12px;
   padding: 40px 145px 40px 145px;
   cursor: pointer;
 }
 
-.upload-banner input[type="file"]{
-  display:none;
+.upload-banner input[type="file"] {
+  display: none;
 }

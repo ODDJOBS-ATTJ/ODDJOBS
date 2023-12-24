@@ -2,12 +2,8 @@
 const dbConn = require("../config/db.config.js");
 
 function Service(service) {
-  this.serviceID = service.serviceID;
   this.serviceName = service.serviceName;
   this.basePrice = service.basePrice;
-  this.policies = service.policies;
-  this.cover = service.cover;
-  this.banner = service.banner;
   this.shortDesc = service.shortDesc;
   this.specifics = service.specifics;
   this.overview = service.overview;

@@ -7,7 +7,10 @@ import SearchIcon from './icons/magnifying-glass.png';
 import Back from './icons/back.png';
 import Next from './icons/next.png';
 import Edit from './icons/pen.png';
-import Visible from './icons/view.png';
+import Visible from './icons/isVisible.svg';
+import NotVisible from './icons/notVisible.svg';
+import Star from './icons/star-regular.svg';
+import SolidStar from './icons/star-solid.svg';
 import Delete from './icons/traffic-signal.png';
 
 function AdminServiceManagement() {
@@ -20,7 +23,8 @@ function AdminServiceManagement() {
   useEffect(() => {
     axios.get('http://localhost:3000/service/')
       .then(response => {
-        setServices(response.data.data);
+        const activeServices = response.data.data.filter(service => service.isDeleted !== 1);
+        setServices(activeServices);
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -63,6 +67,97 @@ function AdminServiceManagement() {
     setServices(sortedServices);
   };
 
+  const handleDelete = (serviceID) => {
+    if (window.confirm('Are you sure you want to remove this service?')) {
+      // Fetch the current data of the service
+      axios.get(`http://localhost:3000/service/${serviceID}`)
+        .then(response => {
+          // Update the isDeleted and isVisible fields
+          const updatedService = {
+            ...response.data.data[0],
+            isDeleted: 1,
+            isVisible: 0
+          };
+
+          // Send the updated service data in the PUT request
+          axios.put(`http://localhost:3000/service/${serviceID}`, updatedService)
+            .then(response => {
+              console.log(response.data);
+              // Refresh the page
+              window.location.reload();
+            })
+            .catch(error => {
+              console.error('There was an error!', error);
+            });
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    }
+  };
+
+  const handleVisibility = (serviceID) => {
+    if (window.confirm('Are you sure you want to change the visibility of the service?')) {
+      // Fetch the current data of the service
+      axios.get(`http://localhost:3000/service/${serviceID}`)
+        .then(response => {
+          // Calculate the new value for isVisible
+          const newIsVisible = response.data.data[0].isVisible === 1 ? 0 : 1;
+
+          // Update the isVisible field
+          const updatedService = {
+            ...response.data.data[0],
+            isVisible: newIsVisible
+          };
+
+          // Send the updated service data in the PUT request
+          axios.put(`http://localhost:3000/service/${serviceID}`, updatedService)
+            .then(response => {
+              console.log(response.data);
+              // Refresh the page
+              window.location.reload();
+            })
+            .catch(error => {
+              console.error('There was an error!', error);
+            });
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    }
+  };
+
+  const handleFeatured = (serviceID) => {
+    if (window.confirm('Are you sure you want to change the featured status of the service?')) {
+      // Fetch the current data of the service
+      axios.get(`http://localhost:3000/service/${serviceID}`)
+        .then(response => {
+          // Calculate the new value for isFeatured
+          const newIsFeatured = response.data.data[0].isFeatured === 1 ? 0 : 1;
+
+          // Update the isFeatured field
+          const updatedService = {
+            ...response.data.data[0],
+            isFeatured: newIsFeatured
+          };
+
+          // Send the updated service data in the PUT request
+          axios.put(`http://localhost:3000/service/${serviceID}`, updatedService)
+            .then(response => {
+              console.log(response.data);
+              // Refresh the page
+              window.location.reload();
+            })
+            .catch(error => {
+              console.error('There was an error!', error);
+            });
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        });
+    }
+  };
+
   return (
     <div>
       <SignedInHeader />
@@ -96,16 +191,22 @@ function AdminServiceManagement() {
                   <td>{service.serviceID}</td>
                   <td>
                     <div className={styles["service-name-icon"]}>
-                      <div className={styles["service-img"]} />
                       {service.serviceName}
                     </div>
                   </td>
-                  <td><Link to="/admin/service-management/view">View Service</Link></td>
+                  <td><Link to={`/customer/services/details?serviceID=${service.serviceID}`}>View Service</Link></td>
                   <td className={styles["button-td"]}>
                     <div className={styles["button-container"]}>
-                      <button onClick={() => navigate("/admin/service-management/edit")}><img src={Edit} alt="Edit Icon" />edit</button>
-                      <button><img src={Visible} alt="Visible Icon" />visible</button>
-                      <button><img src={Delete} alt="Delete Icon" />remove</button>
+                    <button onClick={() => navigate(`/admin/service-management/edit?serviceID=${service.serviceID}`)}><img src={Edit} alt="Edit Icon" />edit</button>
+                      <button onClick={() => handleFeatured(service.serviceID)}>
+                        <img src={service.isFeatured === 1 ? SolidStar : Star} alt="Star Icon" />
+                        Featured
+                      </button>
+                      <button onClick={() => handleVisibility(service.serviceID)}>
+                        <img src={service.isVisible === 1 ? Visible : NotVisible} alt="Visibility Icon" />
+                        Visibility
+                      </button>
+                      <button onClick={() => handleDelete(service.serviceID)}><img src={Delete} alt="Delete Icon" />remove</button>
                       <input type="radio" />
                     </div>
                   </td>
@@ -116,7 +217,7 @@ function AdminServiceManagement() {
           <div className={styles["navigation"]}>
             <h2>Rows per page: 10</h2>
             <div className={styles["forward-back"]}>
-              <h2>{indexOfFirstService + 1}-{indexOfLastService} of {services.length} items</h2>
+              <h2>{indexOfFirstService + 1}-{Math.min(indexOfLastService, services.length)} of {services.length} items</h2>
               <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}><img src={Back} alt="Back Icon" /></button>
               <button onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(services.length / servicesPerPage)}><img src={Next} alt="Next Icon" /></button>
             </div>

@@ -4,7 +4,6 @@ import axios from 'axios'; // Add this import
 import styles from './CSS/services.module.css';
 import SignedInHeader from './Signed-In-Header';
 import magnifyingGlass from './IMAGE/Icons/magnifying-glass.png';
-import samplePhoto from './IMAGE/icons/samplePhoto.png';
 import featured from './IMAGE/icons/featured.png';
 import house from './IMAGE/icons/home.png';
 import event from './IMAGE/icons/event.png';
@@ -82,30 +81,28 @@ function Services() {
         )
     }
     console.log();
-    function renderFeaturedFromAll() {
-        return allserv.map((service, index) => {
-            if (service.isFeatured === 1) {
-                return (
-                    <div key={index} className={styles['services-container-row']}>
-                        <Link to={`/customer/services/details?serviceID=${service.serviceID}`} className={styles['other-categories-row']}>                            <div className={styles['other-categories-content']}>
-                            <div className={styles['image']}>
-                                <img src={service.cover} alt="Service" />
-                            </div>
-                            <div className={styles['space']}></div>
-                            <div className={styles['description']}>
-                                <h1>{service.serviceName}</h1>
-                                <p>{service.shortDesc}</p>
-                            </div>
-                        </div>
-                        </Link>
-                    </div>
-                );
-            }
-        });
+
+    function renderServicesBasedOnType() {
+        const typeToCategory = ['featured', 'home', 'event', 'health', 'mechanical', 'misc'];
+        const selectedCategory = typeToCategory[type];
+    
+        return allserv
+            .filter(service => service.isVisible === 1 && service.isDeleted === 0)
+            .map((service, index) => {
+                if (type === 0) {
+                    if (service.isFeatured === 1) {
+                        return renderService(service, index);
+                    }
+                } else {
+                    if (service.serviceCat === selectedCategory) {
+                        return renderService(service, index);
+                    }
+                }
+            });
     }
 
-    function otherServices() {
-        return services.map((service, index) => (
+    function renderService(service, index) {
+        return (
             <div key={index} className={styles['services-container-row']}>
                 <Link to={`/customer/services/details?serviceID=${service.serviceID}`} className={styles['other-categories-row']}>
                     <div className={styles['other-categories-content']}>
@@ -120,15 +117,7 @@ function Services() {
                     </div>
                 </Link>
             </div>
-        ));
-    }
-
-    function renderServicesBasedOnType() {
-        if (type === 0) {
-            return renderFeaturedFromAll();
-        } else {
-            return otherServices();
-        }
+        );
     }
 
     return (
