@@ -80,11 +80,11 @@ function ServiceCreate() {
   };
 
   return (
-    <div>
+    <div id='servicecreate'>
       <SignedInHeader />
       <form onSubmit={handleSubmit}>
-        <Link to='/admin/service-management' className={styles["back-button"]}> &larr; Back</Link>
-        <button type="submit" className={styles["create-button"]}>FINALIZE SERVICE</button>
+        <Link to='/admin/service-management' className={styles["back-button-servicecreate"]}> &larr; Back</Link>
+        <button type="submit" className={styles["create-button-servicecreate"]} name='button-servicecreate'>FINALIZE SERVICE</button>
         <div className="container">
           <div className="service-container">
             <div className="service-name-card">

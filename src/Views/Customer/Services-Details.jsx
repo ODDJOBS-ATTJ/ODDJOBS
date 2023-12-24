@@ -90,20 +90,17 @@ function ServicesDetails() {
                                             <div className="input">{order}</div>
                                             <button onClick={incrementOrder}>+</button>
                                         </div>
-                                        <div className="content-row">
-                                            {service.serviceType === 'quantity' && (
-                                                <label htmlFor="cars">{service.serviceType.toUpperCase()}</label>
-                                            )}
-                                            {service.serviceType === 'duration' && (
-                                                <label htmlFor="cars">{service.serviceType.toUpperCase()} <span>(hour)</span></label>
-                                            )}
-                                        </div>
                                         {service.serviceType !== 'unspecified' && (
-                                            <div className="content-row">
-                                                <button onClick={decrementDuration}>-</button>
-                                                <div className="input">{duration}</div>
-                                                <button onClick={incrementDuration}>+</button>
-                                            </div>
+                                            <>
+                                                <div className="content-row">
+                                                    <label htmlFor="cars">{service.serviceType.toUpperCase()} <span>(hour)</span></label>
+                                                </div>
+                                                <div className="content-row">
+                                                    <button onClick={decrementDuration}>-</button>
+                                                    <div className="input">{duration}</div>
+                                                    <button onClick={incrementDuration}>+</button>
+                                                </div>
+                                            </>
                                         )}
                                         <div className="content-row">
                                             <label htmlFor="payment">payment options</label>
@@ -127,25 +124,29 @@ function ServicesDetails() {
                                                 <th>BASE PRICE:</th>
                                                 <td>₱{service.basePrice}</td>
                                             </tr>
-                                            </tbody></table>
+                                            </tbody>
+                                        </table>
                                         <table>
                                             <tbody><tr>
                                                 <th>ORDER:</th>
                                                 <td>{order}</td>
                                             </tr>
-                                            </tbody></table>
-                                        <table className="duration">
-                                            <tbody><tr>
-                                                <th>{service.serviceType.toUpperCase()}:</th>
-                                                <td>{duration}</td>
-                                            </tr>
-                                            </tbody></table>
-                                        <table>
+                                            </tbody>
+                                        </table>
+                                        {service.serviceType !== 'unspecified' && (
+                                            <table>
+                                                <tbody><tr>
+                                                    <th>{service.serviceType.toUpperCase()}:</th>
+                                                    <td>{duration}</td>
+                                                </tr></tbody>
+                                            </table>
+                                        )}
+                                        <table className="totalprice">
                                             <tbody><tr>
                                                 <th>TOTAL PRICE:</th>
-                                                <td>₱{order * duration * service.basePrice}</td>
-                                            </tr>
-                                            </tbody></table>
+                                                <td>₱{service.serviceType === 'unspecified' ? order * service.basePrice : order * duration * service.basePrice}</td>
+                                            </tr></tbody>
+                                        </table>
                                         <div className="content-row">
                                             <button className="content-col">BOOK NOW</button>
                                         </div>

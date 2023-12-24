@@ -1,4 +1,4 @@
-.back-button {
+.back-button-servicecreate {
     display: inline-block !important;
     padding: 15px 30px !important;
     background-color: #ffffff !important;
@@ -11,7 +11,7 @@
     border: none;
 }
 
-.create-button {
+.create-button-servicecreate {
     display: inline-block !important;
     padding: 15px 30px !important;
     background-color: #ffffff !important;
@@ -23,7 +23,7 @@
     border: none;
 }
 
-button[type="submit"] {
+button[name="button-servicecreate"] {
     all: unset;
     cursor: pointer;
 }

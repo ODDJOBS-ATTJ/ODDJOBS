@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-.topbox, .bottombox {
+.topbox {
     height: calc(50% - 2px);
     width: 100%;
     display: flex;
@@ -21,7 +21,6 @@
 
 .bottombox {
     width: 100%;
-    height: calc(50% - 2px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -203,8 +202,8 @@
     cursor: pointer;
 }
 
-.duration {
-    border-bottom: 2px solid black;
+.totalprice{
+    border-top: 2px solid black;
 }
 
 /* DESCRIPTION */
@@ -235,6 +234,7 @@
 .description .selector {
     border-bottom: 4px solid rgba(0, 0, 0, 0.185);
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .description .selector button {
@@ -288,8 +288,8 @@
   
   .overview-specifics-policies {
     padding: 3px;
-    width: 1185px;
-  }
+    width: 100%!important;
+}
   
   .overview-specifics-policies h1 {
     font-size: 20px;
